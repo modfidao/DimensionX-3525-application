@@ -4,7 +4,9 @@ pragma solidity ^0.8.9;
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-contract Lock {
+import "./@solvprotocol/erc-3525/ERC3525Upgradeable.sol";
+
+contract Lock is ERC3525Upgradeable {
     uint public unlockTime;
     address payable public owner;
 
