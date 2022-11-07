@@ -2,12 +2,13 @@
   "name": "hardhat-project",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
-    "hardhat": "^2.12.2"
+    "hardhat": "^2.12.2",
+    "hardhat-contract-sizer": "^2.6.1"
   },
   "scripts": {
     "test": "hardhat test",
-    "compile":"hardhat compile",
-    "deploy":"hardhat run scripts/deploy.js"
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.js"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",
