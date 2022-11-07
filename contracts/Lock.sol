@@ -1,36 +1,49 @@
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.9;
+// SPDX-License-Identifier: MIT
 
-// Uncomment this line to use console.log
-// import "hardhat/console.sol";
+pragma solidity ^0.8.0;
 
-import "./@solvprotocol/erc-3525/ERC3525Upgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
+import "@solvprotocol/erc-3525/ERC3525Upgradeable.sol";
 
-contract Lock is ERC3525Upgradeable {
-    uint public unlockTime;
-    address payable public owner;
+contract ERC3525BaseMockUpgradeable is Initializable, ContextUpgradeable, ERC3525Upgradeable {
 
-    event Withdrawal(uint amount, uint when);
-
-    constructor(uint _unlockTime) payable {
-        require(
-            block.timestamp < _unlockTime,
-            "Unlock time should be in the future"
-        );
-
-        unlockTime = _unlockTime;
-        owner = payable(msg.sender);
+    function initialize(string memory name_, string memory symbol_, uint8 decimals_) public virtual initializer {
+        __ERC3525AllRound_init(name_, symbol_, decimals_);
     }
 
-    function withdraw() public {
-        // Uncomment this line, and the import of "hardhat/console.sol", to print a log in your terminal
-        // console.log("Unlock time is %o and block timestamp is %o", unlockTime, block.timestamp);
-
-        require(block.timestamp >= unlockTime, "You can't withdraw yet");
-        require(msg.sender == owner, "You aren't the owner");
-
-        emit Withdrawal(address(this).balance, block.timestamp);
-
-        owner.transfer(address(this).balance);
+    function __ERC3525AllRound_init(string memory name_, string memory symbol_, uint8 decimals_) internal onlyInitializing {
+        __ERC3525_init_unchained(name_, symbol_, decimals_);
     }
+
+    function __ERC3525AllRound_init_unchained() internal onlyInitializing{
+    }
+
+    function mint(
+        address mintTo_,
+        uint256 tokenId_,
+        uint256 slot_,
+        uint256 value_
+    ) public virtual {
+        ERC3525Upgradeable._mint(mintTo_, tokenId_, slot_, value_);
+    }
+
+    function mintValue(
+        uint256 tokenId_,
+        uint256 value_
+    ) public virtual {
+        ERC3525Upgradeable._mintValue(tokenId_, value_);
+    }
+
+    function burn(uint256 tokenId_) public virtual {
+        require(_isApprovedOrOwner(_msgSender(), tokenId_), "ERC3525: caller is not token owner nor approved");
+        ERC3525Upgradeable._burn(tokenId_);
+    }
+
+    function burnValue(uint256 tokenId_, uint256 burnValue_) public virtual {
+        require(_isApprovedOrOwner(_msgSender(), tokenId_), "ERC3525: caller is not token owner nor approved");
+        ERC3525Upgradeable._burnValue(tokenId_, burnValue_);
+    }
+
+    uint256[50] private __gap;
 }
