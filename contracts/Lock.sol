@@ -2,9 +2,7 @@
 
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
-import "@solvprotocol/erc-3525/ERC3525Upgradeable.sol";
+import "@solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
 
 contract ERC3525BaseMockUpgradeable is Initializable, ContextUpgradeable, ERC3525Upgradeable {
 
@@ -26,7 +24,7 @@ contract ERC3525BaseMockUpgradeable is Initializable, ContextUpgradeable, ERC352
         uint256 value_
     ) public virtual {
         ERC3525Upgradeable._mint(mintTo_, tokenId_, slot_, value_);
-    }
+    }  
 
     function mintValue(
         uint256 tokenId_,

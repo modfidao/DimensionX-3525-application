@@ -22,21 +22,25 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
 
     event SetMetadataDescriptor(address indexed metadataDescriptor);
 
+    // TODO
+    // nft -> nfts
     struct TokenData {
         uint256 id;
         uint256 slot;
         uint256 balance;
         address owner;
         address approved;
-        address[] valueApprovals;
+        address[] valueApprovals; 
     }
 
+    // TODO
     struct AddressData {
         uint256[] ownedTokens;
         mapping(uint256 => uint256) ownedTokensIndex;
         mapping(address => bool) approvals;
     }
 
+    // pool config basic
     string private _name;
     string private _symbol;
     uint8 private _decimals;
@@ -45,16 +49,20 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
     // @dev _approvedValues cannot be defined within TokenData, cause struct containing mappings cannot be constructed.
     mapping(uint256 => mapping(address => uint256)) private _approvedValues;
 
+    // tokens and key: id
     TokenData[] private _allTokens;
-
-    // key: id
     mapping(uint256 => uint256) private _allTokensIndex;
 
+    // TODO
     mapping(address => AddressData) private _addressData;
 
+    // metadataDescriptor 是一个合约地址，内部存储所有的metadata
+    // 需要独立部署再set进合约
     IERC3525MetadataDescriptor public metadataDescriptor;
 
     // solhint-disable-next-line
+    // 配置池子相关信息
+    // decimals_建议为 0
     function __ERC3525_init(string memory name_, string memory symbol_, uint8 decimals_) internal onlyInitializing {
         __ERC3525_init_unchained(name_, symbol_, decimals_);
     }
@@ -66,6 +74,7 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
         _decimals = decimals_;
     }
 
+    // 对外暴露的接口
     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
         return
             interfaceId == type(IERC165).interfaceId ||
@@ -97,6 +106,7 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
         return _decimals;
     }
 
+    // 获取
     function balanceOf(uint256 tokenId_) public view virtual override returns (uint256) {
         _requireMinted(tokenId_);
         return _allTokens[_allTokensIndex[tokenId_]].balance;
@@ -300,7 +310,12 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
         require(_exists(tokenId_), "ERC3525: invalid token ID");
     }
 
+    // mint
+    // to mint给谁
+    // slot solt插槽
+    // value mint的个数
     function _mint(address to_, uint256 slot_, uint256 value_) internal virtual returns (uint256) {
+        // 递增的token id 
         uint256 tokenId = _createOriginalTokenId();
         _mint(to_, tokenId, slot_, value_);  
         return tokenId;
