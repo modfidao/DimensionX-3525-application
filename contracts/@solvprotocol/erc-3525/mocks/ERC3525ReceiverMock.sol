@@ -24,18 +24,10 @@ contract ERC3525ReceiverMock is IERC165, IERC3525Receiver {
     }
 
     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
-        return
-            interfaceId == type(IERC165).interfaceId || 
-            interfaceId == type(IERC3525Receiver).interfaceId;
-    } 
+        return interfaceId == type(IERC165).interfaceId || interfaceId == type(IERC3525Receiver).interfaceId;
+    }
 
-    function onERC3525Received(
-        address operator, 
-        uint256 fromTokenId, 
-        uint256 toTokenId, 
-        uint256 value, 
-        bytes calldata data
-    ) public override returns (bytes4) {
+    function onERC3525Received(address operator, uint256 fromTokenId, uint256 toTokenId, uint256 value, bytes calldata data) public override returns (bytes4) {
         if (_error == Error.RevertWithMessage) {
             revert("ERC3525ReceiverMock: reverting");
         } else if (_error == Error.RevertWithoutMessage) {
@@ -47,5 +39,4 @@ contract ERC3525ReceiverMock is IERC165, IERC3525Receiver {
         emit Received(operator, fromTokenId, toTokenId, value, data, gasleft());
         return _retval;
     }
-
 }

@@ -3,24 +3,24 @@ pragma solidity ^0.8.0;
 
 import "./Vault.sol";
 
-contract VaultFactory{
+contract VaultFactory {
     uint lastSlotIndex;
 
     // solt => vault
-    mapping (uint => address) public _slotOfVault;
+    mapping(uint => address) public _slotOfVault;
 
-    function newVault() external returns(address){
+    function newVault() external returns (address) {
         uint slot = _lastSlotIndex();
 
-        Vault vault = new Vault(slot);
+        Vault vault = new Vault(slot, address(this));
         address vaultAddr = address(vault);
 
-        _slotOfVault[slot] = vaultAddr; 
-        
+        _slotOfVault[slot] = vaultAddr;
+
         return vaultAddr;
     }
 
-    function _lastSlotIndex() internal returns(uint){
+    function _lastSlotIndex() internal returns (uint) {
         lastSlotIndex++;
         return lastSlotIndex;
     }

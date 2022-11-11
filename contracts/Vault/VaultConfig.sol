@@ -10,7 +10,7 @@ contract VaultConfig {
     // 修改管理费
     event ChangedManageFee(uint older, uint renew);
 
-    function _setOwner(address owner_) internal onlyOwner{
+    function _setOwner(address owner_) internal onlyOwner {
         emit TransferOwner(owner, owner_);
         owner = owner_;
     }
@@ -20,8 +20,8 @@ contract VaultConfig {
         manageFee = manageFee_;
     }
 
-    modifier onlyOwner {
-        require(msg.sender == owner,"ERR_NOT_OWNER");
+    modifier onlyOwner() {
+        require(msg.sender == owner, "ERR_NOT_OWNER");
         _;
     }
 }

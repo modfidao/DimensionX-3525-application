@@ -34,7 +34,7 @@ interface IERC3525 is IERC165, IERC721 {
      * @param _tokenId The token of which slot is set or changed
      * @param _oldSlot The previous slot of the token
      * @param _newSlot The updated slot of the token
-     */ 
+     */
     event SlotChanged(uint256 indexed _tokenId, uint256 indexed _oldSlot, uint256 indexed _newSlot);
 
     /**
@@ -69,11 +69,7 @@ interface IERC3525 is IERC165, IERC721 {
      * @param _operator The operator to be approved
      * @param _value The maximum value of `_toTokenId` that `_operator` is allowed to manage
      */
-    function approve(
-        uint256 _tokenId,
-        address _operator,
-        uint256 _value
-    ) external payable;
+    function approve(uint256 _tokenId, address _operator, uint256 _value) external payable;
 
     /**
      * @notice Get the maximum value of a token that an operator is allowed to manage.
@@ -96,11 +92,7 @@ interface IERC3525 is IERC165, IERC721 {
      * @param _toTokenId The token to transfer value to
      * @param _value The transferred value
      */
-    function transferFrom(
-        uint256 _fromTokenId,
-        uint256 _toTokenId,
-        uint256 _value
-    ) external payable;
+    function transferFrom(uint256 _fromTokenId, uint256 _toTokenId, uint256 _value) external payable;
 
     /**
      * @notice Transfer value from a specified token to an address. The caller should confirm that
@@ -117,9 +109,5 @@ interface IERC3525 is IERC165, IERC721 {
      * @param _value The transferred value
      * @return ID of the new token created for `_to` which receives the transferred value
      */
-    function transferFrom(
-        uint256 _fromTokenId,
-        address _to,
-        uint256 _value
-    ) external payable returns (uint256);
+    function transferFrom(uint256 _fromTokenId, address _to, uint256 _value) external payable returns (uint256);
 }

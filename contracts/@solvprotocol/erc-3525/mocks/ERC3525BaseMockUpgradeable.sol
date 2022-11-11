@@ -7,7 +7,6 @@ import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
 import "../ERC3525Upgradeable.sol";
 
 contract ERC3525BaseMockUpgradeable is Initializable, ContextUpgradeable, ERC3525Upgradeable {
-
     function initialize(string memory name_, string memory symbol_, uint8 decimals_) public virtual initializer {
         __ERC3525AllRound_init(name_, symbol_, decimals_);
     }
@@ -16,22 +15,13 @@ contract ERC3525BaseMockUpgradeable is Initializable, ContextUpgradeable, ERC352
         __ERC3525_init_unchained(name_, symbol_, decimals_);
     }
 
-    function __ERC3525AllRound_init_unchained() internal onlyInitializing{
-    }
+    function __ERC3525AllRound_init_unchained() internal onlyInitializing {}
 
-    function mint(
-        address mintTo_,
-        uint256 tokenId_,
-        uint256 slot_,
-        uint256 value_
-    ) public virtual {
+    function mint(address mintTo_, uint256 tokenId_, uint256 slot_, uint256 value_) public virtual {
         ERC3525Upgradeable._mint(mintTo_, tokenId_, slot_, value_);
     }
 
-    function mintValue(
-        uint256 tokenId_,
-        uint256 value_
-    ) public virtual {
+    function mintValue(uint256 tokenId_, uint256 value_) public virtual {
         ERC3525Upgradeable._mintValue(tokenId_, value_);
     }
 

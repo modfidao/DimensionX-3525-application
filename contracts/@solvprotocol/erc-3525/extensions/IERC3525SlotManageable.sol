@@ -11,7 +11,6 @@ import "../IERC3525.sol";
  * Note: the ERC-165 identifier for this interface is 0xbf0c56fa.
  */
 interface IERC3525SlotManageable is IERC3525 {
-
     /**
      * @notice Get the total amount of slots managed by an address.
      * @param _manager The address for whom to query manageable slots

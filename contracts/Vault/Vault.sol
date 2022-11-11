@@ -17,16 +17,17 @@ contract Vault {
     // all user pool
     mapping(address => UserPool) userPools;
 
-    constructor(uint slot_,address _factory){
+    constructor(uint slot_, address _factory) {
         slot = slot_;
         factory = IERC3525(_factory);
     }
 
-    function supply(uint tokenId_) external view returns(uint){
+    function supply(uint tokenId_) external view returns (uint) {
         return factory.balanceOf(tokenId_);
     }
 
     // receive native token
-    fallback()external payable{}
-    receive()external payable{}
+    fallback() external payable {}
+
+    receive() external payable {}
 }

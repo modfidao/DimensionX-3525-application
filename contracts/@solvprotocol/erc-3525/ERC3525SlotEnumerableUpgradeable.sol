@@ -8,7 +8,6 @@ import "./ERC3525Upgradeable.sol";
 import "./extensions/IERC3525SlotEnumerable.sol";
 
 contract ERC3525SlotEnumerableUpgradeable is Initializable, ContextUpgradeable, ERC3525Upgradeable, IERC3525SlotEnumerable {
-
     struct SlotData {
         uint256 slot;
         uint256[] slotTokens;
@@ -22,16 +21,12 @@ contract ERC3525SlotEnumerableUpgradeable is Initializable, ContextUpgradeable, 
     // slot => index
     mapping(uint256 => uint256) private _allSlotsIndex;
 
-    function __ERC3525SlotEnumerable_init() internal onlyInitializing{
-    }
+    function __ERC3525SlotEnumerable_init() internal onlyInitializing {}
 
-    function __ERC3525SlotEnumerable_init_unchained() internal onlyInitializing {
-    }
+    function __ERC3525SlotEnumerable_init_unchained() internal onlyInitializing {}
 
     function supportsInterface(bytes4 interfaceId) public view virtual override(IERC165, ERC3525Upgradeable) returns (bool) {
-        return
-            interfaceId == type(IERC3525SlotEnumerable).interfaceId ||
-            super.supportsInterface(interfaceId);
+        return interfaceId == type(IERC3525SlotEnumerable).interfaceId || super.supportsInterface(interfaceId);
     }
 
     function slotCount() public view virtual override returns (uint256) {
@@ -66,22 +61,12 @@ contract ERC3525SlotEnumerableUpgradeable is Initializable, ContextUpgradeable, 
 
     function _createSlot(uint256 slot_) internal virtual {
         require(!_slotExists(slot_), "ERC3525SlotEnumerable: slot already exists");
-        SlotData memory slotData = SlotData({
-            slot: slot_, 
-            slotTokens: new uint256[](0)
-        });
+        SlotData memory slotData = SlotData({slot: slot_, slotTokens: new uint256[](0)});
         _addSlotToAllSlotsEnumeration(slotData);
         emit SlotChanged(0, 0, slot_);
     }
 
-    function _beforeValueTransfer(
-        address from_,
-        address to_,
-        uint256 fromTokenId_,
-        uint256 toTokenId_,
-        uint256 slot_,
-        uint256 value_
-    ) internal virtual override {
+    function _beforeValueTransfer(address from_, address to_, uint256 fromTokenId_, uint256 toTokenId_, uint256 slot_, uint256 value_) internal virtual override {
         super._beforeValueTransfer(from_, to_, fromTokenId_, toTokenId_, slot_, value_);
 
         if (from_ == address(0) && fromTokenId_ == 0 && !_slotExists(slot_)) {
@@ -94,14 +79,7 @@ contract ERC3525SlotEnumerableUpgradeable is Initializable, ContextUpgradeable, 
         value_;
     }
 
-    function _afterValueTransfer(
-        address from_,
-        address to_,
-        uint256 fromTokenId_,
-        uint256 toTokenId_,
-        uint256 slot_,
-        uint256 value_
-    ) internal virtual override {
+    function _afterValueTransfer(address from_, address to_, uint256 fromTokenId_, uint256 toTokenId_, uint256 slot_, uint256 value_) internal virtual override {
         if (from_ == address(0) && fromTokenId_ == 0 && !_tokenExistsInSlot(slot_, toTokenId_)) {
             _addTokenToSlotEnumeration(slot_, toTokenId_);
         } else if (to_ == address(0) && toTokenId_ == 0 && _tokenExistsInSlot(slot_, fromTokenId_)) {

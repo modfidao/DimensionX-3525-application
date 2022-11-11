@@ -8,25 +8,24 @@ import "./interface/IERC3525MetadataDescriptor.sol";
 import "../extensions/IERC3525Metadata.sol";
 
 contract ERC3525MetadataDescriptor is IERC3525MetadataDescriptor {
-
     using Strings for uint256;
 
     function constructContractURI() external view override returns (string memory) {
         IERC3525Metadata erc3525 = IERC3525Metadata(msg.sender);
-        return 
+        return
             string(
                 abi.encodePacked(
                     /* solhint-disable */
-                    'data:application/json;base64,',
+                    "data:application/json;base64,",
                     Base64.encode(
                         abi.encodePacked(
-                            '{"name":"', 
+                            '{"name":"',
                             erc3525.name(),
                             '","description":"',
                             _contractDescription(),
                             '","image":"',
                             _contractImage(),
-                            '","valueDecimals":"', 
+                            '","valueDecimals":"',
                             uint256(erc3525.valueDecimals()).toString(),
                             '"}'
                         )
@@ -41,10 +40,10 @@ contract ERC3525MetadataDescriptor is IERC3525MetadataDescriptor {
             string(
                 abi.encodePacked(
                     /* solhint-disable */
-                    'data:application/json;base64,',
+                    "data:application/json;base64,",
                     Base64.encode(
                         abi.encodePacked(
-                            '{"name":"', 
+                            '{"name":"',
                             _slotName(slot_),
                             '","description":"',
                             _slotDescription(slot_),
@@ -52,7 +51,7 @@ contract ERC3525MetadataDescriptor is IERC3525MetadataDescriptor {
                             _slotImage(slot_),
                             '","properties":',
                             _slotProperties(slot_),
-                            '}'
+                            "}"
                         )
                     )
                     /* solhint-enable */
@@ -62,7 +61,7 @@ contract ERC3525MetadataDescriptor is IERC3525MetadataDescriptor {
 
     function constructTokenURI(uint256 tokenId_) external view override returns (string memory) {
         IERC3525Metadata erc3525 = IERC3525Metadata(msg.sender);
-        return 
+        return
             string(
                 abi.encodePacked(
                     "data:application/json;base64,",
@@ -119,20 +118,13 @@ contract ERC3525MetadataDescriptor is IERC3525MetadataDescriptor {
 
     function _tokenName(uint256 tokenId_) internal view virtual returns (string memory) {
         // solhint-disable-next-line
-        return 
-            string(
-                abi.encodePacked(
-                    IERC3525Metadata(msg.sender).name(), 
-                    " #", tokenId_.toString()
-                )
-            );
+        return string(abi.encodePacked(IERC3525Metadata(msg.sender).name(), " #", tokenId_.toString()));
     }
 
     function _tokenDescription(uint256 tokenId_) internal view virtual returns (string memory) {
         tokenId_;
         return "";
     }
-
 
     function _tokenImage(uint256 tokenId_) internal view virtual returns (bytes memory) {
         tokenId_;
