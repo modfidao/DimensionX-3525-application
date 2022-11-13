@@ -2,7 +2,9 @@
 
 pragma solidity ^0.8.0;
 
-import "@solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
+import "../ERC3525Upgradeable.sol";
 
 contract ERC3525BaseMockUpgradeable is Initializable, ContextUpgradeable, ERC3525Upgradeable {
     function initialize(string memory name_, string memory symbol_, uint8 decimals_) public virtual initializer {
