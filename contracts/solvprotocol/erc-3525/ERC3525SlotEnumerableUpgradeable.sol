@@ -7,7 +7,12 @@ import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
 import "./ERC3525Upgradeable.sol";
 import "./extensions/IERC3525SlotEnumerable.sol";
 
-contract ERC3525SlotEnumerableUpgradeable is Initializable, ContextUpgradeable, ERC3525Upgradeable, IERC3525SlotEnumerable {
+contract ERC3525SlotEnumerableUpgradeable is
+    Initializable,
+    ContextUpgradeable,
+    ERC3525Upgradeable,
+    IERC3525SlotEnumerable
+{
     struct SlotData {
         uint256 slot;
         uint256[] slotTokens;
@@ -25,7 +30,9 @@ contract ERC3525SlotEnumerableUpgradeable is Initializable, ContextUpgradeable, 
 
     function __ERC3525SlotEnumerable_init_unchained() internal onlyInitializing {}
 
-    function supportsInterface(bytes4 interfaceId) public view virtual override(IERC165, ERC3525Upgradeable) returns (bool) {
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view virtual override(IERC165, ERC3525Upgradeable) returns (bool) {
         return interfaceId == type(IERC3525SlotEnumerable).interfaceId || super.supportsInterface(interfaceId);
     }
 
@@ -34,7 +41,10 @@ contract ERC3525SlotEnumerableUpgradeable is Initializable, ContextUpgradeable, 
     }
 
     function slotByIndex(uint256 index_) public view virtual override returns (uint256) {
-        require(index_ < ERC3525SlotEnumerableUpgradeable.slotCount(), "ERC3525SlotEnumerable: slot index out of bounds");
+        require(
+            index_ < ERC3525SlotEnumerableUpgradeable.slotCount(),
+            "ERC3525SlotEnumerable: slot index out of bounds"
+        );
         return _allSlots[index_].slot;
     }
 
@@ -50,7 +60,10 @@ contract ERC3525SlotEnumerableUpgradeable is Initializable, ContextUpgradeable, 
     }
 
     function tokenInSlotByIndex(uint256 slot_, uint256 index_) public view virtual override returns (uint256) {
-        require(index_ < ERC3525SlotEnumerableUpgradeable.tokenSupplyInSlot(slot_), "ERC3525SlotEnumerable: slot token index out of bounds");
+        require(
+            index_ < ERC3525SlotEnumerableUpgradeable.tokenSupplyInSlot(slot_),
+            "ERC3525SlotEnumerable: slot token index out of bounds"
+        );
         return _allSlots[_allSlotsIndex[slot_]].slotTokens[index_];
     }
 
@@ -66,7 +79,14 @@ contract ERC3525SlotEnumerableUpgradeable is Initializable, ContextUpgradeable, 
         emit SlotChanged(0, 0, slot_);
     }
 
-    function _beforeValueTransfer(address from_, address to_, uint256 fromTokenId_, uint256 toTokenId_, uint256 slot_, uint256 value_) internal virtual override {
+    function _beforeValueTransfer(
+        address from_,
+        address to_,
+        uint256 fromTokenId_,
+        uint256 toTokenId_,
+        uint256 slot_,
+        uint256 value_
+    ) internal virtual override {
         super._beforeValueTransfer(from_, to_, fromTokenId_, toTokenId_, slot_, value_);
 
         if (from_ == address(0) && fromTokenId_ == 0 && !_slotExists(slot_)) {
@@ -79,7 +99,14 @@ contract ERC3525SlotEnumerableUpgradeable is Initializable, ContextUpgradeable, 
         value_;
     }
 
-    function _afterValueTransfer(address from_, address to_, uint256 fromTokenId_, uint256 toTokenId_, uint256 slot_, uint256 value_) internal virtual override {
+    function _afterValueTransfer(
+        address from_,
+        address to_,
+        uint256 fromTokenId_,
+        uint256 toTokenId_,
+        uint256 slot_,
+        uint256 value_
+    ) internal virtual override {
         if (from_ == address(0) && fromTokenId_ == 0 && !_tokenExistsInSlot(slot_, toTokenId_)) {
             _addTokenToSlotEnumeration(slot_, toTokenId_);
         } else if (to_ == address(0) && toTokenId_ == 0 && _tokenExistsInSlot(slot_, fromTokenId_)) {

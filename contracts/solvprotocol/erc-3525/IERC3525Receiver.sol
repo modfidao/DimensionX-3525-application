@@ -26,5 +26,11 @@ interface IERC3525Receiver {
      * @return `bytes4(keccak256('onERC3525Received(address,uint256,uint256,uint256,bytes)'))`
      *  unless the transfer is rejected.
      */
-    function onERC3525Received(address _operator, uint256 _fromTokenId, uint256 _toTokenId, uint256 _value, bytes calldata _data) external returns (bytes4);
+    function onERC3525Received(
+        address _operator,
+        uint256 _fromTokenId,
+        uint256 _toTokenId,
+        uint256 _value,
+        bytes calldata _data
+    ) external returns (bytes4);
 }

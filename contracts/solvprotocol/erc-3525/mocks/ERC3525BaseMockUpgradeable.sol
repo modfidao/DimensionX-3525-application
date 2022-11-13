@@ -11,7 +11,11 @@ contract ERC3525BaseMockUpgradeable is Initializable, ContextUpgradeable, ERC352
         __ERC3525AllRound_init(name_, symbol_, decimals_);
     }
 
-    function __ERC3525AllRound_init(string memory name_, string memory symbol_, uint8 decimals_) internal onlyInitializing {
+    function __ERC3525AllRound_init(
+        string memory name_,
+        string memory symbol_,
+        uint8 decimals_
+    ) internal onlyInitializing {
         __ERC3525_init_unchained(name_, symbol_, decimals_);
     }
 
