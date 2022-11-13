@@ -2,26 +2,28 @@
 pragma solidity ^0.8.0;
 
 contract VaultConfig {
-    address public owner;
+    address public manager;
     uint public manageFee;
 
-    // 移交owenr
-    event TransferOwner(address from, address to);
+    // 移交manager
+    event TransferManager(address from, address to);
     // 修改管理费
     event ChangedManageFee(uint older, uint renew);
+    // 获得管理费
+    event ClaimManagerFee(address indexed caller,uint amount);
 
-    function _setOwner(address owner_) internal onlyOwner {
-        emit TransferOwner(owner, owner_);
-        owner = owner_;
+    function _setManager(address manager_) internal onlyManager {
+        emit TransferManager(manager, manager_);
+        manager = manager_;
     }
 
-    function _changeManageFee(uint manageFee_) internal onlyOwner {
+    function _changeManageFee(uint manageFee_) internal onlyManager {
         emit ChangedManageFee(manageFee, manageFee_);
         manageFee = manageFee_;
     }
 
-    modifier onlyOwner() {
-        require(msg.sender == owner, "ERR_NOT_OWNER");
+    modifier onlyManager() {
+        require(msg.sender == manager, "ERR_NOT_OWNER");
         _;
     }
 }
