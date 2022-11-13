@@ -2,13 +2,12 @@
 
 pragma solidity ^0.8.0;
 
-import "@solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
+import "./solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
 import "./Vault/Vault.sol";
 
 contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
-    constructor(uint shareTotal_, address manager_) Vault(shareTotal_) {
-        _setManager(manager_);
-        _mint(manager, 1, shareTotal_);
+    constructor(uint shareSupply_, address manager_, address Platform_) Vault(shareSupply_, manager_, Platform_) {
+        _mint(manager_, 1, shareSupply_);
     }
 
     function initialize(string memory name_, string memory symbol_, uint8 decimals_) public virtual initializer {
@@ -41,6 +40,25 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
     function removeTokenWhite(uint256 tokenId_) external onlyManager {
         require(this.balanceOf(tokenId_) == 0, "ERR_HAS_SHARE_CANT_BURN");
         ERC3525Upgradeable._burn(tokenId_);
+    }
+
+    function _userHasShare(address user_) internal virtual override returns (uint) {
+        AddressData storage userAssets = _addressData[user_];
+
+        require(userAssets.ownedTokens.length != 0, "ERR_YOU_HAVE_NO_TOKEN");
+        
+        uint share;
+
+        for(uint i; i < userAssets.ownedTokens.length; i ++){
+            uint tokenId = userAssets.ownedTokens[i];
+
+            uint tokenSlot = this.slotOf(tokenId);
+            uint balance = this.balanceOf(tokenId);
+
+            share += tokenSlot * balance;
+        }
+
+        return share;
     }
 
     function _mintSlotValue(uint256 tokenId_, uint256 value_) internal {

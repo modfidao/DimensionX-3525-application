@@ -54,7 +54,7 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
     mapping(uint256 => uint256) private _allTokensIndex;
 
     // TODO
-    mapping(address => AddressData) private _addressData;
+    mapping(address => AddressData) public _addressData;
 
     // metadataDescriptor 是一个合约地址，内部存储所有的metadata
     // 需要独立部署再set进合约

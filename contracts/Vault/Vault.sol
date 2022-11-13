@@ -14,16 +14,17 @@ contract Vault is VaultConfig {
     // user info
     struct UserPool {
         uint hasWithdrew;
+        uint hasRecived;
         uint hasWithdrewTimes;
     }
 
     // all user pool
     mapping(address => UserPool) public userPools;
 
-    constructor(uint shareSupply_, address Manager_) {
+    constructor(uint shareSupply_, address mananger_, address Platform_) {
         shareSupply = shareSupply_;
-        Manager = IManager(Manager_);
-        manager = msg.sender;
+        Manager = IManager(Platform_);
+        manager = mananger_;
     }
 
     event ClaimManagerFeeForPlatform(address indexed caller, uint amount);
@@ -44,7 +45,8 @@ contract Vault is VaultConfig {
         (bool isManagerForPlatformSuccess, ) = Manager.manager().call{value: manangerForPlatformWithdrewAmount}("");
         (bool isManagerProjectSuccess, ) = manager.call{value: manangerForProjectWithdrewAmount}("");
 
-        userPools[user].hasWithdrew += userWithdrewAmount;
+        userPools[user].hasWithdrew += withdrewAmount;
+        userPools[user].hasRecived += userWithdrewAmount;
         userPools[user].hasWithdrewTimes++;
 
         emit ClaimManagerFeeForPlatform(user, manangerForPlatformWithdrewAmount);
