@@ -3,8 +3,15 @@
 pragma solidity ^0.8.0;
 
 import "@solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
+import "./Vault/Vault.sol";
 
-contract ERC3525BaseMockUpgradeable is Initializable, ContextUpgradeable, ERC3525Upgradeable {
+contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
+
+    constructor(uint shareTotal_,address manager_) Vault(shareTotal_) {
+        _setManager(manager_);
+        _mint(manager, 1, shareTotal_);
+    }
+
     function initialize(string memory name_, string memory symbol_, uint8 decimals_) public virtual initializer {
         __ERC3525AllRound_init(name_, symbol_, decimals_);
     }
@@ -15,22 +22,39 @@ contract ERC3525BaseMockUpgradeable is Initializable, ContextUpgradeable, ERC352
 
     function __ERC3525AllRound_init_unchained() internal onlyInitializing {}
 
-    function mint(address mintTo_, uint256 tokenId_, uint256 slot_, uint256 value_) public virtual {
-        ERC3525Upgradeable._mint(mintTo_, tokenId_, slot_, value_);
+    function composeOrSplitToken(uint fromTokenId_, uint toTokenId_,uint amount_)external {
+        (uint fromSlot, uint toSlot) = _soltOfFromAndTo(fromTokenId_,toTokenId_);
+
+        require(toSlot != 0 , "ERR_NOT_FOUND_TOKEN");
+
+        uint burnFromTokenAmount = toSlot * amount_ / fromSlot;
+        uint getToTokenAmount = fromSlot * amount_ / toSlot;
+
+        _burnSlotValue(fromTokenId_, burnFromTokenAmount);
+        _mintSlotValue(toTokenId_, getToTokenAmount);
     }
 
-    function mintValue(uint256 tokenId_, uint256 value_) public virtual {
-        ERC3525Upgradeable._mintValue(tokenId_, value_);
+    function addTokenWhite(uint slot_) external onlyManager returns(uint){
+       uint newToken =  _mint(manager, slot_, 0);
+       return newToken;
     }
 
-    function burn(uint256 tokenId_) public virtual {
-        require(_isApprovedOrOwner(_msgSender(), tokenId_), "ERC3525: caller is not token owner nor approved");
+    function removeTokenWhite(uint256 tokenId_) external onlyManager  {
+        require(this.balanceOf(tokenId_) == 0, "ERR_HAS_SHARE_CANT_BURN");
         ERC3525Upgradeable._burn(tokenId_);
     }
 
-    function burnValue(uint256 tokenId_, uint256 burnValue_) public virtual {
+    function _mintSlotValue(uint256 tokenId_, uint256 value_) internal {
+        ERC3525Upgradeable._mintValue(tokenId_, value_);
+    }
+
+    function _burnSlotValue(uint256 tokenId_, uint256 burnValue_) internal {
         require(_isApprovedOrOwner(_msgSender(), tokenId_), "ERC3525: caller is not token owner nor approved");
         ERC3525Upgradeable._burnValue(tokenId_, burnValue_);
+    }
+
+    function _soltOfFromAndTo(uint fromTokenId_, uint toTokenId) internal view returns(uint, uint) {
+        return(this.slotOf(fromTokenId_),this.slotOf(toTokenId));
     }
 
     uint256[50] private __gap;

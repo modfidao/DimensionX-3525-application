@@ -1,10 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./VaultConfig.sol";
+// import "./VaultConfig.sol";
+import "../Manager/IManager.sol";
 
-contract Vault is VaultConfig {
+contract Vault {
+    uint public contractBalance;
     uint public shareSupply;
+    IManager public Manager;
 
     bool _lock; // for safe
 
@@ -17,23 +20,25 @@ contract Vault is VaultConfig {
     // all user pool
     mapping(address => UserPool) public userPools;
 
-    constructor(uint shareSupply_){
+    constructor(uint shareSupply_, address Manager_){
         shareSupply = shareSupply_;
+        Manager =  IManager(Manager_);
     }
 
+    event ClaimManagerFee(address indexed caller,uint amount);
     event ClaimUserReward(address indexed caller, uint amount);
 
     function userWithdrew() external lock {
         address user = msg.sender;
         uint withdrewAmount = this.userCouldRewardTotal(user);
 
-        uint manangerWithdrewAmount = manageFee * withdrewAmount / 10**18;
+        uint manangerWithdrewAmount = Manager.manageFee() * withdrewAmount / 10**18;
         uint userWithdrewAmount = withdrewAmount - manangerWithdrewAmount;
 
         require(userWithdrewAmount>0,"ERR_NOT_REWARD");
 
         (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");
-        (bool isManagerSuccess, ) = manager.call{value: manangerWithdrewAmount}("");
+        (bool isManagerSuccess, ) = Manager.manager().call{value: manangerWithdrewAmount}("");
 
         userPools[user].hasWithdrew += userWithdrewAmount;
         userPools[user].hasWithdrewTimes++;
@@ -59,13 +64,15 @@ contract Vault is VaultConfig {
 
     // vault has native token
     function _contractBalance() internal view returns(uint){
-        return address(this).balance;
+        return contractBalance;
     }
 
     // receive native token
     fallback() external payable {}
 
-    receive() external payable {}
+    receive() external payable {
+        contractBalance += msg.value;
+    }
 
     modifier lock() {
         require(_lock == false, "ERR_NOT_SAFE");
