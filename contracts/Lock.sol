@@ -6,8 +6,7 @@ import "@solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
 import "./Vault/Vault.sol";
 
 contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
-
-    constructor(uint shareTotal_,address manager_) Vault(shareTotal_) {
+    constructor(uint shareTotal_, address manager_) Vault(shareTotal_) {
         _setManager(manager_);
         _mint(manager, 1, shareTotal_);
     }
@@ -22,24 +21,24 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
 
     function __ERC3525AllRound_init_unchained() internal onlyInitializing {}
 
-    function composeOrSplitToken(uint fromTokenId_, uint toTokenId_,uint amount_)external {
-        (uint fromSlot, uint toSlot) = _soltOfFromAndTo(fromTokenId_,toTokenId_);
+    function composeOrSplitToken(uint fromTokenId_, uint toTokenId_, uint amount_) external {
+        (uint fromSlot, uint toSlot) = _soltOfFromAndTo(fromTokenId_, toTokenId_);
 
-        require(toSlot != 0 , "ERR_NOT_FOUND_TOKEN");
+        require(toSlot != 0, "ERR_NOT_FOUND_TOKEN");
 
-        uint burnFromTokenAmount = toSlot * amount_ / fromSlot;
-        uint getToTokenAmount = fromSlot * amount_ / toSlot;
+        uint burnFromTokenAmount = (toSlot * amount_) / fromSlot;
+        uint getToTokenAmount = (fromSlot * amount_) / toSlot;
 
         _burnSlotValue(fromTokenId_, burnFromTokenAmount);
         _mintSlotValue(toTokenId_, getToTokenAmount);
     }
 
-    function addTokenWhite(uint slot_) external onlyManager returns(uint){
-       uint newToken =  _mint(manager, slot_, 0);
-       return newToken;
+    function addTokenWhite(uint slot_) external onlyManager returns (uint) {
+        uint newToken = _mint(manager, slot_, 0);
+        return newToken;
     }
 
-    function removeTokenWhite(uint256 tokenId_) external onlyManager  {
+    function removeTokenWhite(uint256 tokenId_) external onlyManager {
         require(this.balanceOf(tokenId_) == 0, "ERR_HAS_SHARE_CANT_BURN");
         ERC3525Upgradeable._burn(tokenId_);
     }
@@ -53,8 +52,8 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
         ERC3525Upgradeable._burnValue(tokenId_, burnValue_);
     }
 
-    function _soltOfFromAndTo(uint fromTokenId_, uint toTokenId) internal view returns(uint, uint) {
-        return(this.slotOf(fromTokenId_),this.slotOf(toTokenId));
+    function _soltOfFromAndTo(uint fromTokenId_, uint toTokenId) internal view returns (uint, uint) {
+        return (this.slotOf(fromTokenId_), this.slotOf(toTokenId));
     }
 
     uint256[50] private __gap;

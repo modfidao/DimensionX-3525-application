@@ -20,25 +20,25 @@ contract Vault is VaultConfig {
     // all user pool
     mapping(address => UserPool) public userPools;
 
-    constructor(uint shareSupply_, address Manager_){
+    constructor(uint shareSupply_, address Manager_) {
         shareSupply = shareSupply_;
-        Manager =  IManager(Manager_);
+        Manager = IManager(Manager_);
         manager = msg.sender;
     }
 
-    event ClaimManagerFeeForPlatform(address indexed caller,uint amount);
-    event ClaimManagerFeeForProject(address indexed caller,uint amount);
+    event ClaimManagerFeeForPlatform(address indexed caller, uint amount);
+    event ClaimManagerFeeForProject(address indexed caller, uint amount);
     event ClaimUserReward(address indexed caller, uint amount);
 
     function userWithdrew() external lock {
         address user = msg.sender;
         uint withdrewAmount = this.userCouldRewardTotal(user);
 
-        uint manangerForPlatformWithdrewAmount = Manager.manageFee() * withdrewAmount / 10**18;
-        uint manangerForProjectWithdrewAmount = manageFee * withdrewAmount / 10**18;
+        uint manangerForPlatformWithdrewAmount = (Manager.manageFee() * withdrewAmount) / 10 ** 18;
+        uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / 10 ** 18;
         uint userWithdrewAmount = withdrewAmount - manangerForPlatformWithdrewAmount - manangerForProjectWithdrewAmount;
 
-        require(userWithdrewAmount>0,"ERR_NOT_REWARD");
+        require(userWithdrewAmount > 0, "ERR_NOT_REWARD");
 
         (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");
         (bool isManagerForPlatformSuccess, ) = Manager.manager().call{value: manangerForPlatformWithdrewAmount}("");
@@ -47,11 +47,11 @@ contract Vault is VaultConfig {
         userPools[user].hasWithdrew += userWithdrewAmount;
         userPools[user].hasWithdrewTimes++;
 
-        emit ClaimManagerFeeForPlatform(user,manangerForPlatformWithdrewAmount);
+        emit ClaimManagerFeeForPlatform(user, manangerForPlatformWithdrewAmount);
         emit ClaimManagerFeeForProject(user, manangerForProjectWithdrewAmount);
-        emit ClaimUserReward(user,userWithdrewAmount);
+        emit ClaimUserReward(user, userWithdrewAmount);
 
-        require(isUserSuccess && isManagerForPlatformSuccess && isManagerProjectSuccess,"ERR_WITHDREW_FAILED");
+        require(isUserSuccess && isManagerForPlatformSuccess && isManagerProjectSuccess, "ERR_WITHDREW_FAILED");
     }
 
     // user could reward total
@@ -60,21 +60,19 @@ contract Vault is VaultConfig {
     }
 
     // user should reward total
-    function userShouldRewardTotal(address user_) external  returns (uint) {
-        return _userHasShare(user_) * _contractBalance() / _userHasShare(user_);
+    function userShouldRewardTotal(address user_) external returns (uint) {
+        return (_userHasShare(user_) * _contractBalance()) / _userHasShare(user_);
     }
 
     // user has share
-    function _userHasShare(address user_) internal virtual returns(uint){ }
+    function _userHasShare(address user_) internal virtual returns (uint) {}
 
     // vault has native token
-    function _contractBalance() internal view returns(uint){
+    function _contractBalance() internal view returns (uint) {
         return contractBalance;
     }
 
-    // receive native token
-    fallback() external payable {}
-
+    // revive native token
     receive() external payable {
         contractBalance += msg.value;
     }

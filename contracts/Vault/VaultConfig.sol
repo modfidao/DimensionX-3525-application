@@ -10,7 +10,7 @@ contract VaultConfig {
     // 修改管理费
     event ChangedManageFee(uint older, uint renew);
     // 获得管理费
-    event ClaimManagerFee(address indexed caller,uint amount);
+    event ClaimManagerFee(address indexed caller, uint amount);
 
     function _setManager(address manager_) internal onlyManager {
         emit TransferManager(manager, manager_);
