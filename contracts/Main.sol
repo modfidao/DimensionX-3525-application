@@ -37,7 +37,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
 
         require(toSlot != 0, "ERR_NOT_FOUND_TOKEN");
 
-        uint burnFromTokenAmount = (toSlot * amount_) / fromSlot;
+        uint burnFromTokenAmount = amount_;
         uint getToTokenAmount = (fromSlot * amount_) / toSlot;
 
         _burnSlotValue(fromTokenId_, burnFromTokenAmount);
