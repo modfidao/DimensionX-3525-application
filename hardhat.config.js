@@ -1,5 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
-require('hardhat-contract-sizer');
+require("hardhat-contract-sizer");
+require("hardhat-gas-reporter");
+require('solidity-coverage')
 
 module.exports = {
   solidity: {
@@ -16,7 +18,12 @@ module.exports = {
     disambiguatePaths: false,
     runOnCompile: true,
     strict: true,
-    only: [''],
+    only: [""],
+  },
+  gasReporter: {
+    currency: "CHF",
+    gasPrice: 21,
+    enabled: true,
   },
   networks: {
     ropsten: {
@@ -27,5 +34,5 @@ module.exports = {
     coverage: {
       url: "http://127.0.0.1:8555", // Coverage launches its own ganache-cli client
     },
-  }
+  },
 };

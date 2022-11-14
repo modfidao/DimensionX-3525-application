@@ -85,4 +85,19 @@ describe("Platform Manager", function (accounts) {
         expect(e.message).to.include("ERR_NOT_OWNER");
       });
   });
+
+  it("change manager", async () => {
+    await Manager.setManager(Signers[1].address);
+    const newManager = await Manager.manager();
+
+    expect(newManager).to.equal(Signers[1].address);
+  });
+
+  it("only manager can change to new manager", async () => {
+    await Manager.connect(Signers[1])
+      .setManager(Signers[2].address)
+      .catch((e) => {
+        expect(e.message).to.include("ERR_NOT_OWNER");
+      });
+  });
 });
