@@ -13,8 +13,3 @@ async function main(params) {
 }
 
 module.exports =  main;
-// main().catch((error) => {
-//     console.error(error);
-//     process.exitCode = 1;
-//   });
-  

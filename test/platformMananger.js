@@ -2,17 +2,25 @@ const {
   time,
   loadFixture,
 } = require("@nomicfoundation/hardhat-network-helpers");
+const hre = require("hardhat")
 const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 const { expect } = require("chai");
 const ManagerDeploy = require("./deploy/mananger");
+const { ethers } = require("hardhat");
 
-describe("Platform Manager", function () {
+// contract("Factory",async(accounts)=>{
+// console.log(accounts)
+// })
+
+describe("Platform Manager", function (accounts) {
   let Manager;
   let ManagerAddr;
+  let Signers;
 
   beforeEach(async () => {
     Manager = await ManagerDeploy();
     ManagerAddr = Manager.address;
+    Signers = await ethers.getSigners()
   });
 
   it("Should set the right unlockTime", async function () {
