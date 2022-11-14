@@ -5,7 +5,7 @@ const {
 const hre = require("hardhat");
 const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 const { expect, should, assert } = require("chai");
-const ManagerDeploy = require("./deploy/mananger");
+const ManagerDeploy = require("./deploy/manager");
 const { ethers } = require("hardhat");
 
 describe("Platform Manager", function (accounts) {
