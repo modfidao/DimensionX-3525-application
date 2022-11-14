@@ -6,9 +6,7 @@ async function main(params) {
     const ManagerInstance = await Manager.deploy();
 
     await ManagerInstance.deployed()
-
-    console.log("Manager deployed.")
-
+    
     return ManagerInstance;
 }
 

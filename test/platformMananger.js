@@ -2,15 +2,11 @@ const {
   time,
   loadFixture,
 } = require("@nomicfoundation/hardhat-network-helpers");
-const hre = require("hardhat")
+const hre = require("hardhat");
 const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
-const { expect } = require("chai");
+const { expect, should, assert } = require("chai");
 const ManagerDeploy = require("./deploy/mananger");
 const { ethers } = require("hardhat");
-
-// contract("Factory",async(accounts)=>{
-// console.log(accounts)
-// })
 
 describe("Platform Manager", function (accounts) {
   let Manager;
@@ -20,76 +16,73 @@ describe("Platform Manager", function (accounts) {
   beforeEach(async () => {
     Manager = await ManagerDeploy();
     ManagerAddr = Manager.address;
-    Signers = await ethers.getSigners()
+    Signers = await ethers.getSigners();
   });
 
-  it("Should set the right unlockTime", async function () {
-    console.log("测试打印一下", ManagerAddr);
+  it("deployer is the manager", async function () {
+    const manager = await Manager.manager();
+    const manager_ = Signers[0].address;
+    expect(manager).to.equal(manager_);
   });
 
-  //   describe("Withdrawals", function () {
-  //     describe("Validations", function () {
-  //       it("Should revert with the right error if called too soon", async function () {
-  //         const { lock } = await loadFixture(deployOneYearLockFixture);
+  it("can set manager fee", async () => {
+    const fee = 100000000000;
+    await Manager.changeManageFee(fee);
+    const managerFee = await Manager.manageFee();
 
-  //         await expect(lock.withdraw()).to.be.revertedWith(
-  //           "You can't withdraw yet"
-  //         );
-  //       });
+    expect(fee).to.equal(managerFee);
+  });
 
-  //       it("Should revert with the right error if called from another account", async function () {
-  //         const { lock, unlockTime, otherAccount } = await loadFixture(
-  //           deployOneYearLockFixture
-  //         );
+  it("only manager can change manage fee", async () => {
+    const fee = 100000000000;
+    await Manager.connect(Signers[1])
+      .changeManageFee(fee)
+      .catch((e) => {
+        expect(e.message).to.include("ERR_NOT_OWNER");
+      });
+  });
 
-  //         // We can increase the time in Hardhat Network
-  //         await time.increaseTo(unlockTime);
+  it("manager receive native token", async () => {
+    const sendValue = 10000;
+    await Signers[1].sendTransaction({
+      to: ManagerAddr,
+      value: sendValue,
+    });
+    const balance = await ethers.provider.getBalance(ManagerAddr);
+    expect(sendValue).to.equal(balance);
+  });
 
-  //         // We use lock.connect() to send a transaction from another account
-  //         await expect(lock.connect(otherAccount).withdraw()).to.be.revertedWith(
-  //           "You aren't the owner"
-  //         );
-  //       });
+  it("manager withdrew token", async () => {
+    const sendValue = 10000;
+    const defaultBalance = await Signers[1].getBalance();
 
-  //       it("Shouldn't fail if the unlockTime has arrived and the owner calls it", async function () {
-  //         const { lock, unlockTime } = await loadFixture(
-  //           deployOneYearLockFixture
-  //         );
+    await Signers[0].sendTransaction({
+      to: ManagerAddr,
+      value: sendValue,
+    });
 
-  //         // Transactions are sent using the first signer by default
-  //         await time.increaseTo(unlockTime);
+    await Manager.connect(Signers[0]).withdrew(Signers[1].address, sendValue);
+    const afterBalance = await Signers[1].getBalance();
 
-  //         await expect(lock.withdraw()).not.to.be.reverted;
-  //       });
-  //     });
+    const balance = await ethers.provider.getBalance(ManagerAddr);
 
-  //     describe("Events", function () {
-  //       it("Should emit an event on withdrawals", async function () {
-  //         const { lock, unlockTime, lockedAmount } = await loadFixture(
-  //           deployOneYearLockFixture
-  //         );
+    expect(afterBalance.sub(defaultBalance)).to.equal(sendValue);
+    expect(balance).to.equal(0);
+  });
 
-  //         await time.increaseTo(unlockTime);
+  it("manager withdrew token", async () => {
+    const sendValue = 10000;
+    const defaultBalance = await Signers[1].getBalance();
 
-  //         await expect(lock.withdraw())
-  //           .to.emit(lock, "Withdrawal")
-  //           .withArgs(lockedAmount, anyValue); // We accept any value as `when` arg
-  //       });
-  //     });
+    await Signers[0].sendTransaction({
+      to: ManagerAddr,
+      value: sendValue,
+    });
 
-  //     describe("Transfers", function () {
-  //       it("Should transfer the funds to the owner", async function () {
-  //         const { lock, unlockTime, lockedAmount, owner } = await loadFixture(
-  //           deployOneYearLockFixture
-  //         );
-
-  //         await time.increaseTo(unlockTime);
-
-  //         await expect(lock.withdraw()).to.changeEtherBalances(
-  //           [owner, lock],
-  //           [lockedAmount, -lockedAmount]
-  //         );
-  //       });
-  //     });
-  //   });
+    await Manager.connect(Signers[1])
+      .withdrew(Signers[1].address, sendValue)
+      .catch((e) => {
+        expect(e.message).to.include("ERR_NOT_OWNER");
+      });
+  });
 });

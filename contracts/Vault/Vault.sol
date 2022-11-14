@@ -63,7 +63,7 @@ contract Vault is VaultConfig {
 
     // user should reward total
     function userShouldRewardTotal(address user_) external returns (uint) {
-        return (_userHasShare(user_) * _contractBalance()) / _userHasShare(user_);
+        return (_userHasShare(user_) * _contractBalance()) / shareSupply;
     }
 
     // user has share
