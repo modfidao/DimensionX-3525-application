@@ -12,9 +12,9 @@ contract Factory {
         uint8 decimals_,
         uint shareSupply_,
         address manager_,
-        address Platform_
+        address platform_
     ) external returns (address) {
-        DimensionX newInstance = new DimensionX(name_, symbol_, decimals_, shareSupply_, manager_, Platform_);
+        DimensionX newInstance = new DimensionX(name_, symbol_, decimals_, shareSupply_, manager_, platform_);
         address addr = address(newInstance);
         isDimensionX[addr] = true;
         return addr;

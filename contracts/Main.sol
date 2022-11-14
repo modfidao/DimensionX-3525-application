@@ -12,8 +12,8 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
         uint8 decimals_,
         uint shareSupply_,
         address manager_,
-        address Platform_
-    ) Vault(shareSupply_, manager_, Platform_) {
+        address platform_
+    ) Vault(shareSupply_, manager_, platform_) {
         _mint(manager_, 1, shareSupply_);
         initialize(name_, symbol_, decimals_);
     }

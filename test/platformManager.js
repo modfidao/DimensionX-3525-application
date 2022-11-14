@@ -4,7 +4,7 @@ const {
 } = require("@nomicfoundation/hardhat-network-helpers");
 const hre = require("hardhat");
 const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
-const { expect, should, assert } = require("chai");
+const { expect } = require("chai");
 const ManagerDeploy = require("./deploy/manager");
 const { ethers } = require("hardhat");
 
