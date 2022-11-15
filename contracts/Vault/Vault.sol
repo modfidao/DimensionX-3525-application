@@ -13,6 +13,8 @@ contract Vault is VaultConfig {
 
     // user info
     struct UserPool {
+        uint transferOut;
+        uint transferIn;
         uint hasWithdrew;
         uint hasRecived;
         uint hasWithdrewTimes;
@@ -66,8 +68,14 @@ contract Vault is VaultConfig {
         return (_userHasShare(user_) * _contractBalance()) / shareSupply;
     }
 
+
     // user has share
     function _userHasShare(address user_) internal virtual returns (uint) {}
+    
+    function _transferOut(address user_) internal {}
+
+    function _transfetIn(address user_) internal {}
+
 
     // vault has native token
     function _contractBalance() internal view returns (uint) {
