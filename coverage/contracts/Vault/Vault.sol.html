@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/18</span>
+        <span class='fraction'>0/28</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.11% </span>
+        <span class="strong">9.09% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/9</span>
+        <span class='fraction'>1/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">10.34% </span>
+        <span class="strong">7.32% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/29</span>
+        <span class='fraction'>3/41</span>
       </div>
     </div>
   </div>
@@ -144,7 +144,36 @@
 99
 100
 101
-102</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -212,6 +241,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -220,12 +268,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -272,6 +324,9 @@ contract Vault is VaultConfig {
     // all user pool
     mapping(address =&gt; UserPool) public userPools;
 &nbsp;
+    // token has reawad total info
+    mapping(uint =&gt; uint) public tokenHasReward;
+&nbsp;
     constructor(uint shareSupply_, address mananger_, address platform_) {
         shareSupply = shareSupply_;
         Plantofrom = IPlatform(platform_);
@@ -309,24 +364,47 @@ contract Vault is VaultConfig {
 &nbsp;
     // user could reward total
 <span class="fstat-no" title="function not covered" >    function userCouldRewardTotal(address users_) external returns (uint) {</span>
-<span class="cstat-no" title="statement not covered" >        return this.userShouldRewardTotal(users_) - userPools[users_].hasWithdrew;</span>
+<span class="cstat-no" title="statement not covered" >        return _calTokensReward(users_);</span>
     }
 &nbsp;
-    // user should reward total
-<span class="fstat-no" title="function not covered" >    function userShouldRewardTotal(address user_) external returns (uint) {</span>
-<span class="cstat-no" title="statement not covered" >        return (_userHasShare(user_) * _contractBalance()) / shareSupply;</span>
+<span class="fstat-no" title="function not covered" >    function _calTokensReward(address user_) internal returns (uint) {</span>
+<span class="cstat-no" title="statement not covered" >        (uint[] memory tokens, uint[] memory shares) = _getRewardTokensAndShare(user_);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uint rewardTotal;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        for (uint i; i &lt; tokens.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            uint tokenId = tokens[i];</span>
+<span class="cstat-no" title="statement not covered" >            uint share = shares[i];</span>
+<span class="cstat-no" title="statement not covered" >            uint waitReward = _calTokenReward(tokenId, share);</span>
+&nbsp;
+            rewardTotal += waitReward;
+<span class="cstat-no" title="statement not covered" >            _setHasTokenReward(tokenId, waitReward)</span>;
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return rewardTotal;</span>
     }
 &nbsp;
-    // user has share
-<span class="fstat-no" title="function not covered" >    function _userHasShare(address user_) internal virtual returns (uint) {}</span>
+<span class="fstat-no" title="function not covered" >    function _calTokenReward(uint tokenId_, uint share_) internal view returns (uint) {</span>
+<span class="cstat-no" title="statement not covered" >        uint hasReward = _getTokenHasReward(tokenId_);</span>
+<span class="cstat-no" title="statement not covered" >        uint totalReward = (_contractBalance() * share_) / shareSupply;</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function _whenTransferOut(address user_, uint share_) internal {</span>
-<span class="cstat-no" title="statement not covered" >        uint shareHasReward = share_ * userPools[user_].hasWithdrew / _userHasShare(user_);</span>
-        userPools[user_].transferOut = shareHasReward;
+<span class="cstat-no" title="statement not covered" >        return totalReward - hasReward;</span>
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function _whenTransfetIn(address user_, uint share_) internal {</span>
+<span class="fstat-no" title="function not covered" >    function _getRewardTokensAndShare(</span>
+        address user_
+    ) internal virtual returns (uint[] memory tokens_, uint[] memory share_) {}
 &nbsp;
+<span class="fstat-no" title="function not covered" >    function _setHasTokenReward(uint tokenId_, uint amount_) internal {</span>
+        tokenHasReward[tokenId_] += amount_;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function _getTokenHasReward(uint tokenId_) internal view returns (uint) {</span>
+<span class="cstat-no" title="statement not covered" >        return tokenHasReward[tokenId_];</span>
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function _setTokenReward(uint tokenId_, uint amount_) internal {</span>
+        tokenHasReward[tokenId_] = amount_;
     }
 &nbsp;
     // vault has native token
@@ -352,7 +430,7 @@ contract Vault is VaultConfig {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Nov 16 2022 11:53:39 GMT+0800 (中国标准时间)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Nov 17 2022 01:07:39 GMT+0800 (中国标准时间)
 </div>
 </div>
 <script src="../../prettify.js"></script>

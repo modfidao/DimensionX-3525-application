@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">15.38% </span>
+        <span class="strong">12.9% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/26</span>
+        <span class='fraction'>4/31</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">11.11% </span>
+        <span class="strong">9.09% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>2/18</span>
+        <span class='fraction'>2/22</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">27.27% </span>
+        <span class="strong">30% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/11</span>
+        <span class='fraction'>3/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">14.81% </span>
+        <span class="strong">11.43% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/27</span>
+        <span class='fraction'>4/35</span>
       </div>
     </div>
   </div>
@@ -133,7 +133,22 @@
 88
 89
 90
-91</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -176,6 +191,26 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -186,12 +221,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -201,23 +232,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -231,6 +253,10 @@ import "./solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
 import "./Vault/Vault.sol";
 &nbsp;
 contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
+    // single token has claim reward
+&nbsp;
+    mapping(uint =&gt; bool) public slotWhite;
+&nbsp;
     constructor(
         string memory name_,
         string memory symbol_,
@@ -257,58 +283,65 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
 &nbsp;
 <span class="fstat-no" title="function not covered" >    function __ERC3525AllRound_init_unchained() internal onlyInitializing {}</span>
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function composeOrSplitToken(uint fromTokenId_, uint toTokenId_, uint amount_) external {</span>
-<span class="cstat-no" title="statement not covered" >        (uint fromSlot, uint toSlot) = _soltOfFromAndTo(fromTokenId_, toTokenId_);</span>
+<span class="fstat-no" title="function not covered" >    function composeOrSplitToken(uint fromTokenId_, uint slot_, uint amount_) external {</span>
+<span class="cstat-no" title="statement not covered" >        uint fromSlot = this.slotOf(fromTokenId_);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        require(toSlot != 0, "ERR_NOT_FOUND_TOKEN")</span>;
+<span class="cstat-no" title="statement not covered" >        require(slotWhite[slot_] &amp;&amp; slot_ != 0, "ERR_NOT_FOUND_TOKEN")</span>;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        uint burnFromTokenAmount = amount_;</span>
-<span class="cstat-no" title="statement not covered" >        uint getToTokenAmount = (fromSlot * amount_) / toSlot;</span>
+<span class="cstat-no" title="statement not covered" >        uint getToTokenAmount = (fromSlot * amount_) / slot_;</span>
 &nbsp;
+<span class="cstat-no" title="statement not covered" >        uint toTokenId_ = _mint(msg.sender, slot_, getToTokenAmount);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        _updateReward(fromTokenId_, burnFromTokenAmount, toTokenId_)</span>;
 <span class="cstat-no" title="statement not covered" >        _burnSlotValue(fromTokenId_, burnFromTokenAmount)</span>;
-<span class="cstat-no" title="statement not covered" >        _mintSlotValue(toTokenId_, getToTokenAmount)</span>;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function addTokenWhite(uint slot_) external onlyManager returns (uint) {</span>
-<span class="cstat-no" title="statement not covered" >        uint newToken = _mint(manager, slot_, 0);</span>
-<span class="cstat-no" title="statement not covered" >        return newToken;</span>
+<span class="fstat-no" title="function not covered" >    function _updateReward(uint fromTokenId_, uint fromTokenAmount, uint toTokenId_) internal {</span>
+<span class="cstat-no" title="statement not covered" >        uint fromTokenReward = _getTokenHasReward(fromTokenId_);</span>
+<span class="cstat-no" title="statement not covered" >        uint fromTokenBalance = this.balanceOf(fromTokenAmount);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (fromTokenAmount != fromTokenBalance) {</span>
+            fromTokenReward = (fromTokenReward * fromTokenAmount) / fromTokenBalance;
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        _setTokenReward(fromTokenId_, fromTokenReward)</span>;
+<span class="cstat-no" title="statement not covered" >        _setTokenReward(toTokenId_, fromTokenBalance)</span>;
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function removeTokenWhite(uint256 tokenId_) external onlyManager {</span>
-<span class="cstat-no" title="statement not covered" >        require(this.balanceOf(tokenId_) == 0, "ERR_HAS_SHARE_CANT_BURN")</span>;
-<span class="cstat-no" title="statement not covered" >        ERC3525Upgradeable._burn(tokenId_)</span>;
+<span class="fstat-no" title="function not covered" >    function addSlotWhite(uint slot_) external onlyManager returns (uint) {</span>
+<span class="cstat-no" title="statement not covered" >        require(slot_ != 0, "ERR_CANT_BE_ZERO")</span>;
+        slotWhite[slot_] = true;
+<span class="cstat-no" title="statement not covered" >        return slot_;</span>
     }
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function _userHasShare(address user_) internal virtual override returns (uint) {</span>
+<span class="fstat-no" title="function not covered" >    function removeTokenWhite(uint256 slot_) external onlyManager {</span>
+<span class="cstat-no" title="statement not covered" >        require(slotWhite[slot_], "ERR_HAS_NOT_WHITE")</span>;
+        slotWhite[slot_] = false;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function _getRewardTokensAndShare(address user_) internal virtual override returns (uint[] memory, uint[] memory) {</span>
 <span class="cstat-no" title="statement not covered" >        AddressData storage userAssets = __addressData(user_);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        require(userAssets.ownedTokens.length != 0, "ERR_YOU_HAVE_NO_TOKEN")</span>;
+<span class="cstat-no" title="statement not covered" >        uint[] memory tokens = userAssets.ownedTokens;</span>
+<span class="cstat-no" title="statement not covered" >        uint[] memory shares;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        uint share;</span>
+<span class="cstat-no" title="statement not covered" >        require(tokens.length != 0, "ERR_YOU_HAVE_NO_TOKEN")</span>;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        for (uint i; i &lt; userAssets.ownedTokens.length; i++) {</span>
-<span class="cstat-no" title="statement not covered" >            uint tokenId = userAssets.ownedTokens[i];</span>
+<span class="cstat-no" title="statement not covered" >        for (uint i; i &lt; tokens.length; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            uint tokenId = tokens[i];</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >            uint tokenSlot = this.slotOf(tokenId);</span>
 <span class="cstat-no" title="statement not covered" >            uint balance = this.balanceOf(tokenId);</span>
-&nbsp;
-            share += tokenSlot * balance;
+<span class="cstat-no" title="statement not covered" >            uint share = tokenSlot * balance;</span>
+            shares[i] = share;
         }
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        return share;</span>
-    }
-&nbsp;
-<span class="fstat-no" title="function not covered" >    function _mintSlotValue(uint256 tokenId_, uint256 value_) internal {</span>
-<span class="cstat-no" title="statement not covered" >        ERC3525Upgradeable._mintValue(tokenId_, value_)</span>;
+<span class="cstat-no" title="statement not covered" >        return (tokens, shares);</span>
     }
 &nbsp;
 <span class="fstat-no" title="function not covered" >    function _burnSlotValue(uint256 tokenId_, uint256 burnValue_) internal {</span>
 <span class="cstat-no" title="statement not covered" >        require(_isApprovedOrOwner(_msgSender(), tokenId_), "ERC3525: caller is not token owner nor approved")</span>;
 <span class="cstat-no" title="statement not covered" >        ERC3525Upgradeable._burnValue(tokenId_, burnValue_)</span>;
-    }
-&nbsp;
-<span class="fstat-no" title="function not covered" >    function _soltOfFromAndTo(uint fromTokenId_, uint toTokenId) internal view returns (uint, uint) {</span>
-<span class="cstat-no" title="statement not covered" >        return (this.slotOf(fromTokenId_), this.slotOf(toTokenId));</span>
     }
 &nbsp;
     uint256[50] private __gap;
@@ -319,7 +352,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Nov 16 2022 11:53:39 GMT+0800 (中国标准时间)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Nov 17 2022 01:07:39 GMT+0800 (中国标准时间)
 </div>
 </div>
 <script src="../prettify.js"></script>
