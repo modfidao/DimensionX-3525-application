@@ -25,6 +25,9 @@ contract Vault is VaultConfig {
     // all user pool
     mapping(address => UserPool) public userPools;
 
+    // token has reawad total info
+    mapping(uint => uint) public tokenHasReward;
+
     constructor(uint shareSupply_, address mananger_, address platform_) {
         shareSupply = shareSupply_;
         Plantofrom = IPlatform(platform_);
@@ -62,25 +65,48 @@ contract Vault is VaultConfig {
 
     // user could reward total
     function userCouldRewardTotal(address users_) external returns (uint) {
-        return this.userShouldRewardTotal(users_) - userPools[users_].hasWithdrew;
+        return _calTokensReward(users_);
     }
 
-    // user should reward total
-    function userShouldRewardTotal(address user_) external returns (uint) {
-        return (_userHasShare(user_) * _contractBalance()) / shareSupply;
+    function _calTokensReward(address user_) internal returns (uint) {
+        (uint[] memory tokens, uint[] memory shares) = _getRewardTokensAndShare(user_);
+
+        uint rewardTotal;
+
+        for (uint i; i < tokens.length; i++) {
+            uint tokenId = tokens[i];
+            uint share = shares[i];
+            uint waitReward = _calTokenReward(tokenId, share);
+
+            rewardTotal += waitReward;
+            _setHasTokenReward(tokenId, waitReward);
+        }
+
+        return rewardTotal;
     }
 
-    // user has share
-    function _userHasShare(address user_) internal virtual returns (uint) {}
+    function _calTokenReward(uint tokenId_, uint share_) internal view returns (uint) {
+        uint hasReward = _getTokenHasReward(tokenId_);
+        uint totalReward = (_contractBalance() * share_) / shareSupply;
 
-    function _whenTransferOut(address user_, uint share_) internal {
-        uint shareHasReward = share_ * userPools[user_].hasWithdrew / _userHasShare(user_);
-        userPools[user_].transferOut += shareHasReward;
+        return totalReward - hasReward;
     }
 
-    // function _whenTransfetIn(address user_, uint share_) internal {
+    function _getRewardTokensAndShare(
+        address user_
+    ) internal virtual returns (uint[] memory tokens_, uint[] memory share_) {}
 
-    // }
+    function _setHasTokenReward(uint tokenId_, uint amount_) internal {
+        tokenHasReward[tokenId_] += amount_;
+    }
+
+    function _getTokenHasReward(uint tokenId_) internal view returns (uint) {
+        return tokenHasReward[tokenId_];
+    }
+
+    function _setTokenReward(uint tokenId_, uint amount_) internal {
+        tokenHasReward[tokenId_] = amount_;
+    }
 
     // vault has native token
     function _contractBalance() internal view returns (uint) {

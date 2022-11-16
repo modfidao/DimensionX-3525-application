@@ -6,9 +6,7 @@ import "./solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
 import "./Vault/Vault.sol";
 
 contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
-
     // single token has claim reward
-    mapping(uint => uint) public tokenHasReward; 
 
     constructor(
         string memory name_,
@@ -44,8 +42,21 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
         uint burnFromTokenAmount = amount_;
         uint getToTokenAmount = (fromSlot * amount_) / toSlot;
 
+        _updateReward(fromTokenId_, burnFromTokenAmount, toTokenId_);
         _burnSlotValue(fromTokenId_, burnFromTokenAmount);
         _mintSlotValue(toTokenId_, getToTokenAmount);
+    }
+
+    function _updateReward(uint fromTokenId_, uint fromTokenAmount, uint toTokenId_) internal {
+        uint fromTokenReward = _getTokenHasReward(fromTokenId_);
+        uint fromTokenBalance = this.balanceOf(fromTokenAmount);
+
+        if (fromTokenAmount != fromTokenBalance) {
+            fromTokenReward = (fromTokenReward * fromTokenAmount) / fromTokenBalance;
+        }
+
+        _setTokenReward(fromTokenId_, fromTokenReward);
+        _setTokenReward(toTokenId_, fromTokenBalance);
     }
 
     function addTokenWhite(uint slot_) external onlyManager returns (uint) {
@@ -58,23 +69,23 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
         ERC3525Upgradeable._burn(tokenId_);
     }
 
-    function _userHasShare(address user_) internal virtual override returns (uint) {
+    function _getRewardTokensAndShare(address user_) internal virtual override returns (uint[] memory, uint[] memory) {
         AddressData storage userAssets = __addressData(user_);
 
-        require(userAssets.ownedTokens.length != 0, "ERR_YOU_HAVE_NO_TOKEN");
+        uint[] memory tokens = userAssets.ownedTokens;
+        uint[] memory shares;
 
-        uint share;
+        require(tokens.length != 0, "ERR_YOU_HAVE_NO_TOKEN");
 
-        for (uint i; i < userAssets.ownedTokens.length; i++) {
-            uint tokenId = userAssets.ownedTokens[i];
+        for (uint i; i < tokens.length; i++) {
+            uint tokenId = tokens[i];
 
             uint tokenSlot = this.slotOf(tokenId);
             uint balance = this.balanceOf(tokenId);
-
-            share += tokenSlot * balance;
+            uint share = tokenSlot * balance;
+            shares[i] = share;
         }
-
-        return share;
+        return (tokens, shares);
     }
 
     function _mintSlotValue(uint256 tokenId_, uint256 value_) internal {
