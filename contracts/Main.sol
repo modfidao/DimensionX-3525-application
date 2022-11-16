@@ -42,24 +42,27 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
         require(slotWhite[slot_] && slot_ != 0, "ERR_NOT_FOUND_TOKEN");
 
         uint burnFromTokenAmount = amount_;
+        uint burnTokenBalance = this.balanceOf(fromTokenId_);
         uint getToTokenAmount = (fromSlot * amount_) / slot_;
 
         uint toTokenId_ = _mint(msg.sender, slot_, getToTokenAmount);
 
         _updateReward(fromTokenId_, burnFromTokenAmount, toTokenId_);
-        _burnSlotValue(fromTokenId_, burnFromTokenAmount);
+        burnTokenBalance == burnFromTokenAmount
+            ? _burn(fromTokenId_)
+            : _burnSlotValue(fromTokenId_, burnFromTokenAmount);
     }
 
     function _updateReward(uint fromTokenId_, uint fromTokenAmount, uint toTokenId_) internal {
         uint fromTokenReward = _getTokenHasReward(fromTokenId_);
-        uint fromTokenBalance = this.balanceOf(fromTokenAmount);
+        uint fromTokenBalance = this.balanceOf(fromTokenId_);
 
         if (fromTokenAmount != fromTokenBalance) {
             fromTokenReward = (fromTokenReward * fromTokenAmount) / fromTokenBalance;
         }
 
         _setTokenReward(fromTokenId_, fromTokenReward);
-        _setTokenReward(toTokenId_, fromTokenBalance);
+        _setTokenReward(toTokenId_, fromTokenReward);
     }
 
     function addSlotWhite(uint slot_) external onlyManager returns (uint) {
