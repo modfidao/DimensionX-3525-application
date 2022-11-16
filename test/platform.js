@@ -86,11 +86,18 @@ describe("Platform", function (accounts) {
       });
   });
 
-  it("change manager", async () => {
+  it("change owner", async () => {
     await Platform.setOwner(Signers[1].address);
     const newOwner = await Platform.owner();
 
     expect(newOwner).to.equal(Signers[1].address);
+  });
+
+  it("change receiver", async () => {
+    await Platform.setReceiver(Signers[1].address);
+    const newReceiver = await Platform.receiver();
+
+    expect(newReceiver).to.equal(Signers[1].address);
   });
 
   it("only manager can change to new manager", async () => {

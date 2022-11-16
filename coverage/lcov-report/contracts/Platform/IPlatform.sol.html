@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for contracts/Vault/VaultConfig.sol</title>
+    <title>Code coverage report for contracts/Platform/IPlatform.sol</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,32 +16,32 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">all files</a> / <a href="index.html">contracts/Vault/</a> VaultConfig.sol
+      <a href="../../index.html">all files</a> / <a href="index.html">contracts/Platform/</a> IPlatform.sol
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>0/0</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -64,15 +64,7 @@
 19
 20
 21
-22
-23
-24
-25
-26
-27
-28
-29
-30</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+22</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -87,48 +79,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 &nbsp;
-contract VaultConfig {
-    address public manager;
-    uint public manageFee; // 10**18 = 100%
-&nbsp;
-    // 移交manager
-    event TransferManager(address from, address to);
-    // 修改管理费
+interface IPlatform {
+    event TransferReciver(address from, address to);
+    event TransferOwner(address from, address to);
     event ChangedManageFee(uint older, uint renew);
-    // 获得管理费
     event ClaimManagerFee(address indexed caller, uint amount);
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function _setManager(address manager_) internal onlyManager {</span>
-<span class="cstat-no" title="statement not covered" >        emit TransferManager(manager, manager_);</span>
-        manager = manager_;
-    }
+    function receiver() external returns (address);
 &nbsp;
-<span class="fstat-no" title="function not covered" >    function changeManageFee(uint manageFee_) external onlyManager {</span>
-<span class="cstat-no" title="statement not covered" >        emit ChangedManageFee(manageFee, manageFee_);</span>
-        manageFee = manageFee_;
-    }
+    function manageFee() external returns (uint);
 &nbsp;
-<span class="fstat-no" title="function not covered" >    modifier onlyManager() {</span>
-<span class="cstat-no" title="statement not covered" >        require(msg.sender == manager, "ERR_NOT_OWNER")</span>;
-        _;
-    }
+    function setOwner(address manager_) external;
+&nbsp;
+    function setReceiver(address manager_) external;
+&nbsp;
+    function changeManageFee(uint manageFee_) external;
+&nbsp;
+    function withdrew(address mananger_, uint amount_) external;
 }
 &nbsp;</pre></td></tr>
 </table></pre>

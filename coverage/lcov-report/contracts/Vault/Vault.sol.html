@@ -30,9 +30,9 @@
         <span class='fraction'>0/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">14.29% </span>
+        <span class="strong">11.11% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/7</span>
+        <span class='fraction'>1/9</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">11.11% </span>
@@ -131,7 +131,19 @@
 86
 87
 88
-89</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+89
+90
+91
+92
+93
+94
+95
+96
+97</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -197,6 +209,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -223,17 +239,21 @@
 pragma solidity ^0.8.0;
 &nbsp;
 import "./VaultConfig.sol";
-import "../Manager/IManager.sol";
+import "../Platform/IPlatform.sol";
 &nbsp;
 contract Vault is VaultConfig {
     uint public contractBalance;
     uint public shareSupply;
-    IManager public Manager;
+    IPlatform public Plantofrom;
+&nbsp;
+    uint constant ratioBase = 10 ** 18;
 &nbsp;
     bool _lock; // for safe
 &nbsp;
     // user info
     struct UserPool {
+        uint transferOut;
+        uint transferIn;
         uint hasWithdrew;
         uint hasRecived;
         uint hasWithdrewTimes;
@@ -242,9 +262,9 @@ contract Vault is VaultConfig {
     // all user pool
     mapping(address =&gt; UserPool) public userPools;
 &nbsp;
-    constructor(uint shareSupply_, address mananger_, address Platform_) {
+    constructor(uint shareSupply_, address mananger_, address platform_) {
         shareSupply = shareSupply_;
-        Manager = IManager(Platform_);
+        Plantofrom = IPlatform(platform_);
         manager = mananger_;
     }
 &nbsp;
@@ -256,14 +276,14 @@ contract Vault is VaultConfig {
 <span class="cstat-no" title="statement not covered" >        address user = msg.sender;</span>
 <span class="cstat-no" title="statement not covered" >        uint withdrewAmount = this.userCouldRewardTotal(user);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        uint manangerForPlatformWithdrewAmount = (Manager.manageFee() * withdrewAmount) / 10 ** 18;</span>
-<span class="cstat-no" title="statement not covered" >        uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / 10 ** 18;</span>
+<span class="cstat-no" title="statement not covered" >        uint manangerForPlatformWithdrewAmount = (Plantofrom.manageFee() * withdrewAmount) / ratioBase;</span>
+<span class="cstat-no" title="statement not covered" >        uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / ratioBase;</span>
 <span class="cstat-no" title="statement not covered" >        uint userWithdrewAmount = withdrewAmount - manangerForPlatformWithdrewAmount - manangerForProjectWithdrewAmount;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        require(userWithdrewAmount &gt; 0, "ERR_NOT_REWARD")</span>;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");</span>
-<span class="cstat-no" title="statement not covered" >        (bool isManagerForPlatformSuccess, ) = Manager.manager().call{value: manangerForPlatformWithdrewAmount}("");</span>
+<span class="cstat-no" title="statement not covered" >        (bool isManagerForPlatformSuccess, ) = Plantofrom.receiver().call{value: manangerForPlatformWithdrewAmount}("");</span>
 <span class="cstat-no" title="statement not covered" >        (bool isManagerProjectSuccess, ) = manager.call{value: manangerForProjectWithdrewAmount}("");</span>
 &nbsp;
         userPools[user].hasWithdrew += withdrewAmount;
@@ -290,6 +310,10 @@ contract Vault is VaultConfig {
     // user has share
 <span class="fstat-no" title="function not covered" >    function _userHasShare(address user_) internal virtual returns (uint) {}</span>
 &nbsp;
+<span class="fstat-no" title="function not covered" >    function _whenTransferOut(address user_) internal {}</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function _whenTransfetIn(address user_) internal {}</span>
+&nbsp;
     // vault has native token
 <span class="fstat-no" title="function not covered" >    function _contractBalance() internal view returns (uint) {</span>
 <span class="cstat-no" title="statement not covered" >        return contractBalance;</span>
@@ -313,7 +337,7 @@ contract Vault is VaultConfig {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 15 2022 00:12:50 GMT+0800 (中国标准时间)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Nov 16 2022 11:37:28 GMT+0800 (中国标准时间)
 </div>
 </div>
 <script src="../../prettify.js"></script>
