@@ -5,37 +5,37 @@ const {
 const hre = require("hardhat");
 const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 const { expect } = require("chai");
-const ManagerDeploy = require("./deploy/manager");
+const PlatformDeploy = require("./deploy/platform");
 const { ethers } = require("hardhat");
 
-describe("Platform Manager", function (accounts) {
-  let Manager;
-  let ManagerAddr;
+describe("Platform", function (accounts) {
+  let Platform;
+  let PlatformAddr;
   let Signers;
 
   beforeEach(async () => {
-    Manager = await ManagerDeploy();
-    ManagerAddr = Manager.address;
+    Platform = await PlatformDeploy();
+    PlatformAddr = Platform.address;
     Signers = await ethers.getSigners();
   });
 
   it("deployer is the manager", async function () {
-    const manager = await Manager.manager();
-    const manager_ = Signers[0].address;
-    expect(manager).to.equal(manager_);
+    const owner = await Platform.owner();
+    const owner_ = Signers[0].address;
+    expect(owner).to.equal(owner_);
   });
 
   it("can set manager fee", async () => {
     const fee = 100000000000;
-    await Manager.changeManageFee(fee);
-    const managerFee = await Manager.manageFee();
+    await Platform.changeManageFee(fee);
+    const managerFee = await Platform.manageFee();
 
     expect(fee).to.equal(managerFee);
   });
 
   it("only manager can change manage fee", async () => {
     const fee = 100000000000;
-    await Manager.connect(Signers[1])
+    await Platform.connect(Signers[1])
       .changeManageFee(fee)
       .catch((e) => {
         expect(e.message).to.include("ERR_NOT_OWNER");
@@ -45,10 +45,10 @@ describe("Platform Manager", function (accounts) {
   it("manager receive native token", async () => {
     const sendValue = 10000;
     await Signers[1].sendTransaction({
-      to: ManagerAddr,
+      to: PlatformAddr,
       value: sendValue,
     });
-    const balance = await ethers.provider.getBalance(ManagerAddr);
+    const balance = await ethers.provider.getBalance(PlatformAddr);
     expect(sendValue).to.equal(balance);
   });
 
@@ -57,14 +57,14 @@ describe("Platform Manager", function (accounts) {
     const defaultBalance = await Signers[1].getBalance();
 
     await Signers[0].sendTransaction({
-      to: ManagerAddr,
+      to: PlatformAddr,
       value: sendValue,
     });
 
-    await Manager.connect(Signers[0]).withdrew(Signers[1].address, sendValue);
+    await Platform.connect(Signers[0]).withdrew(Signers[1].address, sendValue);
     const afterBalance = await Signers[1].getBalance();
 
-    const balance = await ethers.provider.getBalance(ManagerAddr);
+    const balance = await ethers.provider.getBalance(PlatformAddr);
 
     expect(afterBalance.sub(defaultBalance)).to.equal(sendValue);
     expect(balance).to.equal(0);
@@ -75,11 +75,11 @@ describe("Platform Manager", function (accounts) {
     const defaultBalance = await Signers[1].getBalance();
 
     await Signers[0].sendTransaction({
-      to: ManagerAddr,
+      to: PlatformAddr,
       value: sendValue,
     });
 
-    await Manager.connect(Signers[1])
+    await Platform.connect(Signers[1])
       .withdrew(Signers[1].address, sendValue)
       .catch((e) => {
         expect(e.message).to.include("ERR_NOT_OWNER");
@@ -87,15 +87,15 @@ describe("Platform Manager", function (accounts) {
   });
 
   it("change manager", async () => {
-    await Manager.setManager(Signers[1].address);
-    const newManager = await Manager.manager();
+    await Platform.setOwner(Signers[1].address);
+    const newOwner = await Platform.owner();
 
-    expect(newManager).to.equal(Signers[1].address);
+    expect(newOwner).to.equal(Signers[1].address);
   });
 
   it("only manager can change to new manager", async () => {
-    await Manager.connect(Signers[1])
-      .setManager(Signers[2].address)
+    await Platform.connect(Signers[1])
+      .setOwner(Signers[2].address)
       .catch((e) => {
         expect(e.message).to.include("ERR_NOT_OWNER");
       });

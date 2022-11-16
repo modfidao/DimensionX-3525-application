@@ -2,12 +2,14 @@
 pragma solidity ^0.8.0;
 
 import "./VaultConfig.sol";
-import "../Manager/IManager.sol";
+import "../Platform/IPlatform.sol";
 
 contract Vault is VaultConfig {
     uint public contractBalance;
     uint public shareSupply;
-    IManager public Manager;
+    IPlatform public Plantofrom;
+
+    uint constant ratioBase = 10 ** 18;
 
     bool _lock; // for safe
 
@@ -23,9 +25,9 @@ contract Vault is VaultConfig {
     // all user pool
     mapping(address => UserPool) public userPools;
 
-    constructor(uint shareSupply_, address mananger_, address Platform_) {
+    constructor(uint shareSupply_, address mananger_, address platform_) {
         shareSupply = shareSupply_;
-        Manager = IManager(Platform_);
+        Plantofrom = IPlatform(platform_);
         manager = mananger_;
     }
 
@@ -37,14 +39,14 @@ contract Vault is VaultConfig {
         address user = msg.sender;
         uint withdrewAmount = this.userCouldRewardTotal(user);
 
-        uint manangerForPlatformWithdrewAmount = (Manager.manageFee() * withdrewAmount) / 10 ** 18;
-        uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / 10 ** 18;
+        uint manangerForPlatformWithdrewAmount = (Plantofrom.manageFee() * withdrewAmount) / ratioBase;
+        uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / ratioBase;
         uint userWithdrewAmount = withdrewAmount - manangerForPlatformWithdrewAmount - manangerForProjectWithdrewAmount;
 
         require(userWithdrewAmount > 0, "ERR_NOT_REWARD");
 
         (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");
-        (bool isManagerForPlatformSuccess, ) = Manager.manager().call{value: manangerForPlatformWithdrewAmount}("");
+        (bool isManagerForPlatformSuccess, ) = Plantofrom.receiver().call{value: manangerForPlatformWithdrewAmount}("");
         (bool isManagerProjectSuccess, ) = manager.call{value: manangerForProjectWithdrewAmount}("");
 
         userPools[user].hasWithdrew += withdrewAmount;
@@ -68,14 +70,12 @@ contract Vault is VaultConfig {
         return (_userHasShare(user_) * _contractBalance()) / shareSupply;
     }
 
-
     // user has share
     function _userHasShare(address user_) internal virtual returns (uint) {}
-    
-    function _transferOut(address user_) internal {}
 
-    function _transfetIn(address user_) internal {}
+    function _whenTransferOut(address user_) internal {}
 
+    function _whenTransfetIn(address user_) internal {}
 
     // vault has native token
     function _contractBalance() internal view returns (uint) {

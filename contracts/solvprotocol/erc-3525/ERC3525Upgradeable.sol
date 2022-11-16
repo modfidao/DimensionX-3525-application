@@ -56,7 +56,7 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
     // TODO
     mapping(address => AddressData) private _addressData;
 
-    function __addressData(address user_) internal view returns(AddressData storage){
+    function __addressData(address user_) internal view returns (AddressData storage) {
         return _addressData[user_];
     }
 

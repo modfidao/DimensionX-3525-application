@@ -6,22 +6,22 @@ const hre = require("hardhat");
 const { anyValue } = require("@nomicfoundation/hardhat-chai-matchers/withArgs");
 const { expect } = require("chai");
 const FactoryDeploy = require("./deploy/factory");
-const ManagerDeploy = require("./deploy/manager");
+const PlatformDeploy = require("./deploy/platform");
 const { ethers } = require("hardhat");
 
 describe("Factory", function () {
   let Factory;
   let FactoryAddr;
-  let Manager;
-  let ManagerAddr;
+  let Platform;
+  let PlatformAddr;
   let Signers;
 
   beforeEach(async () => {
     Factory = await FactoryDeploy();
     FactoryAddr = Factory.address;
 
-    Manager = await ManagerDeploy();
-    ManagerAddr = Manager.address;
+    Platform = await PlatformDeploy();
+    PlatformAddr = Platform.address;
 
     Signers = await ethers.getSigners();
   });
@@ -32,8 +32,8 @@ describe("Factory", function () {
       "3525A",
       1,
       1000,
-      Signers[1].address.toString(),
-      ManagerAddr.toString()
+      Signers[1].address,
+      PlatformAddr
     );
 
     await Factory.newDimensionX(
@@ -42,7 +42,7 @@ describe("Factory", function () {
       1,
       1000,
       Signers[1].address,
-      ManagerAddr
+      PlatformAddr
     );
 
     const bool = await Factory.isDimensionX(addr);
