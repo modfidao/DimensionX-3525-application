@@ -6,6 +6,10 @@ import "./solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
 import "./Vault/Vault.sol";
 
 contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
+
+    // single token has claim reward
+    mapping(uint => uint) public tokenHasReward; 
+
     constructor(
         string memory name_,
         string memory symbol_,
