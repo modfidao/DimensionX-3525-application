@@ -68,7 +68,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
         return slot_;
     }
 
-    function removeTokenWhite(uint256 slot_) external onlyManager {
+    function removeSlotWhite(uint256 slot_) external onlyManager {
         require(slotWhite[slot_], "ERR_HAS_NOT_WHITE");
         slotWhite[slot_] = false;
     }
