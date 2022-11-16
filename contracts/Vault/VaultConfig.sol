@@ -5,11 +5,11 @@ contract VaultConfig {
     address public manager;
     uint public manageFee; // 10**18 = 100%
 
-    // 移交manager
+    // transfer manager
     event TransferManager(address from, address to);
-    // 修改管理费
+    // changed manage fee
     event ChangedManageFee(uint older, uint renew);
-    // 获得管理费
+    // claim manager fee
     event ClaimManagerFee(address indexed caller, uint amount);
 
     function _setManager(address manager_) internal onlyManager {

@@ -60,13 +60,9 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
         return _addressData[user_];
     }
 
-    // metadataDescriptor 是一个合约地址，内部存储所有的metadata
-    // 需要独立部署再set进合约
     IERC3525MetadataDescriptor public metadataDescriptor;
 
     // solhint-disable-next-line
-    // 配置池子相关信息
-    // decimals_建议为 0
     function __ERC3525_init(string memory name_, string memory symbol_, uint8 decimals_) internal onlyInitializing {
         __ERC3525_init_unchained(name_, symbol_, decimals_);
     }
@@ -82,7 +78,6 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
         _decimals = decimals_;
     }
 
-    // 对外暴露的接口
     function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
         return
             interfaceId == type(IERC165).interfaceId ||
@@ -114,7 +109,6 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
         return _decimals;
     }
 
-    // 获取
     function balanceOf(uint256 tokenId_) public view virtual override returns (uint256) {
         _requireMinted(tokenId_);
         return _allTokens[_allTokensIndex[tokenId_]].balance;
@@ -300,12 +294,7 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
         require(_exists(tokenId_), "ERC3525: invalid token ID");
     }
 
-    // mint
-    // to mint给谁
-    // slot solt插槽
-    // value mint的个数
     function _mint(address to_, uint256 slot_, uint256 value_) internal virtual returns (uint256) {
-        // 递增的token id
         uint256 tokenId = _createOriginalTokenId();
         _mint(to_, tokenId, slot_, value_);
         return tokenId;

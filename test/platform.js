@@ -61,6 +61,10 @@ describe("Platform", function (accounts) {
       value: sendValue,
     });
 
+    await Platform.connect(Signers[0]).withdrew(Signers[1].address, sendValue+1).catch(e=>{
+      expect(e.message).to.include("ERR_NOT_ENOUGH")
+    });
+
     await Platform.connect(Signers[0]).withdrew(Signers[1].address, sendValue);
     const afterBalance = await Signers[1].getBalance();
 
@@ -100,9 +104,17 @@ describe("Platform", function (accounts) {
     expect(newReceiver).to.equal(Signers[1].address);
   });
 
-  it("only manager can change to new manager", async () => {
+  it("only owner can change to new owner", async () => {
     await Platform.connect(Signers[1])
       .setOwner(Signers[2].address)
+      .catch((e) => {
+        expect(e.message).to.include("ERR_NOT_OWNER");
+      });
+  });
+
+  it("only owner can change to new receiver", async () => {
+    await Platform.connect(Signers[1])
+      .setReceiver(Signers[2].address)
       .catch((e) => {
         expect(e.message).to.include("ERR_NOT_OWNER");
       });

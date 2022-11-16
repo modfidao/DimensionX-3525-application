@@ -73,9 +73,14 @@ contract Vault is VaultConfig {
     // user has share
     function _userHasShare(address user_) internal virtual returns (uint) {}
 
-    function _whenTransferOut(address user_) internal {}
+    function _whenTransferOut(address user_, uint share_) internal {
+        uint shareHasReward = share_ * userPools[user_].hasWithdrew / _userHasShare(user_);
+        userPools[user_].transferOut = shareHasReward;
+    }
 
-    function _whenTransfetIn(address user_) internal {}
+    function _whenTransfetIn(address user_, uint share_) internal {
+
+    }
 
     // vault has native token
     function _contractBalance() internal view returns (uint) {
