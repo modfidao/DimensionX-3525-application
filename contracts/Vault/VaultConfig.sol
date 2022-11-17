@@ -12,18 +12,26 @@ contract VaultConfig {
     // claim manager fee
     event ClaimManagerFee(address indexed caller, uint amount);
 
-    function _setManager(address manager_) internal onlyManager {
+    function _setManager(address manager_) internal {
         emit TransferManager(manager, manager_);
         manager = manager_;
     }
 
-    function changeManageFee(uint manageFee_) external onlyManager {
+    function _setManageFee(uint manageFee_) internal {
         emit ChangedManageFee(manageFee, manageFee_);
         manageFee = manageFee_;
     }
 
+    function changeManager(address manager_) external onlyManager {
+        _setManager(manager_);
+    }
+
+    function changeManageFee(uint manageFee_) external onlyManager {
+        _setManageFee(manageFee_);
+    }
+
     modifier onlyManager() {
-        require(msg.sender == manager, "ERR_NOT_OWNER");
+        require(msg.sender == manager, "ERR_NOT_MANAGER");
         _;
     }
 }

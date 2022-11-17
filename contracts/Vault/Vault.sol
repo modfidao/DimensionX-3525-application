@@ -31,7 +31,8 @@ contract Vault is VaultConfig {
     function _initVault(uint shareSupply_, address mananger_, address platform_) internal {
         shareSupply = shareSupply_;
         Plantofrom = IPlatform(platform_);
-        manager = mananger_;
+        _setManager(mananger_);
+        _setManageFee(3*10**16); //default 3%
     }
 
     event ClaimManagerFeeForPlatform(address indexed caller, uint amount);

@@ -6,7 +6,7 @@ import "./solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
 import "./Vault/Vault.sol";
 import "./utils/InitLock.sol";
 
-contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault,InitLock {
+contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
     mapping(uint => bool) public slotWhite;
 
     function init(
