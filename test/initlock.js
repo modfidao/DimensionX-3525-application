@@ -12,7 +12,7 @@ const {
     let DimensionX;
   
     beforeEach(async () => {
-      DimensionX = await DimensionXDeploy();
+        DimensionX = await DimensionXDeploy();
     });
   
 

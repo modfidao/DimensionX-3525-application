@@ -18,6 +18,4 @@ async function main() {
   return DimensionXInstance;
 }
 
-main();
-
 module.exports = main;
