@@ -8,10 +8,10 @@
   },
   "scripts": {
     "test": "hardhat test",
-    "compile": "hardhat compile",
+    "compile": "hardhat compile --network local",
     "deploy": "hardhat run scripts/deploy.js",
     "format": "prettier --write 'contracts/**/*.sol'",
-    "cov":"hardhat coverage "
+    "cov":"hardhat coverage"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",

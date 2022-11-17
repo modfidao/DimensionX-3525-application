@@ -31,8 +31,8 @@ module.exports = {
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
-    coverage: {
-      url: "http://127.0.0.1:8555", // Coverage launches its own ganache-cli client
+    local: {
+      url: "http://127.0.0.1:8545", // Coverage launches its own ganache-cli client
     },
   },
 };

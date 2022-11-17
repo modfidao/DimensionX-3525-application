@@ -7,7 +7,7 @@ import "../Platform/IPlatform.sol";
 contract Vault is VaultConfig {
     uint public contractBalance;
     uint public shareSupply;
-    IPlatform public Plantofrom;
+    IPlatform public Platform;
 
     uint constant ratioBase = 10 ** 18;
 
@@ -30,9 +30,9 @@ contract Vault is VaultConfig {
 
     function _initVault(uint shareSupply_, address mananger_, address platform_) internal {
         shareSupply = shareSupply_;
-        Plantofrom = IPlatform(platform_);
+        Platform = IPlatform(platform_);
         _setManager(mananger_);
-        _setManageFee(3*10**16); //default 3%
+        _setManageFee(3 * 10 ** 16); //default 3%
     }
 
     event ClaimManagerFeeForPlatform(address indexed caller, uint amount);
@@ -43,14 +43,14 @@ contract Vault is VaultConfig {
         address user = msg.sender;
         uint withdrewAmount = this.userCouldRewardTotal(user);
 
-        uint manangerForPlatformWithdrewAmount = (Plantofrom.manageFee() * withdrewAmount) / ratioBase;
+        uint manangerForPlatformWithdrewAmount = (Platform.manageFee() * withdrewAmount) / ratioBase;
         uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / ratioBase;
         uint userWithdrewAmount = withdrewAmount - manangerForPlatformWithdrewAmount - manangerForProjectWithdrewAmount;
 
         require(userWithdrewAmount > 0, "ERR_NOT_REWARD");
 
         (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");
-        (bool isManagerForPlatformSuccess, ) = Plantofrom.receiver().call{value: manangerForPlatformWithdrewAmount}("");
+        (bool isManagerForPlatformSuccess, ) = Platform.receiver().call{value: manangerForPlatformWithdrewAmount}("");
         (bool isManagerProjectSuccess, ) = manager.call{value: manangerForProjectWithdrewAmount}("");
 
         userPools[user].hasWithdrew += withdrewAmount;
@@ -113,6 +113,8 @@ contract Vault is VaultConfig {
     function _contractBalance() internal view returns (uint) {
         return contractBalance;
     }
+
+    fallback() external payable{}
 
     // revive native token
     receive() external payable {
