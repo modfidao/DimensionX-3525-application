@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./Main.sol";
+import {DimensionX} from "./Main.sol";
 
 contract Factory {
     mapping(address => bool) public isDimensionX;
@@ -14,7 +14,8 @@ contract Factory {
         address manager_,
         address platform_
     ) external returns (address) {
-        DimensionX newInstance = new DimensionX(name_, symbol_, decimals_, shareSupply_, manager_, platform_);
+        DimensionX newInstance = new DimensionX();
+        newInstance.init(name_, symbol_, decimals_, shareSupply_, manager_, platform_);
         address addr = address(newInstance);
         isDimensionX[addr] = true;
         return addr;

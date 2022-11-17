@@ -63,16 +63,12 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
     IERC3525MetadataDescriptor public metadataDescriptor;
 
     // solhint-disable-next-line
-    function __ERC3525_init(string memory name_, string memory symbol_, uint8 decimals_) internal onlyInitializing {
+    function __ERC3525_init(string memory name_, string memory symbol_, uint8 decimals_) internal {
         __ERC3525_init_unchained(name_, symbol_, decimals_);
     }
 
     // solhint-disable-next-line
-    function __ERC3525_init_unchained(
-        string memory name_,
-        string memory symbol_,
-        uint8 decimals_
-    ) internal onlyInitializing {
+    function __ERC3525_init_unchained(string memory name_, string memory symbol_, uint8 decimals_) internal {
         _name = name_;
         _symbol = symbol_;
         _decimals = decimals_;

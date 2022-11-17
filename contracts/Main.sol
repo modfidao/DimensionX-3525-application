@@ -4,26 +4,22 @@ pragma solidity ^0.8.0;
 
 import "./solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
 import "./Vault/Vault.sol";
+import "./utils/InitLock.sol";
 
-contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault {
-    // single token has claim reward
-
+contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault,InitLock {
     mapping(uint => bool) public slotWhite;
 
-    constructor(
+    function init(
         string memory name_,
         string memory symbol_,
         uint8 decimals_,
         uint shareSupply_,
         address manager_,
         address platform_
-    ) Vault(shareSupply_, manager_, platform_) {
+    ) external _initLock_ {
+        _initVault(shareSupply_, manager_, platform_);
+        __ERC3525_init(name_, symbol_, decimals_);
         _mint(manager_, 1, shareSupply_);
-        initialize(name_, symbol_, decimals_);
-    }
-
-    function initialize(string memory name_, string memory symbol_, uint8 decimals_) public virtual initializer {
-        __ERC3525AllRound_init(name_, symbol_, decimals_);
     }
 
     function __ERC3525AllRound_init(

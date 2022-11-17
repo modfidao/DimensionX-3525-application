@@ -28,7 +28,7 @@ contract Vault is VaultConfig {
     // token has reawad total info
     mapping(uint => uint) public tokenHasReward;
 
-    constructor(uint shareSupply_, address mananger_, address platform_) {
+    function _initVault(uint shareSupply_, address mananger_, address platform_) internal {
         shareSupply = shareSupply_;
         Plantofrom = IPlatform(platform_);
         manager = mananger_;
