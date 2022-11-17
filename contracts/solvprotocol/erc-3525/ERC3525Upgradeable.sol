@@ -6,18 +6,20 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
-import "./IERC721.sol";
-import "./IERC3525.sol";
+import "@spanning/contracts/token/ERC721/ISpanningERC721.col";
+import "@spanning/contracts/token/ERC721/extensions/ISpanningERC721Enumerable.sol";
+import "./ISpanningERC3525.sol";
 import "./IERC721Receiver.sol";
 import "./IERC3525Receiver.sol";
-import "./extensions/IERC721Enumerable.sol";
 import "./extensions/IERC721Metadata.sol";
 import "./extensions/IERC3525Metadata.sol";
 import "./periphery/interface/IERC3525MetadataDescriptor.sol";
 
-contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metadata, IERC721Enumerable {
+contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metadata, ISpanningERC721Enumerable {
     using Strings for address;
     using Strings for uint256;
+    // This allows us to efficiently unpack data in our address specification.
+    using SpanningAddress for bytes32;
     using AddressUpgradeable for address;
 
     event SetMetadataDescriptor(address indexed metadataDescriptor);
@@ -28,9 +30,9 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
         uint256 id;
         uint256 slot;
         uint256 balance;
-        address owner;
-        address approved;
-        address[] valueApprovals;
+        bytes32 owner;
+        bytes32 approved;
+        bytes32[] valueApprovals;
     }
 
     // TODO
@@ -47,28 +49,43 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
 
     // id => (approval => allowance)
     // @dev _approvedValues cannot be defined within TokenData, cause struct containing mappings cannot be constructed.
-    mapping(uint256 => mapping(address => uint256)) private _approvedValues;
+    mapping(uint256 => mapping(bytes32 => uint256)) private _approvedValues;
 
     // tokens and key: id
     TokenData[] private _allTokens;
     mapping(uint256 => uint256) private _allTokensIndex;
 
     // TODO
-    mapping(address => AddressData) private _addressData;
+    mapping(bytes32 => AddressData) private _addressData;
 
-    function __addressData(address user_) internal view returns (AddressData storage) {
+    // Convenience modifier for common bounds checks
+    modifier onlyOwnerOrApproved(uint256 tokenId_) {
+        require(
+            _isApprovedOrOwner(tokenId_, spanningMsgSender()),
+            "onlyOwnerOrApproved: bad role"
+        );
+        _;
+    }
+
+    function __addressData(bytes32 user_) internal view returns (AddressData storage) {
         return _addressData[user_];
     }
 
     IERC3525MetadataDescriptor public metadataDescriptor;
 
     // solhint-disable-next-line
-    function __ERC3525_init(string memory name_, string memory symbol_, uint8 decimals_) internal {
+    function __ERC3525_init(
+        string memory name_, 
+        string memory symbol_, 
+        uint8 decimals_,
+        address _delegate,
+        ) internal onlyInitializing {
+        __Spanning_init_unchained(_delegate);
         __ERC3525_init_unchained(name_, symbol_, decimals_);
     }
 
     // solhint-disable-next-line
-    function __ERC3525_init_unchained(string memory name_, string memory symbol_, uint8 decimals_) internal {
+    function __ERC3525_init_unchained(string memory name_, string memory symbol_, uint8 decimals_) internal onlyInitializing {
         _name = name_;
         _symbol = symbol_;
         _decimals = decimals_;
@@ -112,8 +129,23 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
 
     function ownerOf(uint256 tokenId_) public view virtual override returns (address owner_) {
         _requireMinted(tokenId_);
+        owner_ = ownerOfSpanning(tokenId_);
+        // To prevent incorrect data leakage, we return the legacy address
+        // only if that user is local to the current domain.
+        bytes4 ownerDomain = SpanningUpgradeable.getDomainFromAddress(
+            ownerAddress
+        );
+        require(
+            ownerDomain == SpanningUpgradeable.getDomain(),
+            "SpanningERC3525: remote account requesting legacy address"
+        );
+        return getLegacyFromAddress(ownerAddress);
+    }
+
+    function ownerOfSpanning(uint256 tokenId_) public view virtual override returns (bytes32 owner_) {
+        _requireMinted(tokenId_);
         owner_ = _allTokens[_allTokensIndex[tokenId_]].owner;
-        require(owner_ != address(0), "ERC3525: invalid token ID");
+        require(owner_ != bytes32(0), "ERC3525: invalid token ID");
     }
 
     function slotOf(uint256 tokenId_) public view virtual override returns (uint256) {
@@ -159,16 +191,37 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
                 : "";
     }
 
-    function approve(uint256 tokenId_, address to_, uint256 value_) public payable virtual override {
-        address owner = ERC3525Upgradeable.ownerOf(tokenId_);
-        require(to_ != owner, "ERC3525: approval to current owner");
+    /**
+     * @dev See {IERC3525-approve}.
+     */
+    function approve(uint256 tokenId_, address receiverLegacyAddress_, uint256 value_)
+        public
+        virtual
+        override
+    {
+        bytes32 receiverAddress = getAddressFromLegacy(receiverLegacyAddress_);
+        approve(tokenId_, receiverAddress, value_);
+    }
 
+    /**
+     * @dev Sets a token allowance for a pair of addresses (sender and receiver).
+     *
+     * @param tokenId_ - Token allowance to be approved
+     * @param receiverAddress_ - Address of the allowance receiver
+     * @param value_ - amount to approve
+     */
+    function approve(uint256 tokenId_, bytes32 receiverAddress_, uint256 value_)
+        public
+        virtual
+        override
+        onlyOwnerOrApproved(tokenId_, value_)
+    {
+        bytes32 tokenOwner = SpanningERC721Upgradeable.ownerOfSpanning(tokenId_);
         require(
-            _msgSender() == owner || ERC3525Upgradeable.isApprovedForAll(owner, _msgSender()),
-            "ERC3525: approve caller is not owner nor approved for all"
+            receiverAddress_ != tokenOwner,
+            "ERC721: approval to current owner"
         );
-
-        _approveValue(tokenId_, to_, value_);
+        _approve(receiverAddress_, tokenId_, value_);
     }
 
     function allowance(uint256 tokenId_, address operator_) public view virtual override returns (uint256) {
@@ -266,12 +319,12 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
         emit ApprovalForAll(owner_, operator_, approved_);
     }
 
-    function _isApprovedOrOwner(address operator_, uint256 tokenId_) internal view virtual returns (bool) {
+    function _isApprovedOrOwner(bytes32 operator_, uint256 tokenId_) internal view virtual returns (bool) {
         _requireMinted(tokenId_);
-        address owner = ERC3525Upgradeable.ownerOf(tokenId_);
+        address owner = SpanningERC3525Upgradeable.ownerOfSpanning(tokenId_);
         return (operator_ == owner ||
-            ERC3525Upgradeable.isApprovedForAll(owner, operator_) ||
-            ERC3525Upgradeable.getApproved(tokenId_) == operator_);
+            SpanningERC3525Upgradeable.isApprovedForAll(owner, operator_) ||
+            SpanningERC3525Upgradeable.getApproved(tokenId_) == operator_);
     }
 
     function _spendAllowance(address operator_, uint256 tokenId_, uint256 value_) internal virtual {
@@ -425,7 +478,7 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
         _allTokens.pop();
     }
 
-    function _approve(address to_, uint256 tokenId_) internal virtual {
+    function _approve(bytes32 to_, uint256 tokenId_) internal virtual {
         _allTokens[_allTokensIndex[tokenId_]].approved = to_;
         emit Approval(ERC3525Upgradeable.ownerOf(tokenId_), to_, tokenId_);
     }
