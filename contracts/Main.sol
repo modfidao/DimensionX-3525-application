@@ -45,8 +45,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
         slotWhite[slot_] = false;
     }
 
-
-    function composeOrSplitToken(uint fromTokenId_, uint slot_, uint amount_) external returns(uint) {
+    function composeOrSplitToken(uint fromTokenId_, uint slot_, uint amount_) external returns (uint) {
         uint fromSlot = this.slotOf(fromTokenId_);
 
         require(slotWhite[slot_] && slot_ != 0, "ERR_NOT_WHITE_SLOT");
@@ -81,7 +80,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
         AddressData storage userAssets = __addressData(user_);
 
         uint[] memory tokens = userAssets.ownedTokens;
-        uint[] memory shares = new uint[](tokens.length) ;
+        uint[] memory shares = new uint[](tokens.length);
 
         require(tokens.length != 0, "ERR_YOU_HAVE_NO_TOKEN");
 
@@ -92,13 +91,13 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
             uint balance = this.balanceOf(tokenId);
             uint share = tokenSlot * balance;
 
-            console.log("my share",share);
-            console.log("my token",tokenId);
-            shares[i] =share;
+            console.log("my share", share);
+            console.log("my token", tokenId);
+            shares[i] = share;
         }
 
-        console.log("tokens 1",tokens[0]);
-        console.log("tokens 2",tokens[1]);
+        console.log("tokens 1", tokens[0]);
+        console.log("tokens 2", tokens[1]);
 
         return (tokens, shares);
     }

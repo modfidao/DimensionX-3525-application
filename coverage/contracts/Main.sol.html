@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">96.77% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>30/31</span>
+        <span class='fraction'>35/35</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">90% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>7/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">97.22% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>35/36</span>
+        <span class='fraction'>40/40</span>
       </div>
     </div>
   </div>
@@ -146,7 +146,17 @@
 101
 102
 103
-104</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+104
+105
+106
+107
+108
+109
+110
+111
+112</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -192,7 +202,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6×</span>
@@ -232,14 +241,21 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -256,6 +272,8 @@ pragma solidity ^0.8.0;
 import "./solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
 import "./Vault/Vault.sol";
 import "./utils/InitLock.sol";
+&nbsp;
+import "hardhat/console.sol";
 &nbsp;
 contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
     mapping(uint =&gt; bool) public slotWhite;
@@ -294,8 +312,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
         slotWhite[slot_] = false;
     }
 &nbsp;
-&nbsp;
-    function composeOrSplitToken(uint fromTokenId_, uint slot_, uint amount_) external returns(uint) {
+    function composeOrSplitToken(uint fromTokenId_, uint slot_, uint amount_) external returns (uint) {
         uint fromSlot = this.slotOf(fromTokenId_);
 &nbsp;
         require(slotWhite[slot_] &amp;&amp; slot_ != 0, "ERR_NOT_WHITE_SLOT");
@@ -330,7 +347,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
         AddressData storage userAssets = __addressData(user_);
 &nbsp;
         uint[] memory tokens = userAssets.ownedTokens;
-        uint[] memory shares;
+        uint[] memory shares = new uint[](tokens.length);
 &nbsp;
         <span class="missing-if-branch" title="else path not taken" >E</span>require(tokens.length != 0, "ERR_YOU_HAVE_NO_TOKEN");
 &nbsp;
@@ -340,9 +357,16 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
             uint tokenSlot = this.slotOf(tokenId);
             uint balance = this.balanceOf(tokenId);
             uint share = tokenSlot * balance;
+&nbsp;
+            console.log("my share", share);
+            console.log("my token", tokenId);
             shares[i] = share;
         }
-<span class="cstat-no" title="statement not covered" >        return (tokens, shares);</span>
+&nbsp;
+        console.log("tokens 1", tokens[0]);
+        console.log("tokens 2", tokens[1]);
+&nbsp;
+        return (tokens, shares);
     }
 &nbsp;
     function _burnSlotValue(uint256 tokenId_, uint256 burnValue_) internal {
@@ -358,7 +382,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Nov 18 2022 01:12:28 GMT+0800 (中国标准时间)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Nov 18 2022 02:13:11 GMT+0800 (中国标准时间)
 </div>
 </div>
 <script src="../prettify.js"></script>

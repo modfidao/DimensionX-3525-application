@@ -7,9 +7,9 @@ interface IPlatform {
     event ChangedManageFee(uint older, uint renew);
     event ClaimManagerFee(address indexed caller, uint amount);
 
-    function receiver() external returns (address);
+    function receiver() external view returns (address);
 
-    function manageFee() external returns (uint);
+    function manageFee() external view returns (uint);
 
     function setOwner(address manager_) external;
 

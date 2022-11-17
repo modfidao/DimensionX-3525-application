@@ -4,6 +4,8 @@ pragma solidity ^0.8.0;
 import "./VaultConfig.sol";
 import "../Platform/IPlatform.sol";
 
+import "hardhat/console.sol";
+
 contract Vault is VaultConfig {
     uint public contractBalance;
     uint public shareSupply;
@@ -43,7 +45,11 @@ contract Vault is VaultConfig {
         address user = msg.sender;
         uint withdrewAmount = this.userCouldRewardTotal(user);
 
+        console.log("8888888",withdrewAmount);
+        console.log("8888888",Platform.manageFee());
+        
         uint manangerForPlatformWithdrewAmount = (Platform.manageFee() * withdrewAmount) / ratioBase;
+        console.log("8888888",manangerForPlatformWithdrewAmount);
         uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / ratioBase;
         uint userWithdrewAmount = withdrewAmount - manangerForPlatformWithdrewAmount - manangerForProjectWithdrewAmount;
 
@@ -51,7 +57,7 @@ contract Vault is VaultConfig {
 
         (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");
         (bool isManagerForPlatformSuccess, ) = Platform.receiver().call{value: manangerForPlatformWithdrewAmount}("");
-        (bool isManagerProjectSuccess, ) = manager.call{value: manangerForProjectWithdrewAmount}("");
+        (bool isManagerProjectSuccess, ) = payable(manager).call{value: manangerForProjectWithdrewAmount}("");
 
         userPools[user].hasWithdrew += withdrewAmount;
         userPools[user].hasRecived += userWithdrewAmount;
@@ -114,7 +120,7 @@ contract Vault is VaultConfig {
         return contractBalance;
     }
 
-    fallback() external payable{}
+    fallback() external payable {}
 
     // revive native token
     receive() external payable {

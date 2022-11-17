@@ -6,7 +6,7 @@ async function main() {
     const PlatformInstance = await Platform.deploy();
 
     await PlatformInstance.deployed()
-    
+
     return PlatformInstance;
 }
 
