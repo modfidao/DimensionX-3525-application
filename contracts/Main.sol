@@ -54,7 +54,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
         uint newTokenId = _tokenIds.current();
         _mint(msg.sender,newTokenId, slot_, getToTokenAmount);
         _tokenIds.increment();
-        
+
         _updateReward(fromTokenId_, burnFromTokenAmount, newTokenId);
         burnTokenBalance == burnFromTokenAmount
             ? _burn(fromTokenId_)
@@ -89,14 +89,9 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
             uint tokenSlot = this.slotOf(tokenId);
             uint balance = this.balanceOf(tokenId);
             uint share = tokenSlot * balance;
-
-            console.log("my share", share);
-            console.log("my token", tokenId);
+            
             shares[i] = share;
         }
-
-        console.log("tokens 1", tokens[0]);
-        console.log("tokens 2", tokens[1]);
 
         return (tokens, shares);
     }

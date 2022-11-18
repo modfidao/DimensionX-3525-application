@@ -34,7 +34,7 @@ contract Vault is VaultConfig {
         shareSupply = shareSupply_;
         Platform = IPlatform(platform_);
         _setManager(mananger_);
-        _setManageFee(3 * 10 ** 16); //default 3%
+        _setManageFee(25 * 10 ** 15); //default 2.5%
     }
 
     event ClaimManagerFeeForPlatform(address indexed caller, uint amount);
@@ -44,15 +44,10 @@ contract Vault is VaultConfig {
     function userWithdrew() external lock {
         address user = msg.sender;
         uint withdrewAmount = this.userCouldRewardTotal(user);
-
-        console.log("8888888",withdrewAmount);
-        console.log("8888888",Platform.manageFee());
-        
         uint manangerForPlatformWithdrewAmount = (Platform.manageFee() * withdrewAmount) / ratioBase;
-        console.log("8888888",manangerForPlatformWithdrewAmount);
         uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / ratioBase;
         uint userWithdrewAmount = withdrewAmount - manangerForPlatformWithdrewAmount - manangerForProjectWithdrewAmount;
-
+        console.log("looklook",userWithdrewAmount);
         require(userWithdrewAmount > 0, "ERR_NOT_REWARD");
 
         (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");
