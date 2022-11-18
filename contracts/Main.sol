@@ -2,13 +2,13 @@
 
 pragma solidity ^0.8.0;
 
-import "./solvprotocol/erc-3525/ERC3525SlotEnumerableUpgradeable.sol";
+import "./solvprotocol/erc-3525/SpanningERC3525SlotEnumerableUpgradeable.sol";
 import "./Vault/Vault.sol";
 import "./utils/InitLock.sol";
 
 import "hardhat/console.sol";
 
-contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
+contract DimensionX is SpanningERC3525SlotEnumerableUpgradeable, Vault, InitLock {
     mapping(uint => bool) public slotWhite;
 
     function init(
@@ -17,10 +17,11 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
         uint8 decimals_,
         uint shareSupply_,
         address manager_,
-        address platform_
+        address platform_,
+        address delegate_
     ) external _initLock_ {
         _initVault(shareSupply_, manager_, platform_);
-        __ERC3525_init(name_, symbol_, decimals_);
+        __SpanningERC3525_init(name_, symbol_, decimals_, delegate_);
         _mint(manager_, 1, shareSupply_);
     }
 
@@ -54,7 +55,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
         uint burnTokenBalance = this.balanceOf(fromTokenId_);
         uint getToTokenAmount = (fromSlot * amount_) / slot_;
 
-        uint toTokenId_ = _mint(msg.sender, slot_, getToTokenAmount);
+        uint toTokenId_ = _mint(spanningMsgSender(), slot_, getToTokenAmount);
 
         _updateReward(fromTokenId_, burnFromTokenAmount, toTokenId_);
         burnTokenBalance == burnFromTokenAmount
@@ -76,7 +77,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
         _setTokenReward(toTokenId_, fromTokenReward);
     }
 
-    function _getRewardTokensAndShare(address user_) internal virtual override returns (uint[] memory, uint[] memory) {
+    function _getRewardTokensAndShare(bytes32 user_) internal virtual override returns (uint[] memory, uint[] memory) {
         AddressData storage userAssets = __addressData(user_);
 
         uint[] memory tokens = userAssets.ownedTokens;
@@ -103,7 +104,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
     }
 
     function _burnSlotValue(uint256 tokenId_, uint256 burnValue_) internal {
-        require(_isApprovedOrOwner(_msgSender(), tokenId_), "ERC3525: caller is not token owner nor approved");
+        require(_isApprovedOrOwner(spanningMsgSender(), tokenId_), "ERC3525: caller is not token owner nor approved");
         ERC3525Upgradeable._burnValue(tokenId_, burnValue_);
     }
 

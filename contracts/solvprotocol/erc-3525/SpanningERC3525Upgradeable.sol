@@ -74,11 +74,11 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
     IERC3525MetadataDescriptor public metadataDescriptor;
 
     // solhint-disable-next-line
-    function __ERC3525_init(
+    function __SpanningERC3525_init(
         string memory name_, 
         string memory symbol_, 
         uint8 decimals_,
-        address _delegate,
+        address _delegate
         ) internal onlyInitializing {
         __Spanning_init_unchained(_delegate);
         __ERC3525_init_unchained(name_, symbol_, decimals_);
@@ -271,7 +271,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
     }
 
     function transferFrom(address from_, address to_, uint256 tokenId_) public payable virtual override {
-        transferFrom(getAddressFromLegacy(from_),getAddressFromLegacy(to_), tokenId_)
+        transferFrom(getAddressFromLegacy(from_),getAddressFromLegacy(to_), tokenId_);
     }
 
     function transferFrom(bytes32 from_, bytes32 to_, uint256 tokenId_) public payable virtual override {
