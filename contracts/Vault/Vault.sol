@@ -53,7 +53,8 @@ contract Vault is VaultConfig {
         (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");
         (bool isManagerForPlatformSuccess, ) = Platform.receiver().call{value: manangerForPlatformWithdrewAmount}("");
         (bool isManagerProjectSuccess, ) = payable(manager).call{value: manangerForProjectWithdrewAmount}("");
-
+        console.log("magic",withdrewAmount);
+        console.log("magic",userWithdrewAmount);
         userPools[user].hasWithdrew += withdrewAmount;
         userPools[user].hasRecived += userWithdrewAmount;
         userPools[user].hasWithdrewTimes++;
