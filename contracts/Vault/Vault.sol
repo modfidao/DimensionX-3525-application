@@ -30,6 +30,11 @@ contract Vault is VaultConfig {
     // token has reawad total info
     mapping(uint => uint) public tokenHasReward;
 
+    function getV() public view returns(uint){
+        console.log("66666666666",address(Platform));
+        return Platform.manageFee();
+    }
+
     function _initVault(uint shareSupply_, address mananger_, address platform_) internal {
         shareSupply = shareSupply_;
         Platform = IPlatform(platform_);

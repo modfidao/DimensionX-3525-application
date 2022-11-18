@@ -8,13 +8,12 @@
   },
   "scripts": {
     "test": "hardhat test",
-    "test:local": "hardhat test --network local",
     "compile": "hardhat compile --network local",
     "deploy": "hardhat run scripts/deploy.js",
     "format": "prettier --write 'contracts/**/*.sol'",
     "cov":"hardhat coverage",
     "clean":"hardhat clean",
-    "local":"hardhat node --fork https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
+    "local":"hardhat node"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",

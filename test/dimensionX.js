@@ -138,6 +138,8 @@ describe("dimensionX", function () {
   });
 
   it("user withdrew",async ()=>{
-    await DimensionX.userWithdrew()
+    // await DimensionX.userWithdrew()
+    await DimensionX.getV()
+    console.log(a)
   })
 });
