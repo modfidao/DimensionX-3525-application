@@ -20,9 +20,9 @@ contract DimensionX is SpanningERC3525SlotEnumerableUpgradeable, Vault, InitLock
         address platform_,
         address delegate_
     ) external _initLock_ {
-        _initVault(shareSupply_, manager_, platform_);
+        _initVault(shareSupply_, manager_, platform_, delegate_);
         __SpanningERC3525_init(name_, symbol_, decimals_, delegate_);
-        _mint(manager_, 1, shareSupply_);
+        _mint(getAddressFromLegacy(manager_), 1, shareSupply_);
     }
 
     // function __ERC3525AllRound_init(
