@@ -79,8 +79,8 @@ contract ERC3525SlotEnumerableUpgradeable is
     }
 
     function _beforeValueTransfer(
-        address from_,
-        address to_,
+        bytes32 from_,
+        bytes32 to_,
         uint256 fromTokenId_,
         uint256 toTokenId_,
         uint256 slot_,
@@ -88,7 +88,7 @@ contract ERC3525SlotEnumerableUpgradeable is
     ) internal virtual override {
         super._beforeValueTransfer(from_, to_, fromTokenId_, toTokenId_, slot_, value_);
 
-        if (from_ == address(0) && fromTokenId_ == 0 && !_slotExists(slot_)) {
+        if (from_ == bytes32(0) && fromTokenId_ == 0 && !_slotExists(slot_)) {
             _createSlot(slot_);
         }
 
@@ -99,16 +99,16 @@ contract ERC3525SlotEnumerableUpgradeable is
     }
 
     function _afterValueTransfer(
-        address from_,
-        address to_,
+        bytes32 from_,
+        bytes32 to_,
         uint256 fromTokenId_,
         uint256 toTokenId_,
         uint256 slot_,
         uint256 value_
     ) internal virtual override {
-        if (from_ == address(0) && fromTokenId_ == 0 && !_tokenExistsInSlot(slot_, toTokenId_)) {
+        if (from_ == bytes32(0) && fromTokenId_ == 0 && !_tokenExistsInSlot(slot_, toTokenId_)) {
             _addTokenToSlotEnumeration(slot_, toTokenId_);
-        } else if (to_ == address(0) && toTokenId_ == 0 && _tokenExistsInSlot(slot_, fromTokenId_)) {
+        } else if (to_ == bytes32(0) && toTokenId_ == 0 && _tokenExistsInSlot(slot_, fromTokenId_)) {
             _removeTokenFromSlotEnumeration(slot_, fromTokenId_);
         }
 
