@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
 const DimensionXDeploy = require("./deploy/dimensionX");
-const PlatformDeploy = require("./deploy/factory");
+const PlatformDeploy = require("./deploy/platform");
 
 describe("dimensionX", function () {
   let DimensionX;
@@ -138,8 +138,6 @@ describe("dimensionX", function () {
   });
 
   it("user withdrew",async ()=>{
-    // await DimensionX.userWithdrew()
-    await DimensionX.getV()
-    console.log(a)
+    await DimensionX.userWithdrew()
   })
 });
