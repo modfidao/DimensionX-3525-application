@@ -6,10 +6,15 @@ import "./solvprotocol/erc-3525/SpanningERC3525SlotEnumerableUpgradeable.sol";
 import "./Vault/Vault.sol";
 import "./utils/InitLock.sol";
 
+import "@openzeppelin/contracts/utils/Counters.sol";
+
 import "hardhat/console.sol";
 
 contract DimensionX is SpanningERC3525SlotEnumerableUpgradeable, Vault, InitLock {
     mapping(uint => bool) public slotWhite;
+
+    using Counters for Counters.Counter;
+    Counters.Counter private _tokenIds;
 
     function init(
         string memory name_,
@@ -20,20 +25,12 @@ contract DimensionX is SpanningERC3525SlotEnumerableUpgradeable, Vault, InitLock
         address platform_,
         address delegate_
     ) external _initLock_ {
+        _tokenIds.increment();
         _initVault(shareSupply_, manager_, platform_, delegate_);
         __SpanningERC3525_init(name_, symbol_, decimals_, delegate_);
-        _mint(getAddressFromLegacy(manager_), 1, shareSupply_);
+        _mint(getAddressFromLegacy(manager_), _tokenIds.current(), shareSupply_);
+        _tokenIds.increment();
     }
-
-    // function __ERC3525AllRound_init(
-    //     string memory name_,
-    //     string memory symbol_,
-    //     uint8 decimals_
-    // ) internal onlyInitializing {
-    //     __ERC3525_init_unchained(name_, symbol_, decimals_);
-    // }
-
-    // function __ERC3525AllRound_init_unchained() internal onlyInitializing {}
 
     function addSlotWhite(uint slot_) external onlyManager returns (uint) {
         require(slot_ != 0, "ERR_CANT_BE_ZERO");
@@ -55,14 +52,16 @@ contract DimensionX is SpanningERC3525SlotEnumerableUpgradeable, Vault, InitLock
         uint burnTokenBalance = this.balanceOf(fromTokenId_);
         uint getToTokenAmount = (fromSlot * amount_) / slot_;
 
-        uint toTokenId_ = _mint(spanningMsgSender(), slot_, getToTokenAmount);
+        uint newTokenId = _tokenIds.current();
+        _mint(spanningMsgSender(), newTokenId, slot_, getToTokenAmount);
+        _tokenIds.increment();
 
-        _updateReward(fromTokenId_, burnFromTokenAmount, toTokenId_);
+        _updateReward(fromTokenId_, burnFromTokenAmount, newTokenId);
         burnTokenBalance == burnFromTokenAmount
             ? _burn(fromTokenId_)
             : _burnSlotValue(fromTokenId_, burnFromTokenAmount);
 
-        return toTokenId_;
+        return newTokenId;
     }
 
     function _updateReward(uint fromTokenId_, uint fromTokenAmount, uint toTokenId_) internal {
@@ -91,14 +90,9 @@ contract DimensionX is SpanningERC3525SlotEnumerableUpgradeable, Vault, InitLock
             uint tokenSlot = this.slotOf(tokenId);
             uint balance = this.balanceOf(tokenId);
             uint share = tokenSlot * balance;
-
-            console.log("my share", share);
-            console.log("my token", tokenId);
+            
             shares[i] = share;
         }
-
-        console.log("tokens 1", tokens[0]);
-        console.log("tokens 2", tokens[1]);
 
         return (tokens, shares);
     }

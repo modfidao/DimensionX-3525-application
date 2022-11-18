@@ -2,9 +2,9 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
 const DimensionXDeploy = require("./deploy/dimensionX");
-const PlatformDeploy = require("./deploy/factory");
+const PlatformDeploy = require("./deploy/platform");
 
-describe("dimensionX", function () {
+describe("dimensionX basic config", function () {
   let DimensionX;
   let Platform;
   let Signers;

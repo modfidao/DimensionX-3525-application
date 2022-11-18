@@ -36,7 +36,7 @@ contract Vault is VaultConfig, SpanningUpgradeable {
         shareSupply = shareSupply_;
         Platform = IPlatform(platform_);
         _setManager(mananger_);
-        _setManageFee(3 * 10 ** 16); //default 3%
+        _setManageFee(25 * 10 ** 15); //default 2.5%
         __Spanning_init_unchained(delegate_);
     }
 
@@ -47,15 +47,10 @@ contract Vault is VaultConfig, SpanningUpgradeable {
     function userWithdrew() external lock {
         bytes32 user = spanningMsgSender();
         uint withdrewAmount = this.userCouldRewardTotal(user);
-
-        console.log("8888888",withdrewAmount);
-        console.log("8888888",Platform.manageFee());
-        
         uint manangerForPlatformWithdrewAmount = (Platform.manageFee() * withdrewAmount) / ratioBase;
-        console.log("8888888",manangerForPlatformWithdrewAmount);
         uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / ratioBase;
         uint userWithdrewAmount = withdrewAmount - manangerForPlatformWithdrewAmount - manangerForProjectWithdrewAmount;
-
+        console.log("looklook",userWithdrewAmount);
         require(userWithdrewAmount > 0, "ERR_NOT_REWARD");
 
         // what is the intended purpose here? Calling the fallback function on a EOA address will always
@@ -64,7 +59,8 @@ contract Vault is VaultConfig, SpanningUpgradeable {
 
         (bool isManagerForPlatformSuccess, ) = Platform.receiver().call{value: manangerForPlatformWithdrewAmount}("");
         (bool isManagerProjectSuccess, ) = payable(manager).call{value: manangerForProjectWithdrewAmount}("");
-
+        console.log("magic",withdrewAmount);
+        console.log("magic",userWithdrewAmount);
         userPools[user].hasWithdrew += withdrewAmount;
         userPools[user].hasRecived += userWithdrewAmount;
         userPools[user].hasWithdrewTimes++;

@@ -2,7 +2,7 @@ const DimensionXDeploy = require("./deploy/dimensionX");
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
-describe("dimensionX", function () {
+describe("vault config test", function () {
   let DimensionX;
   let Signers;
 
