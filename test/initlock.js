@@ -8,7 +8,7 @@ const {
   const DimensionXDeploy = require("./deploy/dimensionX");
   const { ethers } = require("hardhat");
   
-  describe("Factory", function () {
+  describe("init lock tools", function () {
     let DimensionX;
   
     beforeEach(async () => {

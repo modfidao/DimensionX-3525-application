@@ -8,7 +8,7 @@ const { expect } = require("chai");
 const PlatformDeploy = require("./deploy/platform");
 const { ethers } = require("hardhat");
 
-describe("Platform", function (accounts) {
+describe("platform test case", function (accounts) {
   let Platform;
   let PlatformAddr;
   let Signers;

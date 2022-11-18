@@ -9,7 +9,7 @@ const FactoryDeploy = require("./deploy/factory");
 const PlatformDeploy = require("./deploy/platform");
 const { ethers } = require("hardhat");
 
-describe("Factory", function () {
+describe("factory to create Dimension X", function () {
   let Factory;
   let FactoryAddr;
   let Platform;
