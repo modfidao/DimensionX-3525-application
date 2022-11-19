@@ -96,7 +96,7 @@ describe('dimensionX reward test', function () {
     });
   });
 
-  describe('1 wallet to claim reward', function () {
+  describe('1～2 wallet to claim reward', function () {
     it('vault value match', async () => {
       const value = await ethers.provider.getBalance(DimensionX.address);
       expect(value).to.equal(sendValue);
@@ -193,4 +193,8 @@ describe('dimensionX reward test', function () {
         expect(calBalCre).to.equal(sendValue.mul(25).div(1000))
     })
   });
+
+  describe("3 stage to claim reward with complex transferred", async ()=>{
+    
+  })
 });
