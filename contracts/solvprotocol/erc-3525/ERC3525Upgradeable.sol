@@ -375,7 +375,7 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
         tokenData.balance -= burnValue_;
         emit TransferValue(tokenId_, 0, burnValue_);
 
-        _afterValueTransfer(owner, address(0), tokenId_, 0, slot, burnValue_);
+        // _afterValueTransfer(owner, address(0), tokenId_, 0, slot, burnValue_);
     }
 
     function _addTokenToOwnerEnumeration(address to_, uint256 tokenId_) private {

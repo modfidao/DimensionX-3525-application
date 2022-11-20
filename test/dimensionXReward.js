@@ -15,7 +15,7 @@ describe('dimensionX reward test', function () {
 
   let PlatformAddr;
   let deployer, other;
-  const sendValue = BigNumber.from(1).mul(10).pow(18);
+  const sendValue = BigNumber.from(10).pow(18).mul(1);
 
   beforeEach(async () => {
     Signers = await ethers.getSigners();
@@ -110,7 +110,7 @@ describe('dimensionX reward test', function () {
       const bBalManager = await other.getBalance();
       const bBalDeployer = await deployer.getBalance();
 
-      const txGasUsed = await calGasUsed(DimensionX.userWithdrew)
+      const txGasUsed = await calGasUsed(DimensionX.userWithdrew);
 
       const aBalManager = await other.getBalance();
       const aBalDeployer = await deployer.getBalance();
@@ -118,75 +118,75 @@ describe('dimensionX reward test', function () {
 
       // usedGas = cumulativeGasUsed * effectiveGasPrice;
       const userReward = aBalDeployer.sub(bBalDeployer).add(txGasUsed);
-      expect(calBNPercent(sendValue,0.945)).to.equal(userReward);
-      expect(calBNPercent(sendValue,0.03)).to.equal(aBalPlatform);
-      expect(calBNPercent(sendValue,0.025)).to.equal(aBalManager.sub(bBalManager));
+      expect(calBNPercent(sendValue, 0.945)).to.equal(userReward);
+      expect(calBNPercent(sendValue, 0.03)).to.equal(aBalPlatform);
+      expect(calBNPercent(sendValue, 0.025)).to.equal(aBalManager.sub(bBalManager));
     });
 
-    it("[share=75%] reward once", async ()=>{
-        await DimensionX.changeManager(Signers[2].address);
-        await DimensionX['transferFrom(uint256,address,uint256)'](1,other.address,250);
+    it('[share=75%] reward once', async () => {
+      await DimensionX.changeManager(Signers[2].address);
+      await DimensionX['transferFrom(uint256,address,uint256)'](1, other.address, 250);
 
-        const bBalPla = await ethers.provider.getBalance(Platform.address) // platform fee
-        const bBalCre = await Signers[2].getBalance() // creator fee
+      const bBalPla = await ethers.provider.getBalance(Platform.address); // platform fee
+      const bBalCre = await Signers[2].getBalance(); // creator fee
 
-        // user1
-        const bBalUser1 = await deployer.getBalance() 
-        const tx1GasUsed = await calGasUsed(DimensionX.userWithdrew)
-        const aBalUser1 = await deployer.getBalance()
+      // user1
+      const bBalUser1 = await deployer.getBalance();
+      const tx1GasUsed = await calGasUsed(DimensionX.userWithdrew);
+      const aBalUser1 = await deployer.getBalance();
 
-        const tx1RewardAmount = calBNPercent(sendValue,0.75)
-        const tx1ReceiveAmount = aBalUser1.sub(bBalUser1).add(tx1GasUsed)
-        expect(tx1ReceiveAmount).to.equal(calBNPercent(tx1RewardAmount,0.945))
+      const tx1RewardAmount = calBNPercent(sendValue, 0.75);
+      const tx1ReceiveAmount = aBalUser1.sub(bBalUser1).add(tx1GasUsed);
+      expect(tx1ReceiveAmount).to.equal(calBNPercent(tx1RewardAmount, 0.945));
 
-        // user2
-        const bBalUser2 = await other.getBalance()
-        const tx2GasUsed = await calGasUsed(DimensionX.connect(other).userWithdrew)
-        const aBalUser2 = await other.getBalance()
-        const tx2RewardAmount = calBNPercent(sendValue,0.25)
-        const tx2ReceiveAmount = aBalUser2.sub(bBalUser2).add(tx2GasUsed)
-        expect(tx2ReceiveAmount).to.equal(calBNPercent(tx2RewardAmount,0.945))
+      // user2
+      const bBalUser2 = await other.getBalance();
+      const tx2GasUsed = await calGasUsed(DimensionX.connect(other).userWithdrew);
+      const aBalUser2 = await other.getBalance();
+      const tx2RewardAmount = calBNPercent(sendValue, 0.25);
+      const tx2ReceiveAmount = aBalUser2.sub(bBalUser2).add(tx2GasUsed);
+      expect(tx2ReceiveAmount).to.equal(calBNPercent(tx2RewardAmount, 0.945));
 
-        const aBalPla = await ethers.provider.getBalance(Platform.address) // platform fee
-        const aBalCre = await Signers[2].getBalance() // creator fee
+      const aBalPla = await ethers.provider.getBalance(Platform.address); // platform fee
+      const aBalCre = await Signers[2].getBalance(); // creator fee
 
-        const calBalPla = aBalPla.sub(bBalPla)
-        const calBalCre = aBalCre.sub(bBalCre)
-        expect(calBalPla).to.equal(calBNPercent(sendValue,0.03))
-        expect(calBalCre).to.equal(calBNPercent(sendValue,0.025))
-    })
+      const calBalPla = aBalPla.sub(bBalPla);
+      const calBalCre = aBalCre.sub(bBalCre);
+      expect(calBalPla).to.equal(calBNPercent(sendValue, 0.03));
+      expect(calBalCre).to.equal(calBNPercent(sendValue, 0.025));
+    });
 
-    it("[share=75.5%] reward once", async ()=>{
-        await DimensionX.changeManager(Signers[2].address);
-        await DimensionX['transferFrom(uint256,address,uint256)'](1,other.address,245);
+    it('[share=75.5%] reward once', async () => {
+      await DimensionX.changeManager(Signers[2].address);
+      await DimensionX['transferFrom(uint256,address,uint256)'](1, other.address, 245);
 
-        const bBalPla = await ethers.provider.getBalance(Platform.address) // platform fee
-        const bBalCre = await Signers[2].getBalance() // creator fee
+      const bBalPla = await ethers.provider.getBalance(Platform.address); // platform fee
+      const bBalCre = await Signers[2].getBalance(); // creator fee
 
-        // user1
-        const bBalUser1 = await deployer.getBalance() 
-        const tx1GasUsed = await calGasUsed(await DimensionX.userWithdrew)
-        const aBalUser1 = await deployer.getBalance()
+      // user1
+      const bBalUser1 = await deployer.getBalance();
+      const tx1GasUsed = await calGasUsed(await DimensionX.userWithdrew);
+      const aBalUser1 = await deployer.getBalance();
 
-        const tx1RewardAmount =calBNPercent(sendValue,0.755)
-        const tx1ReceiveAmount = aBalUser1.sub(bBalUser1).add(tx1GasUsed)
-        expect(tx1ReceiveAmount).to.equal(calBNPercent(tx1RewardAmount,0.945))
+      const tx1RewardAmount = calBNPercent(sendValue, 0.755);
+      const tx1ReceiveAmount = aBalUser1.sub(bBalUser1).add(tx1GasUsed);
+      expect(tx1ReceiveAmount).to.equal(calBNPercent(tx1RewardAmount, 0.945));
 
-        // user2
-        const bBalUser2 = await other.getBalance()
-        const tx2GasUsed = await calGasUsed(DimensionX.connect(other).userWithdrew)
-        const aBalUser2 = await other.getBalance()
-        const tx2RewardAmount = calBNPercent(sendValue,0.245)
-        const tx2ReceiveAmount = aBalUser2.sub(bBalUser2).add(tx2GasUsed)
-        expect(tx2ReceiveAmount).to.equal(calBNPercent(tx2RewardAmount,0.945))
+      // user2
+      const bBalUser2 = await other.getBalance();
+      const tx2GasUsed = await calGasUsed(DimensionX.connect(other).userWithdrew);
+      const aBalUser2 = await other.getBalance();
+      const tx2RewardAmount = calBNPercent(sendValue, 0.245);
+      const tx2ReceiveAmount = aBalUser2.sub(bBalUser2).add(tx2GasUsed);
+      expect(tx2ReceiveAmount).to.equal(calBNPercent(tx2RewardAmount, 0.945));
 
-        const aBalPla = await ethers.provider.getBalance(Platform.address) // platform fee
-        const aBalCre = await Signers[2].getBalance() // creator fee
+      const aBalPla = await ethers.provider.getBalance(Platform.address); // platform fee
+      const aBalCre = await Signers[2].getBalance(); // creator fee
 
-        const calBalPla = aBalPla.sub(bBalPla)
-        const calBalCre = aBalCre.sub(bBalCre)
-        expect(calBalPla).to.equal(calBNPercent(sendValue,0.03))
-        expect(calBalCre).to.equal(calBNPercent(sendValue,0.025))
-    })
+      const calBalPla = aBalPla.sub(bBalPla);
+      const calBalCre = aBalCre.sub(bBalCre);
+      expect(calBalPla).to.equal(calBNPercent(sendValue, 0.03));
+      expect(calBalCre).to.equal(calBNPercent(sendValue, 0.025));
+    });
   });
 });

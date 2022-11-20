@@ -47,14 +47,12 @@ contract Vault is VaultConfig {
         uint manangerForPlatformWithdrewAmount = (Platform.manageFee() * withdrewAmount) / ratioBase;
         uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / ratioBase;
         uint userWithdrewAmount = withdrewAmount - manangerForPlatformWithdrewAmount - manangerForProjectWithdrewAmount;
-        console.log("looklook",userWithdrewAmount);
         require(userWithdrewAmount > 0, "ERR_NOT_REWARD");
 
         (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");
         (bool isManagerForPlatformSuccess, ) = Platform.receiver().call{value: manangerForPlatformWithdrewAmount}("");
         (bool isManagerProjectSuccess, ) = payable(manager).call{value: manangerForProjectWithdrewAmount}("");
-        console.log("magic",withdrewAmount);
-        console.log("magic",userWithdrewAmount);
+
         userPools[user].hasWithdrew += withdrewAmount;
         userPools[user].hasRecived += userWithdrewAmount;
         userPools[user].hasWithdrewTimes++;
@@ -115,8 +113,6 @@ contract Vault is VaultConfig {
     function _contractBalance() internal view returns (uint) {
         return contractBalance;
     }
-
-    fallback() external payable {}
 
     // revive native token
     receive() external payable {

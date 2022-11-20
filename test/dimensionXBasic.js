@@ -139,5 +139,14 @@ describe("dimensionX basic config", function () {
 
   it("user withdrew",async ()=>{
     await DimensionX.userWithdrew()
+    await DimensionX.userWithdrew().catch(e=>{
+      expect(e.message).to.include("ERR_NOT_REWARD")
+    })
+  })
+
+  it("no share can not withdrew",async()=>{
+    await DimensionX.connect(Signers[6]).userWithdrew().catch(e=>{
+      expect(e.message).to.include("ERR_YOU_HAVE_NO_TOKEN")
+    })
   })
 });

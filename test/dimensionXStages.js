@@ -15,8 +15,8 @@ describe('3 stage to claim reward with complex transferred', () => {
 
   let PlatformAddr;
   let deployer, other;
-  const sendValue = BigNumber.from(1).mul(10).pow(18);
-  const sendValue2 = BigNumber.from(5).mul(10).pow(18);
+  const sendValue = BigNumber.from(10).pow(18).mul(1);
+  const sendValue2 = BigNumber.from(10).pow(18).mul(5);
 
   before(async () => {
     Signers = await ethers.getSigners();
@@ -41,8 +41,7 @@ describe('3 stage to claim reward with complex transferred', () => {
   });
 
   it('1 stage: clime reward ', async () => {
-    await DimensionX.composeOrSplitToken(1, 3, 300);
-
+    // total share 1000
     const bBal = await deployer.getBalance();
     const gasUsed = await calGasUsed(DimensionX.userWithdrew);
     const aBal = await deployer.getBalance();
@@ -58,5 +57,39 @@ describe('3 stage to claim reward with complex transferred', () => {
     });
   });
 
-  it('3 stage: transfer token and reward', async () => {});
+  it('3 stage: transfer token and reward', async () => {
+    await DimensionX.composeOrSplitToken(1, 3, 300);
+    // 【before】
+    // user1 | share 1000
+    //       | token1-slot1-700
+    //       | token2-slot3-100
+    //       | has reward 1 * 10 ** 18 * 0.945
+
+    // 【after】
+    // user1 | share 700
+    //       | token1-slot-550
+    //       | token2-slot-50
+    // user2 | share 300
+    //       | token1-slot1-150
+    //       | token2-slot3-50
+    await DimensionX['transferFrom(uint256,address,uint256)'](1, other.address, 180);
+    await DimensionX['transferFrom(uint256,address,uint256)'](2, other.address, 40);
+
+    // user1
+    const bBal1 = await deployer.getBalance();
+    const gasUsed1 = await calGasUsed(DimensionX.userWithdrew);
+    const aBal1 = await deployer.getBalance();
+
+    const getReward = aBal1.sub(bBal1).add(gasUsed1);
+    expect(calBNPercent(sendValue2, 0.7 * 0.945)).to.equal(getReward);
+
+    // user2
+    const bBal2 = await other.getBalance();
+    const gasUsed2 = await calGasUsed(DimensionX.connect(other).userWithdrew);
+    const aBal2 = await other.getBalance();
+    const getReward2 = aBal2.sub(bBal2).add(gasUsed2);
+
+    expect(calBNPercent(sendValue2,0.3*0.945)).equal(getReward2)
+    expect(calBNPercent(sendValue2, 0.945)).to.equal(getReward2.add(getReward));
+  });
 });
