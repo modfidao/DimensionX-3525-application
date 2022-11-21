@@ -29,7 +29,5 @@ describe('dimensionX safe test', function () {
     await Attack.attack().catch(e=>{
         expect(e.message).to.include("ERR_WITHDREW_FAILED")
     });
-
-    const balance = await ethers.provider.getBalance(Attack.address);
   });
 });

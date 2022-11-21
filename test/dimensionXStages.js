@@ -17,6 +17,7 @@ describe('3 stage to claim reward with complex transferred', () => {
   let deployer, other;
   const sendValue = BigNumber.from(10).pow(18).mul(1);
   const sendValue2 = BigNumber.from(10).pow(18).mul(5);
+  const sendValue3 = BigNumber.from(10).pow(18).mul(8);
 
   before(async () => {
     Signers = await ethers.getSigners();
@@ -67,11 +68,11 @@ describe('3 stage to claim reward with complex transferred', () => {
 
     // 【after】
     // user1 | share 700
-    //       | token1-slot-550
-    //       | token2-slot-50
+    //       | token1-slot-520
+    //       | token2-slot-60
     // user2 | share 300
-    //       | token1-slot1-150
-    //       | token2-slot3-50
+    //       | token1-slot1-180
+    //       | token2-slot3-40
     await DimensionX['transferFrom(uint256,address,uint256)'](1, other.address, 180);
     await DimensionX['transferFrom(uint256,address,uint256)'](2, other.address, 40);
 
@@ -89,7 +90,60 @@ describe('3 stage to claim reward with complex transferred', () => {
     const aBal2 = await other.getBalance();
     const getReward2 = aBal2.sub(bBal2).add(gasUsed2);
 
-    expect(calBNPercent(sendValue2,0.3*0.945)).equal(getReward2)
+    expect(calBNPercent(sendValue2, 0.3 * 0.945)).equal(getReward2);
     expect(calBNPercent(sendValue2, 0.945)).to.equal(getReward2.add(getReward));
+  });
+
+  it('4 stage: vault receive eth', async () => {
+    await Signers[4].sendTransaction({
+      to: DimensionX.address,
+      value: sendValue3,
+    });
+  });
+
+  it('5 stage: more tx an withdrew', async () => {
+    // user1 | share 600
+    //       | token1-slot-550
+    //       | token2-slot-50
+    // user2 | share 400
+    //       | token1-slot1-150
+    //       | token2-slot3-50
+    await DimensionX['transferFrom(uint256,address,uint256)'](1, other.address, 100);
+    // user1
+    const bBal1 = await deployer.getBalance();
+    const gasUsed1 = await calGasUsed(DimensionX.userWithdrew);
+    const aBal1 = await deployer.getBalance();
+    const getReward = aBal1.sub(bBal1).add(gasUsed1);
+    expect(calBNPercent(sendValue3, 0.6 * 0.945)).to.equal(getReward);
+  });
+
+  it('6 stage: vault receive eth', async () => {
+    await Signers[4].sendTransaction({
+      to: DimensionX.address,
+      value: sendValue3,
+    });
+  });
+
+  it('', async () => {
+    // user1 | share 600
+    //       | token1-slot-550
+    //       | token2-slot-50
+    // user2 | share 400
+    //       | token1-slot1-150
+    //       | token2-slot3-50
+
+    // user1
+    const bBal1 = await deployer.getBalance();
+    const gasUsed1 = await calGasUsed(DimensionX.userWithdrew);
+    const aBal1 = await deployer.getBalance();
+    const getReward = aBal1.sub(bBal1).add(gasUsed1);
+    expect(calBNPercent(sendValue3, 0.6 * 0.945)).to.equal(getReward);
+
+    // user2
+    const bBal2 = await other.getBalance();
+    const gasUsed2 = await calGasUsed(DimensionX.connect(other).userWithdrew);
+    const aBal2 = await other.getBalance();
+    const getReward2 = aBal2.sub(bBal2).add(gasUsed2);
+    expect(calBNPercent(sendValue3.mul(2), 0.4 * 0.945)).equal(getReward2);
   });
 });
