@@ -492,10 +492,10 @@ contract ERC3525Upgradeable is Initializable, ContextUpgradeable, IERC3525Metada
             value_
         );
 
-        require(
-            _checkOnERC3525Received(fromTokenId_, toTokenId_, value_, ""),
-            "ERC3525: transfer to non ERC3525Receiver"
-        );
+        // require(
+        //     _checkOnERC3525Received(fromTokenId_, toTokenId_, value_, ""),
+        //     "ERC3525: transfer to non ERC3525Receiver"
+        // );
     }
 
     function _transferTokenId(address from_, address to_, uint256 tokenId_) internal virtual {

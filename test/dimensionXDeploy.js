@@ -1,5 +1,6 @@
 const DimensionXDeploy = require("./deploy/dimensionX");
 const PlatformDeploy = require("./deploy/platform");
+
 describe("dimensionX deploy test", function () {
 
   it("deploy dimensionX by init func", async () => {
