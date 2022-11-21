@@ -66,6 +66,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
 
     function _updateReward(uint fromTokenId_, uint toTokenId_, uint ftBurnBal) internal {
         uint ftReward = _getTokenHasReward(fromTokenId_);
+        if (ftReward == 0) return;
         uint ttReward;
 
         uint curFtBal = _exists(fromTokenId_) ? this.balanceOf(fromTokenId_) : 0;
