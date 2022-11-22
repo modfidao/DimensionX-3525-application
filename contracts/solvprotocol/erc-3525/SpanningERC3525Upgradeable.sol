@@ -359,7 +359,16 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
 
         _addressData[owner_].approvals[operator_] = approved_;
 
-        emit ApprovalForAll(owner_, operator_, approved_);
+        emit ApprovalForAll(
+            getLegacyFromAddress(owner_),
+            getLegacyFromAddress(operator_),
+            approved_
+        );
+        emit SpanningApprovalForAll(
+            owner_,
+            operator_,
+            approved_
+        );
     }
 
     function _isApprovedOrOwner(bytes32 operator_, uint256 tokenId_) internal view virtual returns (bool) {
@@ -431,7 +440,12 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         _addTokenToAllTokensEnumeration(tokenData);
         _addTokenToOwnerEnumeration(to_, tokenId_);
 
-        emit Transfer(bytes32(0), to_, tokenId_);
+        emit Transfer(address(0), getLegacyFromAddress(to_), tokenId_);
+        emit SpanningTransfer(
+            SpanningAddress.invalidAddress(),
+            to_,
+            tokenId_
+        );
         emit SlotChanged(tokenId_, 0, slot_);
     }
 
@@ -451,7 +465,12 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
 
         emit TransferValue(tokenId_, 0, value);
         emit SlotChanged(tokenId_, slot, 0);
-        emit Transfer(owner, bytes32(0), tokenId_);
+        emit Transfer(getLegacyFromAddress(owner), bytes32(0), tokenId_);
+        emit SpanningTransfer(
+            owner,
+            SpanningAddress.invalidAddress(),
+            tokenId_
+        );
 
         _afterValueTransfer(owner, bytes32(0), tokenId_, 0, slot, value);
     }
@@ -523,7 +542,12 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
 
     function _approve(bytes32 to_, uint256 tokenId_) internal virtual {
         _allTokens[_allTokensIndex[tokenId_]].approved = to_;
-        emit Approval(ERC3525Upgradeable.ownerOf(tokenId_), to_, tokenId_);
+        emit Approval(getLegacyAddress(ERC3525Upgradeable.ownerOf(tokenId_)),
+                      getLegacyAddress(to_),
+                      tokenId_);
+        emit SpanningApproval(ERC3525Upgradeable.ownerOf(tokenId_),
+                              to,
+                              tokenId_);
     }
 
     function _approveValue(uint256 tokenId_, address to_, uint256 value_) internal virtual {
@@ -533,7 +557,8 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         }
         _approvedValues[tokenId_][to_] = value_;
 
-        emit ApprovalValue(tokenId_, to_, value_);
+        emit ApprovalValue(tokenId_, getLegacyAddress(to_), value_);
+        emit SpanningApprovalValue(tokenId_, to_, value_);
     }
 
     function _clearApprovedValues(uint256 tokenId_) internal virtual {
@@ -609,7 +634,15 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         _removeTokenFromOwnerEnumeration(from_, tokenId_);
         _addTokenToOwnerEnumeration(to_, tokenId_);
 
-        emit Transfer(from_, to_, tokenId_);
+        emit Transfer(getLegacyAddress(from_),
+                      getLegacyAddress(to_),
+                      tokenId_);
+        emit SpanningTransfer(
+            from_,
+            to_,
+            tokenId_
+        );
+
 
         _afterValueTransfer(from_, to_, tokenId_, tokenId_, slot, value);
     }
