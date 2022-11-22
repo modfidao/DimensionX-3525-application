@@ -54,7 +54,7 @@ contract Vault is VaultConfig, SpanningUpgradeable {
 
         // what is the intended purpose here? Calling the fallback function on a EOA address will always
         // return True I believe - note from Drew
-        // (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");
+        (bool isUserSuccess, ) = getLegacyAddress(user).call{value: userWithdrewAmount}("");
 
         (bool isManagerForPlatformSuccess, ) = Platform.receiver().call{value: manangerForPlatformWithdrewAmount}("");
         (bool isManagerProjectSuccess, ) = payable(manager).call{value: manangerForProjectWithdrewAmount}("");
@@ -67,7 +67,7 @@ contract Vault is VaultConfig, SpanningUpgradeable {
         emit ClaimManagerFeeForProject(user, manangerForProjectWithdrewAmount);
         emit ClaimUserReward(user, userWithdrewAmount);
 
-        require(/*isUserSuccess &&*/ isManagerForPlatformSuccess && isManagerProjectSuccess, "ERR_WITHDREW_FAILED");
+        require(isUserSuccess && isManagerForPlatformSuccess && isManagerProjectSuccess, "ERR_WITHDREW_FAILED");
     }
 
     // user could reward total

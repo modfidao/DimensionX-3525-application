@@ -2,6 +2,7 @@
   "name": "hardhat-project",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@spanning/contracts": "^0.0.6",
     "hardhat": "^2.12.2",
     "hardhat-contract-sizer": "^2.6.1",
     "hardhat-gas-reporter": "^1.0.9"
@@ -11,9 +12,9 @@
     "compile": "hardhat compile --network local",
     "deploy": "hardhat run scripts/deploy.js",
     "format": "prettier --write 'contracts/**/*.sol'",
-    "cov":"hardhat coverage",
-    "clean":"hardhat clean",
-    "local":"hardhat node"
+    "cov": "hardhat coverage",
+    "clean": "hardhat clean",
+    "local": "hardhat node"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",
