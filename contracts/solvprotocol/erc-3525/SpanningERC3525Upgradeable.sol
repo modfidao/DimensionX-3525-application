@@ -39,7 +39,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
     struct AddressData {
         uint256[] ownedTokens;
         mapping(uint256 => uint256) ownedTokensIndex;
-        mapping(address => bool) approvals;
+        mapping(bytes32 => bool) approvals;
     }
 
     // pool config basic
@@ -364,7 +364,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
 
     function _isApprovedOrOwner(bytes32 operator_, uint256 tokenId_) internal view virtual returns (bool) {
         _requireMinted(tokenId_);
-        address owner = SpanningERC3525Upgradeable.ownerOfSpanning(tokenId_);
+        bytes32 owner = SpanningERC3525Upgradeable.ownerOfSpanning(tokenId_);
         return (operator_ == owner ||
             SpanningERC3525Upgradeable.isApprovedForAll(owner, operator_) ||
             SpanningERC3525Upgradeable.getApproved(tokenId_) == operator_);
