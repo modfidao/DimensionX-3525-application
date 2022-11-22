@@ -56,24 +56,28 @@ contract DimensionX is SpanningERC3525SlotEnumerableUpgradeable, Vault, InitLock
         _mint(spanningMsgSender(), newTokenId, slot_, getToTokenAmount);
         _tokenIds.increment();
 
-        _updateReward(fromTokenId_, burnFromTokenAmount, newTokenId);
         burnTokenBalance == burnFromTokenAmount
             ? _burn(fromTokenId_)
             : _burnSlotValue(fromTokenId_, burnFromTokenAmount);
 
+        _updateReward(fromTokenId_, newTokenId, burnFromTokenAmount);
+
         return newTokenId;
     }
 
-    function _updateReward(uint fromTokenId_, uint fromTokenAmount, uint toTokenId_) internal {
-        uint fromTokenReward = _getTokenHasReward(fromTokenId_);
-        uint fromTokenBalance = this.balanceOf(fromTokenId_);
+    function _updateReward(uint fromTokenId_, uint toTokenId_, uint ftBurnBal) internal {
+        uint ftReward = _getTokenHasReward(fromTokenId_);
+        if (ftReward == 0) return;
+        uint ttReward;
 
-        if (fromTokenAmount != fromTokenBalance) {
-            fromTokenReward = (fromTokenReward * fromTokenAmount) / fromTokenBalance;
-        }
+        uint curFtBal = _exists(fromTokenId_) ? this.balanceOf(fromTokenId_) : 0;
+        uint total = ftBurnBal + curFtBal;
 
-        _setTokenReward(fromTokenId_, fromTokenReward);
-        _setTokenReward(toTokenId_, fromTokenReward);
+        ttReward = (ftReward * ftBurnBal) / total;
+        ftReward = (ftReward * curFtBal) / total;
+
+        _setTokenReward(fromTokenId_, ftReward);
+        _setTokenReward(toTokenId_, ttReward);
     }
 
     function _getRewardTokensAndShare(bytes32 user_) internal virtual override returns (uint[] memory, uint[] memory) {
@@ -90,7 +94,7 @@ contract DimensionX is SpanningERC3525SlotEnumerableUpgradeable, Vault, InitLock
             uint tokenSlot = this.slotOf(tokenId);
             uint balance = this.balanceOf(tokenId);
             uint share = tokenSlot * balance;
-            
+
             shares[i] = share;
         }
 
@@ -100,6 +104,18 @@ contract DimensionX is SpanningERC3525SlotEnumerableUpgradeable, Vault, InitLock
     function _burnSlotValue(uint256 tokenId_, uint256 burnValue_) internal {
         require(_isApprovedOrOwner(spanningMsgSender(), tokenId_), "ERC3525: caller is not token owner nor approved");
         ERC3525Upgradeable._burnValue(tokenId_, burnValue_);
+    }
+
+    function _afterValueTransfer(
+        address,
+        address,
+        uint256 fromTokenId_,
+        uint256 toTokenId_,
+        uint256,
+        uint256 value_
+    ) internal virtual override {
+        if (fromTokenId_ == 0) return;
+        _updateReward(fromTokenId_, toTokenId_, value_);
     }
 
     uint256[50] private __gap;

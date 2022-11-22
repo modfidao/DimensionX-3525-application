@@ -478,7 +478,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         tokenData.balance -= burnValue_;
         emit TransferValue(tokenId_, 0, burnValue_);
 
-        _afterValueTransfer(owner, bytes32(0), tokenId_, 0, slot, burnValue_);
+        // _afterValueTransfer(owner, bytes32(0), tokenId_, 0, slot, burnValue_);
     }
 
     function _addTokenToOwnerEnumeration(bytes32 to_, uint256 tokenId_) private {
@@ -595,10 +595,10 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
             value_
         );
 
-        require(
-            _checkOnERC3525Received(fromTokenId_, toTokenId_, value_, ""),
-            "ERC3525: transfer to non ERC3525Receiver"
-        );
+        // require(
+        //     _checkOnERC3525Received(fromTokenId_, toTokenId_, value_, ""),
+        //     "ERC3525: transfer to non ERC3525Receiver"
+        // );
     }
 
     function _transferTokenId(bytes32 from_, bytes32 to_, uint256 tokenId_) internal virtual {

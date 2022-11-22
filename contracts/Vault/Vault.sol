@@ -50,7 +50,6 @@ contract Vault is VaultConfig, SpanningUpgradeable {
         uint manangerForPlatformWithdrewAmount = (Platform.manageFee() * withdrewAmount) / ratioBase;
         uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / ratioBase;
         uint userWithdrewAmount = withdrewAmount - manangerForPlatformWithdrewAmount - manangerForProjectWithdrewAmount;
-        console.log("looklook",userWithdrewAmount);
         require(userWithdrewAmount > 0, "ERR_NOT_REWARD");
 
         // what is the intended purpose here? Calling the fallback function on a EOA address will always
@@ -59,8 +58,7 @@ contract Vault is VaultConfig, SpanningUpgradeable {
 
         (bool isManagerForPlatformSuccess, ) = Platform.receiver().call{value: manangerForPlatformWithdrewAmount}("");
         (bool isManagerProjectSuccess, ) = payable(manager).call{value: manangerForProjectWithdrewAmount}("");
-        console.log("magic",withdrewAmount);
-        console.log("magic",userWithdrewAmount);
+
         userPools[user].hasWithdrew += withdrewAmount;
         userPools[user].hasRecived += userWithdrewAmount;
         userPools[user].hasWithdrewTimes++;
@@ -125,8 +123,6 @@ contract Vault is VaultConfig, SpanningUpgradeable {
     function _contractBalance() internal view returns (uint) {
         return contractBalance;
     }
-
-    fallback() external payable {}
 
     // revive native token
     receive() external payable {
