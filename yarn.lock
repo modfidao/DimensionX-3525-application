@@ -659,12 +659,12 @@
     table "^6.8.0"
     undici "^5.4.0"
 
-"@openzeppelin/contracts-upgradeable@^4.7.3":
+"@openzeppelin/contracts-upgradeable@^4.7.1", "@openzeppelin/contracts-upgradeable@^4.7.3":
   version "4.8.0"
   resolved "https://registry.npmjs.org/@openzeppelin/contracts-upgradeable/-/contracts-upgradeable-4.8.0.tgz"
   integrity sha512-5GeFgqMiDlqGT8EdORadp1ntGF0qzWZLmEY7Wbp/yVhN7/B3NNzCxujuI77ktlyG81N3CUZP8cZe3ZAQ/cW10w==
 
-"@openzeppelin/contracts@^4.7.3":
+"@openzeppelin/contracts@^4.7.1", "@openzeppelin/contracts@^4.7.3":
   version "4.8.0"
   resolved "https://registry.npmjs.org/@openzeppelin/contracts/-/contracts-4.8.0.tgz"
   integrity sha512-AGuwhRRL+NaKx73WKRNzeCxOCOCxpaqF+kp8TJ89QzAipSwZy/NoflkWaL9bywXFRhIzXt8j38sfF7KBKCPWLw==
@@ -773,6 +773,14 @@
   dependencies:
     "@openzeppelin/contracts" "^4.7.3"
     "@openzeppelin/contracts-upgradeable" "^4.7.3"
+
+"@spanning/contracts@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@spanning/contracts/-/contracts-0.0.6.tgz#a53253584d4b5233dd8ae21b11c492e5850b4e87"
+  integrity sha512-T5IQ0ce53e+tQLoTGiytElKYPRfzQtQxg9FPUA0xrW2/0dME0XLcEdaiwtz2deGNXSvyMHn42QqH0mqq/otmWQ==
+  dependencies:
+    "@openzeppelin/contracts" "^4.7.1"
+    "@openzeppelin/contracts-upgradeable" "^4.7.1"
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
