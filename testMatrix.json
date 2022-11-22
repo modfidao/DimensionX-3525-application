@@ -1,0 +1,3870 @@
+{
+ "contracts/Factory.sol": {
+  "17": [
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   }
+  ],
+  "18": [
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   }
+  ],
+  "19": [
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   }
+  ],
+  "20": [
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   }
+  ],
+  "21": [
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   }
+  ]
+ },
+ "contracts/Main.sol": {
+  "27": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "init data is match",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   },
+   {
+    "title": "DimensionX only init once after deployed",
+    "file": "test/initlock.js"
+   },
+   {
+    "title": "manager from set args",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can changed Manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can not change to new manager who not manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "changed and got manager fee",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "could change manage fee who manager are",
+    "file": "test/vaultConfig.js"
+   }
+  ],
+  "28": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "init data is match",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   },
+   {
+    "title": "DimensionX only init once after deployed",
+    "file": "test/initlock.js"
+   },
+   {
+    "title": "manager from set args",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can changed Manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can not change to new manager who not manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "changed and got manager fee",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "could change manage fee who manager are",
+    "file": "test/vaultConfig.js"
+   }
+  ],
+  "29": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "init data is match",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   },
+   {
+    "title": "DimensionX only init once after deployed",
+    "file": "test/initlock.js"
+   },
+   {
+    "title": "manager from set args",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can changed Manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can not change to new manager who not manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "changed and got manager fee",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "could change manage fee who manager are",
+    "file": "test/vaultConfig.js"
+   }
+  ],
+  "30": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "init data is match",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   },
+   {
+    "title": "DimensionX only init once after deployed",
+    "file": "test/initlock.js"
+   },
+   {
+    "title": "manager from set args",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can changed Manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can not change to new manager who not manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "changed and got manager fee",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "could change manage fee who manager are",
+    "file": "test/vaultConfig.js"
+   }
+  ],
+  "31": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "init data is match",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   },
+   {
+    "title": "DimensionX only init once after deployed",
+    "file": "test/initlock.js"
+   },
+   {
+    "title": "manager from set args",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can changed Manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can not change to new manager who not manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "changed and got manager fee",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "could change manage fee who manager are",
+    "file": "test/vaultConfig.js"
+   }
+  ],
+  "35": [
+   {
+    "title": "add some slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "slot can not be zero",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "36": [
+   {
+    "title": "add some slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "37": [
+   {
+    "title": "add some slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "41": [
+   {
+    "title": "manager can remove slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "can not remove not exit token",
+    "file": "test/dimensionXBasic.js"
+   }
+  ],
+  "42": [
+   {
+    "title": "manager can remove slot",
+    "file": "test/dimensionXBasic.js"
+   }
+  ],
+  "46": [
+   {
+    "title": "token could not compose that not add to white token",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "can not compose when not white slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "48": [
+   {
+    "title": "token could not compose that not add to white token",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "can not compose when not white slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "50": [
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "51": [
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "52": [
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "54": [
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "55": [
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "56": [
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "58": [
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "62": [
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "64": [
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "68": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "69": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "70": [
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "72": [
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "73": [
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "75": [
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "76": [
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "78": [
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "79": [
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "83": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "no share can not withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "85": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "no share can not withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "86": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "no share can not withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "88": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "no share can not withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "90": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "91": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "93": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "94": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "95": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "97": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "100": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "104": [
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "105": [
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "116": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "init data is match",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   },
+   {
+    "title": "DimensionX only init once after deployed",
+    "file": "test/initlock.js"
+   },
+   {
+    "title": "manager from set args",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can changed Manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can not change to new manager who not manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "changed and got manager fee",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "could change manage fee who manager are",
+    "file": "test/vaultConfig.js"
+   }
+  ],
+  "117": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ]
+ },
+ "contracts/Platform/Platform.sol": {
+  "12": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "init data is match",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   },
+   {
+    "title": "deployer is the manager",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "can set manager fee",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only manager can change manage fee",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "manager receive native token",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "manager withdrew token",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "change owner",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "change receiver",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only owner can change to new owner",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only owner can change to new receiver",
+    "file": "test/platform.js"
+   }
+  ],
+  "13": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "init data is match",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   },
+   {
+    "title": "deployer is the manager",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "can set manager fee",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only manager can change manage fee",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "manager receive native token",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "manager withdrew token",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "change owner",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "change receiver",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only owner can change to new owner",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only owner can change to new receiver",
+    "file": "test/platform.js"
+   }
+  ],
+  "14": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "init data is match",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "new dimensionX",
+    "file": "test/factory.js"
+   },
+   {
+    "title": "deployer is the manager",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "can set manager fee",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only manager can change manage fee",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "manager receive native token",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "manager withdrew token",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "change owner",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "change receiver",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only owner can change to new owner",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only owner can change to new receiver",
+    "file": "test/platform.js"
+   }
+  ],
+  "18": [
+   {
+    "title": "change owner",
+    "file": "test/platform.js"
+   }
+  ],
+  "19": [
+   {
+    "title": "change owner",
+    "file": "test/platform.js"
+   }
+  ],
+  "23": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "change receiver",
+    "file": "test/platform.js"
+   }
+  ],
+  "24": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "change receiver",
+    "file": "test/platform.js"
+   }
+  ],
+  "28": [
+   {
+    "title": "can set manager fee",
+    "file": "test/platform.js"
+   }
+  ],
+  "29": [
+   {
+    "title": "can set manager fee",
+    "file": "test/platform.js"
+   }
+  ],
+  "34": [
+   {
+    "title": "manager withdrew token",
+    "file": "test/platform.js"
+   }
+  ],
+  "35": [
+   {
+    "title": "manager withdrew token",
+    "file": "test/platform.js"
+   }
+  ],
+  "36": [
+   {
+    "title": "manager withdrew token",
+    "file": "test/platform.js"
+   }
+  ],
+  "40": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "can set manager fee",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only manager can change manage fee",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "manager withdrew token",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "change owner",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "change receiver",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only owner can change to new owner",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "only owner can change to new receiver",
+    "file": "test/platform.js"
+   }
+  ],
+  "41": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "can set manager fee",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "manager withdrew token",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "change owner",
+    "file": "test/platform.js"
+   },
+   {
+    "title": "change receiver",
+    "file": "test/platform.js"
+   }
+  ]
+ },
+ "contracts/utils/InitLock.sol": {
+  "10": [],
+  "11": [],
+  "12": [],
+  "13": []
+ },
+ "contracts/Vault/Vault.sol": {
+  "34": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "35": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "36": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "37": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "45": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "46": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "47": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "48": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "49": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "50": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "52": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "53": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "54": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "56": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "no share can not withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "57": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "no share can not withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "58": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "no share can not withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "60": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "no share can not withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "61": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "no share can not withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "62": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "64": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "69": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "73": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "75": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "77": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "78": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "79": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "80": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "82": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "83": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "86": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "compose token, 100/1 => 50/2",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "compose token, 50/2 => 10/10",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "90": [
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "8 stage: all transfer to user2",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "91": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "93": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "transfer token to vault",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "2 stage: vault receive eth",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "4 stage: vault receive eth",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "6 stage: vault receive eth",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "102": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "no share can not withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "106": [
+   {
+    "title": "attack dimensionX",
+    "file": "test/dimensionXAttack.js"
+   },
+   {
+    "title": "user withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "no share can not withdrew",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "deploy dimensionX by init func",
+    "file": "test/dimensionXDeploy.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "3 stage: transfer token and reward",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "5 stage: more tx an withdrew",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "7 stage: user withdrew",
+    "file": "test/dimensionXStages.js"
+   }
+  ],
+  "110": [],
+  "115": [],
+  "120": [],
+  "124": [],
+  "125": [],
+  "126": [],
+  "127": []
+ },
+ "contracts/Vault/VaultConfig.sol": {
+  "16": [],
+  "17": [
+   {
+    "title": "changed and got manager fee",
+    "file": "test/vaultConfig.js"
+   }
+  ],
+  "21": [
+   {
+    "title": "add some slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "only manager can add token slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "slot can not be zero",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "only manager can remove slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "manager can remove slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "can not remove not exit token",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "can changed Manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can not change to new manager who not manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "changed and got manager fee",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "could change manage fee who manager are",
+    "file": "test/vaultConfig.js"
+   }
+  ],
+  "22": [
+   {
+    "title": "add some slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "only manager can add token slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "slot can not be zero",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "only manager can remove slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "manager can remove slot",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "can not remove not exit token",
+    "file": "test/dimensionXBasic.js"
+   },
+   {
+    "title": "[FULL] compose token 1000/1 => 333/3",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[FULL] split token 100/5 => 250/2 => ",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] compose token 10/3 => 3/10",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[NOT FULL] split token 10/5 => 25/2",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "vault value match",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=100%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "[share=75.5%] reward once",
+    "file": "test/dimensionXReward.js"
+   },
+   {
+    "title": "1 stage: clime reward ",
+    "file": "test/dimensionXStages.js"
+   },
+   {
+    "title": "can changed Manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "can not change to new manager who not manager",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "changed and got manager fee",
+    "file": "test/vaultConfig.js"
+   },
+   {
+    "title": "could change manage fee who manager are",
+    "file": "test/vaultConfig.js"
+   }
+  ],
+  "26": [],
+  "30": [],
+  "34": [],
+  "35": []
+ }
+}

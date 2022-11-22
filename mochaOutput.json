@@ -1,0 +1,714 @@
+{
+ "stats": {
+  "suites": 11,
+  "tests": 50,
+  "passes": 50,
+  "pending": 0,
+  "failures": 0
+ },
+ "tests": [
+  {
+   "title": "attack dimensionX",
+   "fullTitle": "dimensionX safe test attack dimensionX",
+   "file": "test/dimensionXAttack.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "init data is match",
+   "fullTitle": "dimensionX basic config init data is match",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "init must mint once, and token id is 1",
+   "fullTitle": "dimensionX basic config init must mint once, and token id is 1",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "add some slot",
+   "fullTitle": "dimensionX basic config add some slot",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "only manager can add token slot",
+   "fullTitle": "dimensionX basic config only manager can add token slot",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "slot can not be zero",
+   "fullTitle": "dimensionX basic config slot can not be zero",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "token could not compose that not add to white token",
+   "fullTitle": "dimensionX basic config token could not compose that not add to white token",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "compose token, 100/1 => 50/2",
+   "fullTitle": "dimensionX basic config compose token, 100/1 => 50/2",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "compose token, 50/2 => 10/10",
+   "fullTitle": "dimensionX basic config compose token, 50/2 => 10/10",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "only manager can remove slot",
+   "fullTitle": "dimensionX basic config only manager can remove slot",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "manager can remove slot",
+   "fullTitle": "dimensionX basic config manager can remove slot",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "can not compose when not white slot",
+   "fullTitle": "dimensionX basic config can not compose when not white slot",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "can not remove not exit token",
+   "fullTitle": "dimensionX basic config can not remove not exit token",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "transfer token to vault",
+   "fullTitle": "dimensionX basic config transfer token to vault",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "user withdrew",
+   "fullTitle": "dimensionX basic config user withdrew",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "no share can not withdrew",
+   "fullTitle": "dimensionX basic config no share can not withdrew",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "deploy dimensionX by init func",
+   "fullTitle": "dimensionX deploy test deploy dimensionX by init func",
+   "file": "test/dimensionXDeploy.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[FULL] compose token 1000/1 => 333/3",
+   "fullTitle": "dimensionX reward test token compose and split [FULL] compose token 1000/1 => 333/3",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[FULL] split token 100/5 => 250/2 => ",
+   "fullTitle": "dimensionX reward test token compose and split [FULL] split token 100/5 => 250/2 => ",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[NOT FULL] compose token 10/3 => 3/10",
+   "fullTitle": "dimensionX reward test token compose and split [NOT FULL] compose token 10/3 => 3/10",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[NOT FULL] split token 10/5 => 25/2",
+   "fullTitle": "dimensionX reward test token compose and split [NOT FULL] split token 10/5 => 25/2",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "vault value match",
+   "fullTitle": "dimensionX reward test 1～2 wallet to claim reward vault value match",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[share=100%] reward once",
+   "fullTitle": "dimensionX reward test 1～2 wallet to claim reward [share=100%] reward once",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[share=75%] reward once",
+   "fullTitle": "dimensionX reward test 1～2 wallet to claim reward [share=75%] reward once",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[share=75.5%] reward once",
+   "fullTitle": "dimensionX reward test 1～2 wallet to claim reward [share=75.5%] reward once",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "1 stage: clime reward ",
+   "fullTitle": "3 stage to claim reward with complex transferred 1 stage: clime reward ",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "2 stage: vault receive eth",
+   "fullTitle": "3 stage to claim reward with complex transferred 2 stage: vault receive eth",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "3 stage: transfer token and reward",
+   "fullTitle": "3 stage to claim reward with complex transferred 3 stage: transfer token and reward",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "4 stage: vault receive eth",
+   "fullTitle": "3 stage to claim reward with complex transferred 4 stage: vault receive eth",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "5 stage: more tx an withdrew",
+   "fullTitle": "3 stage to claim reward with complex transferred 5 stage: more tx an withdrew",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "6 stage: vault receive eth",
+   "fullTitle": "3 stage to claim reward with complex transferred 6 stage: vault receive eth",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "7 stage: user withdrew",
+   "fullTitle": "3 stage to claim reward with complex transferred 7 stage: user withdrew",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "8 stage: all transfer to user2",
+   "fullTitle": "3 stage to claim reward with complex transferred 8 stage: all transfer to user2",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "new dimensionX",
+   "fullTitle": "factory to create Dimension X new dimensionX",
+   "file": "test/factory.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "DimensionX only init once after deployed",
+   "fullTitle": "init lock tools DimensionX only init once after deployed",
+   "file": "test/initlock.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "deployer is the manager",
+   "fullTitle": "platform test case deployer is the manager",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "can set manager fee",
+   "fullTitle": "platform test case can set manager fee",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "only manager can change manage fee",
+   "fullTitle": "platform test case only manager can change manage fee",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "manager receive native token",
+   "fullTitle": "platform test case manager receive native token",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "manager withdrew token",
+   "fullTitle": "platform test case manager withdrew token",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "manager withdrew token",
+   "fullTitle": "platform test case manager withdrew token",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "change owner",
+   "fullTitle": "platform test case change owner",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "change receiver",
+   "fullTitle": "platform test case change receiver",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "only owner can change to new owner",
+   "fullTitle": "platform test case only owner can change to new owner",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "only owner can change to new receiver",
+   "fullTitle": "platform test case only owner can change to new receiver",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "manager from set args",
+   "fullTitle": "vault config test manager from set args",
+   "file": "test/vaultConfig.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "can changed Manager",
+   "fullTitle": "vault config test can changed Manager",
+   "file": "test/vaultConfig.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "can not change to new manager who not manager",
+   "fullTitle": "vault config test can not change to new manager who not manager",
+   "file": "test/vaultConfig.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "changed and got manager fee",
+   "fullTitle": "vault config test changed and got manager fee",
+   "file": "test/vaultConfig.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "could change manage fee who manager are",
+   "fullTitle": "vault config test could change manage fee who manager are",
+   "file": "test/vaultConfig.js",
+   "currentRetry": 0,
+   "err": {}
+  }
+ ],
+ "failures": [],
+ "passes": [
+  {
+   "title": "attack dimensionX",
+   "fullTitle": "dimensionX safe test attack dimensionX",
+   "file": "test/dimensionXAttack.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "init data is match",
+   "fullTitle": "dimensionX basic config init data is match",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "init must mint once, and token id is 1",
+   "fullTitle": "dimensionX basic config init must mint once, and token id is 1",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "add some slot",
+   "fullTitle": "dimensionX basic config add some slot",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "only manager can add token slot",
+   "fullTitle": "dimensionX basic config only manager can add token slot",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "slot can not be zero",
+   "fullTitle": "dimensionX basic config slot can not be zero",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "token could not compose that not add to white token",
+   "fullTitle": "dimensionX basic config token could not compose that not add to white token",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "compose token, 100/1 => 50/2",
+   "fullTitle": "dimensionX basic config compose token, 100/1 => 50/2",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "compose token, 50/2 => 10/10",
+   "fullTitle": "dimensionX basic config compose token, 50/2 => 10/10",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "only manager can remove slot",
+   "fullTitle": "dimensionX basic config only manager can remove slot",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "manager can remove slot",
+   "fullTitle": "dimensionX basic config manager can remove slot",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "can not compose when not white slot",
+   "fullTitle": "dimensionX basic config can not compose when not white slot",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "can not remove not exit token",
+   "fullTitle": "dimensionX basic config can not remove not exit token",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "transfer token to vault",
+   "fullTitle": "dimensionX basic config transfer token to vault",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "user withdrew",
+   "fullTitle": "dimensionX basic config user withdrew",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "no share can not withdrew",
+   "fullTitle": "dimensionX basic config no share can not withdrew",
+   "file": "test/dimensionXBasic.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "deploy dimensionX by init func",
+   "fullTitle": "dimensionX deploy test deploy dimensionX by init func",
+   "file": "test/dimensionXDeploy.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[FULL] compose token 1000/1 => 333/3",
+   "fullTitle": "dimensionX reward test token compose and split [FULL] compose token 1000/1 => 333/3",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[FULL] split token 100/5 => 250/2 => ",
+   "fullTitle": "dimensionX reward test token compose and split [FULL] split token 100/5 => 250/2 => ",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[NOT FULL] compose token 10/3 => 3/10",
+   "fullTitle": "dimensionX reward test token compose and split [NOT FULL] compose token 10/3 => 3/10",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[NOT FULL] split token 10/5 => 25/2",
+   "fullTitle": "dimensionX reward test token compose and split [NOT FULL] split token 10/5 => 25/2",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "vault value match",
+   "fullTitle": "dimensionX reward test 1～2 wallet to claim reward vault value match",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[share=100%] reward once",
+   "fullTitle": "dimensionX reward test 1～2 wallet to claim reward [share=100%] reward once",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[share=75%] reward once",
+   "fullTitle": "dimensionX reward test 1～2 wallet to claim reward [share=75%] reward once",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "[share=75.5%] reward once",
+   "fullTitle": "dimensionX reward test 1～2 wallet to claim reward [share=75.5%] reward once",
+   "file": "test/dimensionXReward.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "1 stage: clime reward ",
+   "fullTitle": "3 stage to claim reward with complex transferred 1 stage: clime reward ",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "2 stage: vault receive eth",
+   "fullTitle": "3 stage to claim reward with complex transferred 2 stage: vault receive eth",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "3 stage: transfer token and reward",
+   "fullTitle": "3 stage to claim reward with complex transferred 3 stage: transfer token and reward",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "4 stage: vault receive eth",
+   "fullTitle": "3 stage to claim reward with complex transferred 4 stage: vault receive eth",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "5 stage: more tx an withdrew",
+   "fullTitle": "3 stage to claim reward with complex transferred 5 stage: more tx an withdrew",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "6 stage: vault receive eth",
+   "fullTitle": "3 stage to claim reward with complex transferred 6 stage: vault receive eth",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "7 stage: user withdrew",
+   "fullTitle": "3 stage to claim reward with complex transferred 7 stage: user withdrew",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "8 stage: all transfer to user2",
+   "fullTitle": "3 stage to claim reward with complex transferred 8 stage: all transfer to user2",
+   "file": "test/dimensionXStages.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "new dimensionX",
+   "fullTitle": "factory to create Dimension X new dimensionX",
+   "file": "test/factory.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "DimensionX only init once after deployed",
+   "fullTitle": "init lock tools DimensionX only init once after deployed",
+   "file": "test/initlock.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "deployer is the manager",
+   "fullTitle": "platform test case deployer is the manager",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "can set manager fee",
+   "fullTitle": "platform test case can set manager fee",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "only manager can change manage fee",
+   "fullTitle": "platform test case only manager can change manage fee",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "manager receive native token",
+   "fullTitle": "platform test case manager receive native token",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "manager withdrew token",
+   "fullTitle": "platform test case manager withdrew token",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "manager withdrew token",
+   "fullTitle": "platform test case manager withdrew token",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "change owner",
+   "fullTitle": "platform test case change owner",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "change receiver",
+   "fullTitle": "platform test case change receiver",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "only owner can change to new owner",
+   "fullTitle": "platform test case only owner can change to new owner",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "only owner can change to new receiver",
+   "fullTitle": "platform test case only owner can change to new receiver",
+   "file": "test/platform.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "manager from set args",
+   "fullTitle": "vault config test manager from set args",
+   "file": "test/vaultConfig.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "can changed Manager",
+   "fullTitle": "vault config test can changed Manager",
+   "file": "test/vaultConfig.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "can not change to new manager who not manager",
+   "fullTitle": "vault config test can not change to new manager who not manager",
+   "file": "test/vaultConfig.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "changed and got manager fee",
+   "fullTitle": "vault config test changed and got manager fee",
+   "file": "test/vaultConfig.js",
+   "currentRetry": 0,
+   "err": {}
+  },
+  {
+   "title": "could change manage fee who manager are",
+   "fullTitle": "vault config test could change manage fee who manager are",
+   "file": "test/vaultConfig.js",
+   "currentRetry": 0,
+   "err": {}
+  }
+ ]
+}

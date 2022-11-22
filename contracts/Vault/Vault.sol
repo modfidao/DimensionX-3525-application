@@ -93,6 +93,7 @@ contract Vault is VaultConfig {
         return totalReward - hasReward;
     }
 
+    // @skip-on-coverage 
     function _getRewardTokensAndShare(
         address user_
     ) internal virtual returns (uint[] memory tokens_, uint[] memory share_) {}

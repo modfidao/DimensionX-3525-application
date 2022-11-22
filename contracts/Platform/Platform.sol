@@ -43,6 +43,4 @@ contract Platform is IPlatform {
 
     // if this contract is receiver
     receive() external payable {}
-
-    fallback() external payable {}
 }

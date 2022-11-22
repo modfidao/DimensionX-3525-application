@@ -68,8 +68,8 @@ describe('3 stage to claim reward with complex transferred', () => {
 
     // 【after】
     // user1 | share 700
-    //       | token1-slot-520
-    //       | token2-slot-60
+    //       | token1-slot1-520
+    //       | token2-slot3-60
     // user2 | share 300
     //       | token1-slot1-180
     //       | token2-slot3-40
@@ -103,11 +103,11 @@ describe('3 stage to claim reward with complex transferred', () => {
 
   it('5 stage: more tx an withdrew', async () => {
     // user1 | share 600
-    //       | token1-slot-550
-    //       | token2-slot-50
+    //       | token1-slot1-420
+    //       | token2-slot3-60
     // user2 | share 400
-    //       | token1-slot1-150
-    //       | token2-slot3-50
+    //       | token1-slot1-280
+    //       | token2-slot3-40
     await DimensionX['transferFrom(uint256,address,uint256)'](1, other.address, 100);
     // user1
     const bBal1 = await deployer.getBalance();
@@ -124,13 +124,13 @@ describe('3 stage to claim reward with complex transferred', () => {
     });
   });
 
-  it('', async () => {
+  it('7 stage: user withdrew', async () => {
     // user1 | share 600
-    //       | token1-slot-550
-    //       | token2-slot-50
+    //       | token1-slot1-420
+    //       | token2-slot3-60
     // user2 | share 400
-    //       | token1-slot1-150
-    //       | token2-slot3-50
+    //       | token1-slot1-280
+    //       | token2-slot3-40
 
     // user1
     const bBal1 = await deployer.getBalance();
@@ -146,4 +146,9 @@ describe('3 stage to claim reward with complex transferred', () => {
     const getReward2 = aBal2.sub(bBal2).add(gasUsed2);
     expect(calBNPercent(sendValue3.mul(2), 0.4 * 0.945)).equal(getReward2);
   });
+
+  it("8 stage: all transfer to user2",async()=>{
+    await DimensionX['transferFrom(uint256,address,uint256)'](1, other.address, 420);
+    await DimensionX['transferFrom(uint256,address,uint256)'](2, other.address, 60);
+  })
 });
