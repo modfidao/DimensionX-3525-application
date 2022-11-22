@@ -1,12 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
+import "@spanning/contracts/SpanningUtils.sol";
+import "@spanning/contracts/SpanningUpgradeable.sol";
 
 import "./VaultConfig.sol";
 import "../Platform/IPlatform.sol";
 
 import "hardhat/console.sol";
 
-contract Vault is VaultConfig {
+contract Vault is VaultConfig, SpanningUpgradeable {
     uint public contractBalance;
     uint public shareSupply;
     IPlatform public Platform;
@@ -25,31 +27,35 @@ contract Vault is VaultConfig {
     }
 
     // all user pool
-    mapping(address => UserPool) public userPools;
+    mapping(bytes32 => UserPool) public userPools;
 
     // token has reawad total info
     mapping(uint => uint) public tokenHasReward;
 
-    function _initVault(uint shareSupply_, address mananger_, address platform_) internal {
+    function _initVault(uint shareSupply_, address mananger_, address platform_, address delegate_) internal {
         shareSupply = shareSupply_;
         Platform = IPlatform(platform_);
         _setManager(mananger_);
         _setManageFee(25 * 10 ** 15); //default 2.5%
+        __Spanning_init_unchained(delegate_);
     }
 
-    event ClaimManagerFeeForPlatform(address indexed caller, uint amount);
-    event ClaimManagerFeeForProject(address indexed caller, uint amount);
-    event ClaimUserReward(address indexed caller, uint amount);
+    event ClaimManagerFeeForPlatform(bytes32 indexed caller, uint amount);
+    event ClaimManagerFeeForProject(bytes32 indexed caller, uint amount);
+    event ClaimUserReward(bytes32 indexed caller, uint amount);
 
     function userWithdrew() external lock {
-        address user = msg.sender;
+        bytes32 user = spanningMsgSender();
         uint withdrewAmount = this.userCouldRewardTotal(user);
         uint manangerForPlatformWithdrewAmount = (Platform.manageFee() * withdrewAmount) / ratioBase;
         uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / ratioBase;
         uint userWithdrewAmount = withdrewAmount - manangerForPlatformWithdrewAmount - manangerForProjectWithdrewAmount;
         require(userWithdrewAmount > 0, "ERR_NOT_REWARD");
 
-        (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");
+        // what is the intended purpose here? Calling the fallback function on a EOA address will always
+        // return True I believe - note from Drew
+        // (bool isUserSuccess, ) = user.call{value: userWithdrewAmount}("");
+
         (bool isManagerForPlatformSuccess, ) = Platform.receiver().call{value: manangerForPlatformWithdrewAmount}("");
         (bool isManagerProjectSuccess, ) = payable(manager).call{value: manangerForProjectWithdrewAmount}("");
 
@@ -61,15 +67,19 @@ contract Vault is VaultConfig {
         emit ClaimManagerFeeForProject(user, manangerForProjectWithdrewAmount);
         emit ClaimUserReward(user, userWithdrewAmount);
 
-        require(isUserSuccess && isManagerForPlatformSuccess && isManagerProjectSuccess, "ERR_WITHDREW_FAILED");
+        require(/*isUserSuccess &&*/ isManagerForPlatformSuccess && isManagerProjectSuccess, "ERR_WITHDREW_FAILED");
     }
 
     // user could reward total
-    function userCouldRewardTotal(address users_) external returns (uint) {
+    function userCouldRewardTotal(bytes32 users_) external returns (uint) {
         return _calTokensReward(users_);
     }
 
-    function _calTokensReward(address user_) internal returns (uint) {
+    function userCouldRewardTotal(address users_) external returns (uint) {
+        return _calTokensReward(getAddressFromLegacy(users_));
+    }
+
+    function _calTokensReward(bytes32 user_) internal returns (uint) {
         (uint[] memory tokens, uint[] memory shares) = _getRewardTokensAndShare(user_);
 
         uint rewardTotal;
@@ -94,7 +104,7 @@ contract Vault is VaultConfig {
     }
 
     function _getRewardTokensAndShare(
-        address user_
+        bytes32 user_
     ) internal virtual returns (uint[] memory tokens_, uint[] memory share_) {}
 
     function _setHasTokenReward(uint tokenId_, uint amount_) internal {

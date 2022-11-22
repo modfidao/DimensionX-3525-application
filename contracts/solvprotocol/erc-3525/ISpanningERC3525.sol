@@ -3,14 +3,14 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
-import "./IERC721.sol";
+import "@spanning/contracts/token/ERC721/ISpanningERC721.col";
 
 /**
  * @title ERC-3525 Semi-Fungible Token Standard
  * @dev See https://eips.ethereum.org/EIPS/eip-3525
  * Note: the ERC-165 identifier for this interface is 0xc97ae3d5.
  */
-interface IERC3525 is IERC165, IERC721 {
+interface ISpanningERC3525 is IERC165, ISpanningERC721 {
     /**
      * @dev MUST emit when value of a token is transferred to another token with the same slot,
      *  including zero value transfers (_value == 0) as well as transfers when tokens are created
@@ -110,4 +110,5 @@ interface IERC3525 is IERC165, IERC721 {
      * @return ID of the new token created for `_to` which receives the transferred value
      */
     function transferFrom(uint256 _fromTokenId, address _to, uint256 _value) external payable returns (uint256);
+    function transferFrom(uint256 _fromTokenId, bytes32 _to, uint256 _value) external payable returns (uint256);
 }
