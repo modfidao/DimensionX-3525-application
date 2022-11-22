@@ -214,7 +214,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         public
         virtual
         override
-        onlyOwnerOrApproved(tokenId_, value_)
+        onlyOwnerOrApproved(tokenId_)
     {
         bytes32 tokenOwner = SpanningERC721Upgradeable.ownerOfSpanning(tokenId_);
         require(
@@ -274,8 +274,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         transferFrom(getAddressFromLegacy(from_),getAddressFromLegacy(to_), tokenId_);
     }
 
-    function transferFrom(bytes32 from_, bytes32 to_, uint256 tokenId_) public payable virtual override {
-        require(_isApprovedOrOwner(spanningMsgSender(), tokenId_), "ERC3525: transfer caller is not owner nor approved");
+    function transferFrom(bytes32 from_, bytes32 to_, uint256 tokenId_) public payable virtual override onlyOwnerOrApproved(tokenId_) {
         _transferTokenId(from_, to_, tokenId_);
     }
 
@@ -293,8 +292,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         bytes32 to_,
         uint256 tokenId_,
         bytes memory data_
-    ) public payable virtual override {
-        require(_isApprovedOrOwner(spanningMsgSender(), tokenId_), "ERC3525: transfer caller is not owner nor approved");
+    ) public payable virtual override onlyOwnerOrApproved(tokenId_) {
         _safeTransferTokenId(from_, to_, tokenId_, data_);
     }
 
@@ -310,14 +308,9 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         approve(getAddressFromLegacy(to_), tokenId_);
     }
 
-    function approve(bytes32 to_, uint256 tokenId_) public payable virtual override {
+    function approve(bytes32 to_, uint256 tokenId_) public payable virtual override onlyOwnerOrApproved(tokenId_) {
         address owner = ERC3525Upgradeable.ownerOf(tokenId_);
         require(to_ != owner, "ERC3525: approval to current owner");
-
-        require(
-            spanningMsgSender() == owner || ERC3525Upgradeable.isApprovedForAll(owner, spanningMsgSender()),
-            "ERC3525: approve caller is not owner nor approved for all"
-        );
 
         _approve(to_, tokenId_);
     }
