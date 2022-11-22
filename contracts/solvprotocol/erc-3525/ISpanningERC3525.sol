@@ -28,6 +28,7 @@ interface ISpanningERC3525 is IERC165, ISpanningERC721 {
      * @param _value The maximum value that `_operator` is allowed to manage
      */
     event ApprovalValue(uint256 indexed _tokenId, address indexed _operator, uint256 _value);
+    event SpanningApprovalValue(uint256 indexed _tokenId, bytes32 indexed _operator, uint256 _value);
 
     /**
      * @dev MUST emit when the slot of a token is set or changed.

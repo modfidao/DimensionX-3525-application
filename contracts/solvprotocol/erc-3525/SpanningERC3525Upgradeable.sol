@@ -39,7 +39,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
     struct AddressData {
         uint256[] ownedTokens;
         mapping(uint256 => uint256) ownedTokensIndex;
-        mapping(address => bool) approvals;
+        mapping(bytes32 => bool) approvals;
     }
 
     // pool config basic
@@ -214,7 +214,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         public
         virtual
         override
-        onlyOwnerOrApproved(tokenId_, value_)
+        onlyOwnerOrApproved(tokenId_)
     {
         bytes32 tokenOwner = SpanningERC721Upgradeable.ownerOfSpanning(tokenId_);
         require(
@@ -274,8 +274,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         transferFrom(getAddressFromLegacy(from_),getAddressFromLegacy(to_), tokenId_);
     }
 
-    function transferFrom(bytes32 from_, bytes32 to_, uint256 tokenId_) public payable virtual override {
-        require(_isApprovedOrOwner(spanningMsgSender(), tokenId_), "ERC3525: transfer caller is not owner nor approved");
+    function transferFrom(bytes32 from_, bytes32 to_, uint256 tokenId_) public payable virtual override onlyOwnerOrApproved(tokenId_) {
         _transferTokenId(from_, to_, tokenId_);
     }
 
@@ -293,8 +292,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         bytes32 to_,
         uint256 tokenId_,
         bytes memory data_
-    ) public payable virtual override {
-        require(_isApprovedOrOwner(spanningMsgSender(), tokenId_), "ERC3525: transfer caller is not owner nor approved");
+    ) public payable virtual override onlyOwnerOrApproved(tokenId_) {
         _safeTransferTokenId(from_, to_, tokenId_, data_);
     }
 
@@ -310,14 +308,9 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         approve(getAddressFromLegacy(to_), tokenId_);
     }
 
-    function approve(bytes32 to_, uint256 tokenId_) public payable virtual override {
+    function approve(bytes32 to_, uint256 tokenId_) public payable virtual override onlyOwnerOrApproved(tokenId_) {
         address owner = ERC3525Upgradeable.ownerOf(tokenId_);
         require(to_ != owner, "ERC3525: approval to current owner");
-
-        require(
-            spanningMsgSender() == owner || ERC3525Upgradeable.isApprovedForAll(owner, spanningMsgSender()),
-            "ERC3525: approve caller is not owner nor approved for all"
-        );
 
         _approve(to_, tokenId_);
     }
@@ -366,12 +359,21 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
 
         _addressData[owner_].approvals[operator_] = approved_;
 
-        emit ApprovalForAll(owner_, operator_, approved_);
+        emit ApprovalForAll(
+            getLegacyFromAddress(owner_),
+            getLegacyFromAddress(operator_),
+            approved_
+        );
+        emit SpanningApprovalForAll(
+            owner_,
+            operator_,
+            approved_
+        );
     }
 
     function _isApprovedOrOwner(bytes32 operator_, uint256 tokenId_) internal view virtual returns (bool) {
         _requireMinted(tokenId_);
-        address owner = SpanningERC3525Upgradeable.ownerOfSpanning(tokenId_);
+        bytes32 owner = SpanningERC3525Upgradeable.ownerOfSpanning(tokenId_);
         return (operator_ == owner ||
             SpanningERC3525Upgradeable.isApprovedForAll(owner, operator_) ||
             SpanningERC3525Upgradeable.getApproved(tokenId_) == operator_);
@@ -438,7 +440,12 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         _addTokenToAllTokensEnumeration(tokenData);
         _addTokenToOwnerEnumeration(to_, tokenId_);
 
-        emit Transfer(bytes32(0), to_, tokenId_);
+        emit Transfer(address(0), getLegacyFromAddress(to_), tokenId_);
+        emit SpanningTransfer(
+            SpanningAddress.invalidAddress(),
+            to_,
+            tokenId_
+        );
         emit SlotChanged(tokenId_, 0, slot_);
     }
 
@@ -458,7 +465,12 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
 
         emit TransferValue(tokenId_, 0, value);
         emit SlotChanged(tokenId_, slot, 0);
-        emit Transfer(owner, bytes32(0), tokenId_);
+        emit Transfer(getLegacyFromAddress(owner), bytes32(0), tokenId_);
+        emit SpanningTransfer(
+            owner,
+            SpanningAddress.invalidAddress(),
+            tokenId_
+        );
 
         _afterValueTransfer(owner, bytes32(0), tokenId_, 0, slot, value);
     }
@@ -530,7 +542,12 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
 
     function _approve(bytes32 to_, uint256 tokenId_) internal virtual {
         _allTokens[_allTokensIndex[tokenId_]].approved = to_;
-        emit Approval(ERC3525Upgradeable.ownerOf(tokenId_), to_, tokenId_);
+        emit Approval(getLegacyAddress(ERC3525Upgradeable.ownerOf(tokenId_)),
+                      getLegacyAddress(to_),
+                      tokenId_);
+        emit SpanningApproval(ERC3525Upgradeable.ownerOf(tokenId_),
+                              to,
+                              tokenId_);
     }
 
     function _approveValue(uint256 tokenId_, address to_, uint256 value_) internal virtual {
@@ -540,7 +557,8 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         }
         _approvedValues[tokenId_][to_] = value_;
 
-        emit ApprovalValue(tokenId_, to_, value_);
+        emit ApprovalValue(tokenId_, getLegacyAddress(to_), value_);
+        emit SpanningApprovalValue(tokenId_, to_, value_);
     }
 
     function _clearApprovedValues(uint256 tokenId_) internal virtual {
@@ -616,7 +634,15 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         _removeTokenFromOwnerEnumeration(from_, tokenId_);
         _addTokenToOwnerEnumeration(to_, tokenId_);
 
-        emit Transfer(from_, to_, tokenId_);
+        emit Transfer(getLegacyAddress(from_),
+                      getLegacyAddress(to_),
+                      tokenId_);
+        emit SpanningTransfer(
+            from_,
+            to_,
+            tokenId_
+        );
+
 
         _afterValueTransfer(from_, to_, tokenId_, tokenId_, slot, value);
     }
