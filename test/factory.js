@@ -24,6 +24,7 @@ describe("factory to create Dimension X", function () {
     PlatformAddr = Platform.address;
 
     Signers = await ethers.getSigners();
+    await Factory.setPlatform(PlatformAddr);
   });
 
   it("new dimensionX", async () => {
@@ -32,8 +33,7 @@ describe("factory to create Dimension X", function () {
       "3525A",
       1,
       1000,
-      Signers[1].address,
-      PlatformAddr
+      Signers[1].address
     );
 
     await Factory.newDimensionX(
@@ -41,8 +41,7 @@ describe("factory to create Dimension X", function () {
       "3525A",
       1,
       1000,
-      Signers[1].address,
-      PlatformAddr
+      Signers[1].address
     );
 
     const bool = await Factory.isDimensionX(addr);
