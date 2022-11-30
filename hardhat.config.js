@@ -2,7 +2,8 @@ require("@nomicfoundation/hardhat-toolbox");
 require('@nomiclabs/hardhat-etherscan')
 require("hardhat-contract-sizer");
 require("hardhat-gas-reporter");
-require('solidity-coverage')
+require("solidity-coverage")
+require("dotenv/config")
 
 module.exports = {
   solidity: {
@@ -31,7 +32,7 @@ module.exports = {
     //   url: "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
     // },
     goerli: {
-      url: process.env.GOERLI || "",
+      url: process.env.GOERLI,
       saveDeployments: true,
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
