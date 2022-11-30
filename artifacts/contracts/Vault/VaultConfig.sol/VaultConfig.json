@@ -1,0 +1,120 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "VaultConfig",
+  "sourceName": "contracts/Vault/VaultConfig.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "older",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "renew",
+          "type": "uint256"
+        }
+      ],
+      "name": "ChangedManageFee",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "ClaimManagerFee",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        }
+      ],
+      "name": "TransferManager",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "manageFee_",
+          "type": "uint256"
+        }
+      ],
+      "name": "changeManageFee",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "manager_",
+          "type": "address"
+        }
+      ],
+      "name": "changeManager",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "manageFee",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "manager",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5061029b806100206000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c8063481c6a75146100515780634bbdf4da146100815780634c25b94a14610098578063a3fbbaae146100ad575b600080fd5b600054610064906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b61008a60015481565b604051908152602001610078565b6100ab6100a636600461021c565b6100c0565b005b6100ab6100bb366004610235565b61011d565b6000546001600160a01b031633146101115760405162461bcd60e51b815260206004820152600f60248201526e22a9292fa727aa2fa6a0a720a3a2a960891b60448201526064015b60405180910390fd5b61011a81610172565b50565b6000546001600160a01b031633146101695760405162461bcd60e51b815260206004820152600f60248201526e22a9292fa727aa2fa6a0a720a3a2a960891b6044820152606401610108565b61011a816101b3565b60015460408051918252602082018390527f084d7536bcea784fc97ae33946b3efaaaedc28d728e856ef970a820d14748bfe910160405180910390a1600155565b600054604080516001600160a01b03928316815291831660208301527f3eadceefe02aa6afb5514ad1b2ab3f21eb26dd571b170168413057c70615606b910160405180910390a1600080546001600160a01b0319166001600160a01b0392909216919091179055565b60006020828403121561022e57600080fd5b5035919050565b60006020828403121561024757600080fd5b81356001600160a01b038116811461025e57600080fd5b939250505056fea26469706673582212207f43a0512a512e52772e24432b2563d2bf69402514310e9502199cf98cebe00c64736f6c634300080f0033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c8063481c6a75146100515780634bbdf4da146100815780634c25b94a14610098578063a3fbbaae146100ad575b600080fd5b600054610064906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b61008a60015481565b604051908152602001610078565b6100ab6100a636600461021c565b6100c0565b005b6100ab6100bb366004610235565b61011d565b6000546001600160a01b031633146101115760405162461bcd60e51b815260206004820152600f60248201526e22a9292fa727aa2fa6a0a720a3a2a960891b60448201526064015b60405180910390fd5b61011a81610172565b50565b6000546001600160a01b031633146101695760405162461bcd60e51b815260206004820152600f60248201526e22a9292fa727aa2fa6a0a720a3a2a960891b6044820152606401610108565b61011a816101b3565b60015460408051918252602082018390527f084d7536bcea784fc97ae33946b3efaaaedc28d728e856ef970a820d14748bfe910160405180910390a1600155565b600054604080516001600160a01b03928316815291831660208301527f3eadceefe02aa6afb5514ad1b2ab3f21eb26dd571b170168413057c70615606b910160405180910390a1600080546001600160a01b0319166001600160a01b0392909216919091179055565b60006020828403121561022e57600080fd5b5035919050565b60006020828403121561024757600080fd5b81356001600160a01b038116811461025e57600080fd5b939250505056fea26469706673582212207f43a0512a512e52772e24432b2563d2bf69402514310e9502199cf98cebe00c64736f6c634300080f0033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
