@@ -10,6 +10,7 @@
     "test": "hardhat test",
     "compile": "hardhat compile --network local",
     "deploy": "hardhat run scripts/deploy.js",
+    "deploy:goerli":"hardhat run script/deploy.js --network goerli",
     "format": "prettier --write 'contracts/**/*.sol'",
     "cov":"hardhat coverage",
     "clean":"hardhat clean",
