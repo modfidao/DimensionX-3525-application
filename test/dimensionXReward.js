@@ -71,9 +71,11 @@ describe('dimensionX reward test', function () {
       const tokenId3 = await DimensionX.callStatic.composeOrSplitToken(1, 3, 1000);
       await DimensionX.composeOrSplitToken(1, 3, 1000);
 
+      console.log("神奇海螺🐚",tokenId3)
+
       // 10/3 => 3/10
-      const tokenId10 = await DimensionX.callStatic.composeOrSplitToken(2, 10, 10);
-      await DimensionX.composeOrSplitToken(2, 10, 10);
+      const tokenId10 = await DimensionX.callStatic.composeOrSplitToken(tokenId3, 10, 10);
+      await DimensionX.composeOrSplitToken(tokenId3, 10, 10);
 
       const balance3 = await DimensionX['balanceOf(uint256)'](tokenId3);
       const balance10 = await DimensionX['balanceOf(uint256)'](tokenId10);

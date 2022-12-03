@@ -14,7 +14,6 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
     mapping(uint => bool) public slotWhite;
 
     using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
 
     function init(
         string memory name_,
@@ -24,11 +23,9 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
         address manager_,
         address platform_
     ) external _initLock_ {
-        _tokenIds.increment();
         _initVault(shareSupply_, manager_, platform_);
         __ERC3525_init(name_, symbol_, decimals_);
-        _mint(manager_, _tokenIds.current(), shareSupply_);
-        _tokenIds.increment();
+       _mint(manager_, 1, shareSupply_); // init tokenId is 1
     }
 
     function addSlotWhite(uint slot_) external onlyManager returns (uint) {
@@ -51,9 +48,7 @@ contract DimensionX is ERC3525SlotEnumerableUpgradeable, Vault, InitLock {
         uint burnTokenBalance = this.balanceOf(fromTokenId_);
         uint getToTokenAmount = (fromSlot * amount_) / slot_;
 
-        uint newTokenId = _tokenIds.current();
-        _mint(msg.sender, newTokenId, slot_, getToTokenAmount);
-        _tokenIds.increment();
+        uint256 newTokenId = _mint(msg.sender, slot_, getToTokenAmount);
 
         burnTokenBalance == burnFromTokenAmount
             ? _burn(fromTokenId_)
