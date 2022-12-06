@@ -12,10 +12,11 @@ contract Factory {
         uint8 decimals_,
         uint shareSupply_,
         address manager_,
-        address platform_
+        address platform_,
+        address delegate_
     ) external returns (address) {
         DimensionX newInstance = new DimensionX();
-        newInstance.init(name_, symbol_, decimals_, shareSupply_, manager_, platform_);
+        newInstance.init(name_, symbol_, decimals_, shareSupply_, manager_, platform_, delegate_);
         address addr = address(newInstance);
         isDimensionX[addr] = true;
         return addr;
