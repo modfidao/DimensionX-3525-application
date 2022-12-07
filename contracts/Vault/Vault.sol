@@ -46,15 +46,22 @@ contract Vault is VaultConfig, SpanningUpgradeable {
 
     function userWithdrew() external lock {
         bytes32 user = spanningMsgSender();
+        bytes4 user_domain = SpanningAddress.getDomain(user);
+        require (user_domain == getDomain() || // local/BSC user
+                 user_domain == 0x00000001 || // ETH User
+                 user_domain == 0x00000089 || // MATIC user
+                 user_domain == 0x0000A86A || // AVAX user
+                 user_domain == 0x0000A4B1 || // ArETH user
+                 user_domain == 0x00000038, // BSC user - explicit
+                 "Can't withdraw native tokens to remote user from unknown network");
+
         uint withdrewAmount = this.userCouldRewardTotal(user);
         uint manangerForPlatformWithdrewAmount = (Platform.manageFee() * withdrewAmount) / ratioBase;
         uint manangerForProjectWithdrewAmount = (manageFee * withdrewAmount) / ratioBase;
         uint userWithdrewAmount = withdrewAmount - manangerForPlatformWithdrewAmount - manangerForProjectWithdrewAmount;
         require(userWithdrewAmount > 0, "ERR_NOT_REWARD");
 
-        // what is the intended purpose here? Calling the fallback function on a EOA address will always
-        // return True I believe - note from Drew
-        (bool isUserSuccess, ) = getLegacyAddress(user).call{value: userWithdrewAmount}("");
+        (bool isUserSuccess, ) = getLegacyFromAddress(user).call{value: userWithdrewAmount}("");
 
         (bool isManagerForPlatformSuccess, ) = Platform.receiver().call{value: manangerForPlatformWithdrewAmount}("");
         (bool isManagerProjectSuccess, ) = payable(manager).call{value: manangerForProjectWithdrewAmount}("");

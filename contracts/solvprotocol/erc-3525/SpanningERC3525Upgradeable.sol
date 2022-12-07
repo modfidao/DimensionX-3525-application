@@ -309,7 +309,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
     }
 
     function approve(bytes32 to_, uint256 tokenId_) public payable virtual override onlyOwnerOrApproved(tokenId_) {
-        address owner = ERC3525Upgradeable.ownerOf(tokenId_);
+        bytes32 owner = ERC3525Upgradeable.ownerOfSpanning(tokenId_);
         require(to_ != owner, "ERC3525: approval to current owner");
 
         _approve(to_, tokenId_);
@@ -415,7 +415,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
     function _mintValue(uint256 tokenId_, uint256 value_) internal virtual {
         _requireMinted(tokenId_);
 
-        address owner = ERC3525Upgradeable.ownerOf(tokenId_);
+        bytes32 owner = ERC3525Upgradeable.ownerOfSpanning(tokenId_);
         uint256 slot = ERC3525Upgradeable.slotOf(tokenId_);
         _beforeValueTransfer(bytes32(0), owner, 0, tokenId_, slot, value_);
         __mintValue(tokenId_, value_);
@@ -542,10 +542,10 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
 
     function _approve(bytes32 to_, uint256 tokenId_) internal virtual {
         _allTokens[_allTokensIndex[tokenId_]].approved = to_;
-        emit Approval(getLegacyAddress(ERC3525Upgradeable.ownerOf(tokenId_)),
+        emit Approval(getLegacyAddress(ERC3525Upgradeable.ownerOfSpanning(tokenId_)),
                       getLegacyAddress(to_),
                       tokenId_);
-        emit SpanningApproval(ERC3525Upgradeable.ownerOf(tokenId_),
+        emit SpanningApproval(ERC3525Upgradeable.ownerOfSpanning(tokenId_),
                               to,
                               tokenId_);
     }
@@ -620,7 +620,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
     }
 
     function _transferTokenId(bytes32 from_, bytes32 to_, uint256 tokenId_) internal virtual {
-        require(ERC3525Upgradeable.ownerOf(tokenId_) == from_, "ERC3525: transfer from invalid owner");
+        require(ERC3525Upgradeable.ownerOfSpanning(tokenId_) == from_, "ERC3525: transfer from invalid owner");
         require(to_ != bytes32(0), "ERC3525: transfer to the zero address");
 
         uint256 slot = ERC3525Upgradeable.slotOf(tokenId_);
@@ -658,7 +658,7 @@ contract SpanningERC3525Upgradeable is Initializable, ContextUpgradeable, IERC35
         uint256 value_,
         bytes memory data_
     ) private returns (bool) {
-        address to = ERC3525Upgradeable.ownerOf(toTokenId_);
+        address to = getLegacyFromAddress(ERC3525Upgradeable.ownerOfSpanning(toTokenId_));
         if (to.isContract() && IERC165(to).supportsInterface(type(IERC3525Receiver).interfaceId)) {
             try IERC3525Receiver(to).onERC3525Received(getLegacyFromAddress(spanningMsgSender()), fromTokenId_, toTokenId_, value_, data_) returns (
                 bytes4 retval
